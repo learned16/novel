@@ -17,4 +17,5 @@
 
 ## Git
 
-- اعمل commit بعد كل فصل، ثم push إلى الفرع الحالي.
+- **الموقع ينشر من الفرع `ccr-ab5c89b0-9giqf0` فقط.** اسحبه في البداية (`git fetch origin ccr-ab5c89b0-9giqf0 && git checkout ccr-ab5c89b0-9giqf0`)، واعمل commit بعد كل فصل، ثم `git push origin HEAD:ccr-ab5c89b0-9giqf0`.
+- إذا فرضت عليك الجلسة فرعاً آخر، ادفع إليه أيضاً، لكن لا تنسَ الدفع إلى `ccr-ab5c89b0-9giqf0`.
