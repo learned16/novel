@@ -1,6 +1,6 @@
 {
   // لنشر الموقع كـ Worker بملفات ثابتة (Workers Builds من GitHub)
-  "name": "civilization-novel",
+  "name": "novel",
   "compatibility_date": "2026-09-01",
   "assets": {
     "directory": "./site"
