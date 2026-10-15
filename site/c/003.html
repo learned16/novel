@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>الفصل الثالث: حساب الفحم — نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
@@ -19,7 +20,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><h1>الفصل الثالث: حساب الفحم</h1>
+<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 3 من 14</div><h1>حساب الفحم</h1>
 <p>لم تجب هو سانيانغ فوراً.</p>
 <p>وقفت في الباب، بين الرجل الضخم ذي اللحية الرمادية وبين الغرفة الدافئة، ونظرت إليه نظرة طويلة. ورأى لين، من مكانه في الساحة، أنها تحسب شيئاً. لم يكن يعرف ما هو، لكنه رأى الحساب يتحرك خلف عينيها كما تتحرك الأرقام على شاشة.</p>
 <p>قالت أخيراً: «عامل.»</p>
@@ -240,11 +241,12 @@
 <p>مد يده فقط، ووضعها على يدها. وبقيا هكذا، في الظلام، يستمعان إلى شخير رجال القافلة عبر الجدار، وإلى الريح التي تزداد برودة في الخارج.</p>
 <p>وفي زاوية عينه، هادئة، لا تطلب شيئاً، كانت الحروف الزرقاء تقول:</p>
 <div class="sys"><div><strong>الوحدة الحضارية المسجلة: 3 أفراد.</strong></div></div>
-</article><nav class="nav"><a href="/c/004">الفصل التالي ←</a><a href="/">الفهرس</a><a href="/c/002">→ الفصل السابق</a></nav>
+</article><nav class="nav"><a href="/c/002">→ السابق</a><a href="/">الفهرس</a><a class="next" href="/c/004">التالي ←</a></nav>
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','003')}catch(e){}
 </script>
 </body>

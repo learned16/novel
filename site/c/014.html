@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>الفصل الرابع عشر: الحجر الأول يدور — نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
@@ -19,7 +20,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><h1>الفصل الرابع عشر: الحجر الأول يدور</h1>
+<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 14 من 14</div><h1>الحجر الأول يدور</h1>
 <p>برد الفجر في اليوم التاسع والثلاثين كان ماسّاً، حاداً، يخرج البخار من الأفواه ويجمد الأهداب.</p>
 <p>لم ينم لين تلك الليلة أكثر من ساعتين.</p>
 <p>استيقظ مرتين على صوت لا وجود له، صوت دولاب يتعثر في حلمه، وفي كل مرة وجد شين يان نائمة بجانبه، ويدها على بطنها، وأنفاسها هادئة. وفي المرة الثالثة وجدها مستيقظة، تنظر إلى السقف المنخفض بعينين مفتوحتين.</p>
@@ -141,11 +142,12 @@
 <p>وعلى الجهة الأخرى من الوادي، على التل الذي يطل على القرية، وقف رجل على بغل أبيض في معطف أسود لامع، يتدثر به من الريح. من هناك لا يُرى من الطاحونة إلا ظل أسود صغير، ومن الطاحونة لا يُرى من الرجل إلا ظل أصغر. لكنه لم يكن ينظر، فالعين لا تعدّ. كان يعدّ.</p>
 <p>كان يعرف عدد القرى في المقاطعة، وعدد البيوت في كل قرية، وعدد الأكياس التي يطحنها كل بيت في الشتاء. ولم يكن عنده شيء من ذلك مكتوباً، فكله في رأسه. حسب عدد الأكياس. وعدد من خرجوا من الطاحونة، وعدد من دخلوا. وحسب في رأسه، بابتسامة ثابتة على وجهه كالمسمار، الأرقام التي سيقولها ليلاً لمن يستمعون إليه.</p>
 <p>ثم سقطت على كم معطفه الأسود أول ندفة ثلج.</p>
-</article><nav class="nav"><span>لا يوجد فصل تالٍ بعد</span><a href="/">الفهرس</a><a href="/c/013">→ الفصل السابق</a></nav>
+</article><nav class="nav"><a href="/c/013">→ السابق</a><a href="/">الفهرس</a><span>قريباً</span></nav>
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','014')}catch(e){}
 </script>
 </body>

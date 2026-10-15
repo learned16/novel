@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>الفصل السابع: الكاتب وو — نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
@@ -19,7 +20,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><h1>الفصل السابع: الكاتب وو</h1>
+<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 7 من 14</div><h1>الكاتب وو</h1>
 <p>مرّ يومان من إعادة البناء، وكانت البطانة الجديدة ما زالت تجف.</p>
 <p>جفّت ببطء كما أمرت شين يان، في ظل خيش مبلل معلق أمام فم الموقد، وهي تلمسها كل ساعة بظهر يدها لا براحتها، لأن الظهر أحسّ بالحرارة. وفي مساء اليوم الثامن أشعلوا الموقد بنار صغيرة جداً، كأنهم يشعلون شمعة، فلم يسمع أحد طقطقة ولم يخرج خيط دخان واحد. وفي صباح التاسع كان الموقد يعمل بنار هادئة مستقرة، والجدار الأحمر الداكن يصدر حرارة ثابتة كحرارة جسد نائم.</p>
 <p>قالت هو سانيانغ، وهي تغلق باب المطبخ: «لا أحد يقول كلمة عنه الآن. إذا قلتم إنه نجح فسيفشل.»</p>
@@ -156,11 +157,12 @@
 <p>«كنت.» لم تتحرك. «لا أريد اعتذارك. أريد أن أفهم.»</p>
 <p>انتظر.</p>
 <p>قالت بعد صمت: «إذا كان يساوي شيئاً، أريد أن أعرف أنا أيضاً متى.»</p>
-</article><nav class="nav"><a href="/c/008">الفصل التالي ←</a><a href="/">الفهرس</a><a href="/c/006">→ الفصل السابق</a></nav>
+</article><nav class="nav"><a href="/c/006">→ السابق</a><a href="/">الفهرس</a><a class="next" href="/c/008">التالي ←</a></nav>
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','007')}catch(e){}
 </script>
 </body>

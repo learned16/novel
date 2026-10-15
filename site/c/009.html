@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>الفصل التاسع: اتفاق بثلاثة أختام — نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
@@ -19,7 +20,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><h1>الفصل التاسع: اتفاق بثلاثة أختام</h1>
+<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 9 من 14</div><h1>اتفاق بثلاثة أختام</h1>
 <p>في اليوم الحادي عشر، أحضرت هو سانيانغ كتابها إلى الطاولة، وفتحته على صفحة مليئة بخطوط عمودية، وقالت دون مقدمة: «انظرا.»</p>
 <p>كانت قد قسمت الصفحة إلى ثلاثة أعمدة. الأول: سلال الحطب في الشتاء الماضي. الثاني: سلال الحطب هذه الأيام. والثالث: الفرق. وتحت الأعمدة رقم واحد محاط بدائرة ثقيلة من الفحم.</p>
 <p>«ثلث.» قالت. «أقل بقليل من الثلث، وأكثر بقليل من الربع. الموقد الجديد وحده، والآخر ما زال قديماً. ولم تأتِ قافلة جديدة بعد.»</p>
@@ -183,11 +184,12 @@
 <p>ثم ضحكا. ضحكة قصيرة مكتومة، خشية أن يسمعهما أحد، كطفلين.</p>
 <p>وفي بلدة بعيدة، في غرفة صغيرة تضيئها مصباح زيت، كان رجل نحيل بمعطف أزرق يغمس فرشاته في حجر الحبر، ويفتح دفتراً لا يشبه دفتر الحكومة، دفتراً صغيراً بغلاف جلدي بلا عنوان. وكتب سطراً واحداً بخط أنيق:</p>
 <p>«النازحان اللذان لا يشبهان النازحين.»</p>
-</article><nav class="nav"><a href="/c/010">الفصل التالي ←</a><a href="/">الفهرس</a><a href="/c/008">→ الفصل السابق</a></nav>
+</article><nav class="nav"><a href="/c/008">→ السابق</a><a href="/">الفهرس</a><a class="next" href="/c/010">التالي ←</a></nav>
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','009')}catch(e){}
 </script>
 </body>

@@ -37,11 +37,12 @@ const page = (title, body, extra = '') => `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <header class="bar">
   <a class="home" href="/">${TITLE}</a>
   <div class="tools">
@@ -56,42 +57,58 @@ ${body}
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 ${extra}
 </script>
 </body>
 </html>
 `;
 
-const css = `:root{--bg:#f7f2e8;--fg:#2a2420;--muted:#7a6f63;--line:#e3d9c8;--card:#fffaf1;--accent:#8a4b1f;--sys-bg:#eaf2fb;--sys-fg:#1d4f86;--sys-line:#b9d2ee;--fs:20px}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15130f;--fg:#e8e0d2;--muted:#9c907f;--line:#2e2a24;--card:#1d1a15;--accent:#e0a36a;--sys-bg:#0f1d2c;--sys-fg:#8fc1f2;--sys-line:#21405f}}
-:root[data-theme="dark"]{--bg:#15130f;--fg:#e8e0d2;--muted:#9c907f;--line:#2e2a24;--card:#1d1a15;--accent:#e0a36a;--sys-bg:#0f1d2c;--sys-fg:#8fc1f2;--sys-line:#21405f}
+const css = `:root{--bg:#f6f1e7;--fg:#2a2420;--muted:#7b6f61;--line:#e2d8c6;--card:#fffaf1;--accent:#8a4b1f;--accent-soft:#f0e2d2;--sys-bg:#e9f1fb;--sys-fg:#1c4e86;--sys-line:#b7d0ec;--fs:20px;--f-body:"Noto Naskh Arabic","Amiri",serif;--f-display:"Reem Kufi","Noto Naskh Arabic",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15130f;--fg:#e8e0d2;--muted:#9d9180;--line:#2f2a23;--card:#1d1a15;--accent:#e2a56b;--accent-soft:#2a2118;--sys-bg:#0f1d2c;--sys-fg:#91c2f2;--sys-line:#22415f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15130f;--fg:#e8e0d2;--muted:#9d9180;--line:#2f2a23;--card:#1d1a15;--accent:#e2a56b;--accent-soft:#2a2118;--sys-bg:#0f1d2c;--sys-fg:#91c2f2;--sys-line:#22415f;color-scheme:dark}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:"Noto Naskh Arabic",serif;line-height:2}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);line-height:2}
 a{color:var(--accent);text-decoration:none}
-.bar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
-.home{font-weight:700;font-size:17px;color:var(--fg)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.progress{position:fixed;top:0;right:0;left:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:right;z-index:6}
+.bar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));background:var(--bg);border-bottom:1px solid var(--line)}
+.home{font-family:var(--f-display);font-weight:700;font-size:18px;color:var(--fg)}
 .tools{display:flex;gap:6px}
-.tools button{font:inherit;font-size:15px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:2px 10px;cursor:pointer}
-main{max-width:720px;margin:0 auto;padding:24px 16px 80px}
-h1{font-size:calc(var(--fs) * 1.45);line-height:1.6;margin:8px 0 28px;text-align:center}
+.tools button{font:inherit;font-size:15px;line-height:1.8;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:2px 10px;cursor:pointer}
+main{max-width:720px;margin:0 auto;padding:24px max(16px,env(safe-area-inset-right,0px)) 80px max(16px,env(safe-area-inset-left,0px))}
+main.wide{max-width:960px}
+h1{font-family:var(--f-display);font-weight:700;font-size:calc(var(--fs) * 1.45);line-height:1.6;margin:4px 0 28px;text-align:center;text-wrap:balance}
+.eyebrow{text-align:center;color:var(--muted);font-size:14px;letter-spacing:.02em;margin-top:8px}
 .chapter p{font-size:var(--fs);margin:0 0 1em;text-align:justify}
 .break{text-align:center;color:var(--muted);margin:2em 0;letter-spacing:.5em}
-.sys{font-size:calc(var(--fs) * .88);background:var(--sys-bg);color:var(--sys-fg);border:1px solid var(--sys-line);border-right:4px solid var(--sys-fg);border-radius:8px;padding:12px 16px;margin:1.2em 0;line-height:1.9}
-.nav{display:flex;justify-content:space-between;gap:12px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
-.nav a,.nav span{flex:1;text-align:center;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.sys{font-size:calc(var(--fs) * .88);background:var(--sys-bg);color:var(--sys-fg);border:1px solid var(--sys-line);border-right:4px solid var(--sys-fg);border-radius:8px;padding:12px 16px;margin:1.2em 0;line-height:1.9;font-variant-numeric:tabular-nums}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+.nav a,.nav span{text-align:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
 .nav span{color:var(--muted)}
-.hero{text-align:center;padding:16px 0 8px}
-.hero h1{margin-bottom:8px}
-.hero p{color:var(--muted);margin:0 0 16px}
-.resume{display:none;margin:0 auto 24px;max-width:420px;text-align:center;padding:12px;border-radius:10px;background:var(--accent);color:var(--bg);font-weight:600}
-.toc{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
-.toc li{border-bottom:1px solid var(--line)}
-.toc a{display:flex;gap:12px;padding:12px 4px;color:var(--fg)}
-.toc .n{color:var(--muted);min-width:3.5em}
-.arc{margin:28px 0 8px;color:var(--accent);font-size:18px}
+.nav .next{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
+.hero{text-align:center;padding:28px 0 12px}
+.hero .kicker{color:var(--accent);font-size:14px;letter-spacing:.04em}
+.hero h1{font-size:clamp(30px,6vw,46px);margin:4px 0 10px}
+.hero .blurb{max-width:34em;margin:0 auto 18px;color:var(--fg);font-size:17px}
+.hero .meta{color:var(--muted);font-size:14px;margin:0 0 22px;font-variant-numeric:tabular-nums}
+.cta{display:inline-block;padding:12px 28px;border-radius:10px;background:var(--accent);color:var(--bg);font-weight:600}
+.arc{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin:40px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+.arc h2{font-family:var(--f-display);font-weight:500;margin:0;color:var(--accent);font-size:20px}
+.arc small{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+.toc{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0 24px}
+.toc li{border-bottom:1px solid var(--line);min-width:0}
+.toc a{display:flex;gap:12px;align-items:baseline;padding:11px 4px;color:var(--fg)}
+.toc a:hover .t{color:var(--accent)}
+.toc .n{color:var(--muted);min-width:2.2em;font-variant-numeric:tabular-nums}
+.toc .t{min-width:0}
+.toc li.last a{background:var(--accent-soft);border-radius:6px}
+.toc li.last .t::after{content:" · آخر ما قرأت";color:var(--accent);font-size:13px}
+@media (prefers-reduced-motion:no-preference){.progress{transition:transform .1s linear}}
 `;
 
+const ARCS = [[1, 40, 'المرحلة الأولى: البداية والبقاء'], [41, 100, 'المرحلة الثانية: الاقتصاد والإنتاج'], [101, 180, 'المرحلة الثالثة: النفوذ المحلي'], [181, 250, 'المرحلة الرابعة: صراعات توحيد الإقليم'], [251, 300, 'المرحلة الخامسة: توحيد الإقليم وتثبيت الحكم']];
 const pad = (n) => String(n).padStart(3, '0');
 const files = fs.existsSync(SRC) ? fs.readdirSync(SRC).filter((f) => /^\d{3}\.md$/.test(f)).sort() : [];
 
@@ -107,19 +124,20 @@ const chapters = files.map((f) => {
 
 chapters.forEach((c, i) => {
   const prev = chapters[i - 1], next = chapters[i + 1];
-  const nav = `<nav class="nav">${next ? `<a href="/c/${pad(next.n)}">الفصل التالي ←</a>` : '<span>لا يوجد فصل تالٍ بعد</span>'}<a href="/">الفهرس</a>${prev ? `<a href="/c/${pad(prev.n)}">→ الفصل السابق</a>` : '<span>البداية</span>'}</nav>`;
-  const body = `<article class="chapter"><h1>${esc(c.title)}</h1>\n${c.body}\n</article>${nav}`;
+  const nav = `<nav class="nav">${prev ? `<a href="/c/${pad(prev.n)}">→ السابق</a>` : '<span>البداية</span>'}<a href="/">الفهرس</a>${next ? `<a class="next" href="/c/${pad(next.n)}">التالي ←</a>` : '<span>قريباً</span>'}</nav>`;
+  const arc = ARCS.find(([a, b]) => c.n >= a && c.n <= b);
+  const body = `<article class="chapter"><div class="eyebrow">${arc ? arc[2].split(':')[0] : ''} · الفصل ${c.n} من ${chapters.length}</div><h1>${esc(c.title.replace(/^الفصل [^:]+:\s*/, ''))}</h1>\n${c.body}\n</article>${nav}`;
   fs.writeFileSync(path.join(OUT, 'c', `${pad(c.n)}.html`), page(`${c.title} — ${TITLE}`, body, `try{localStorage.setItem('last','${pad(c.n)}')}catch(e){}`));
 });
 
-const ARCS = [[1, 40, 'المرحلة الأولى: البداية والبقاء'], [41, 100, 'المرحلة الثانية: الاقتصاد والإنتاج'], [101, 180, 'المرحلة الثالثة: النفوذ المحلي'], [181, 250, 'المرحلة الرابعة: صراعات توحيد الإقليم'], [251, 300, 'المرحلة الخامسة: توحيد الإقليم وتثبيت الحكم']];
 let toc = '';
 for (const [a, b, name] of ARCS) {
   const list = chapters.filter((c) => c.n >= a && c.n <= b);
   if (!list.length) continue;
-  toc += `<h2 class="arc">${name}</h2><ul class="toc">` + list.map((c) => `<li><a href="/c/${pad(c.n)}"><span class="n">${c.n}</span><span>${esc(c.title.replace(/^الفصل [^:]+:\s*/, ''))}</span></a></li>`).join('') + '</ul>';
+  toc += `<div class="arc"><h2>${name}</h2><small>الفصول ${a}–${b} · منشور ${list.length} من ${b - a + 1}</small></div><ul class="toc">` + list.map((c) => `<li data-n="${pad(c.n)}"><a href="/c/${pad(c.n)}"><span class="n">${c.n}</span><span class="t">${esc(c.title.replace(/^الفصل [^:]+:\s*/, ''))}</span></a></li>`).join('') + '</ul>';
 }
-const index = `<section class="hero"><h1>${TITLE}</h1><p>رواية — ${chapters.length} فصل منشور</p></section><a id="resume" class="resume" href="#">أكمل القراءة</a>${toc || '<p>لا توجد فصول بعد.</p>'}`;
-fs.writeFileSync(path.join(OUT, 'index.html'), page(TITLE, index, `try{var l=localStorage.getItem('last');if(l){var a=document.getElementById('resume');a.href='/c/'+l;a.textContent='أكمل القراءة: الفصل '+parseInt(l,10);a.style.display='block'}}catch(e){}`));
+const count = (n) => n === 1 ? 'فصل واحد' : n === 2 ? 'فصلان' : n <= 10 ? `${n} فصول` : `${n} فصلاً`;
+const index = `<section class="hero"><div class="kicker">خيال علمي · بناء حضارة · سياسة وحروب</div><h1>${TITLE}</h1><p class="blurb">مهندس وزوجته الحامل ينتقلان إلى قرية فقيرة في عالم مجهول، ومعه نظام غامض لا يعرف أكثر مما تسمح به بياناته. من مدخنة تخنق ضيوف نزل، تبدأ حضارة.</p><p class="meta">المنشور حتى الآن: ${count(chapters.length)} من أصل 1000</p><a id="resume" class="cta" href="/c/001">ابدأ القراءة</a></section>${toc || '<p>لا توجد فصول بعد.</p>'}`;
+fs.writeFileSync(path.join(OUT, 'index.html'), page(TITLE, index, `document.querySelector('main').classList.add('wide');try{var l=localStorage.getItem('last');if(l){var a=document.getElementById('resume');a.href='/c/'+l;a.textContent='أكمل القراءة: الفصل '+parseInt(l,10);var li=document.querySelector('li[data-n="'+l+'"]');if(li)li.className='last'}}catch(e){}`));
 
 console.log(`built ${chapters.length} chapters`);

@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
@@ -19,12 +20,13 @@
   </div>
 </header>
 <main>
-<section class="hero"><h1>نظام السيادة الحضارية</h1><p>رواية — 14 فصل منشور</p></section><a id="resume" class="resume" href="#">أكمل القراءة</a><h2 class="arc">المرحلة الأولى: البداية والبقاء</h2><ul class="toc"><li><a href="/c/001"><span class="n">1</span><span>ثلاثة أفراد</span></a></li><li><a href="/c/002"><span class="n">2</span><span>الدخان</span></a></li><li><a href="/c/003"><span class="n">3</span><span>حساب الفحم</span></a></li><li><a href="/c/004"><span class="n">4</span><span>الحداد لا يجادل</span></a></li><li><a href="/c/005"><span class="n">5</span><span>الطين لا يكذب</span></a></li><li><a href="/c/006"><span class="n">6</span><span>الخسارة المحسوبة</span></a></li><li><a href="/c/007"><span class="n">7</span><span>الكاتب وو</span></a></li><li><a href="/c/008"><span class="n">8</span><span>الطاحونة المهجورة</span></a></li><li><a href="/c/009"><span class="n">9</span><span>اتفاق بثلاثة أختام</span></a></li><li><a href="/c/010"><span class="n">10</span><span>خشب الدولاب</span></a></li><li><a href="/c/011"><span class="n">11</span><span>الحديد المغشوش</span></a></li><li><a href="/c/012"><span class="n">12</span><span>الحديد القديم</span></a></li><li><a href="/c/013"><span class="n">13</span><span>الماء البارد</span></a></li><li><a href="/c/014"><span class="n">14</span><span>الحجر الأول يدور</span></a></li></ul>
+<section class="hero"><div class="kicker">خيال علمي · بناء حضارة · سياسة وحروب</div><h1>نظام السيادة الحضارية</h1><p class="blurb">مهندس وزوجته الحامل ينتقلان إلى قرية فقيرة في عالم مجهول، ومعه نظام غامض لا يعرف أكثر مما تسمح به بياناته. من مدخنة تخنق ضيوف نزل، تبدأ حضارة.</p><p class="meta">المنشور حتى الآن: 14 فصلاً من أصل 1000</p><a id="resume" class="cta" href="/c/001">ابدأ القراءة</a></section><div class="arc"><h2>المرحلة الأولى: البداية والبقاء</h2><small>الفصول 1–40 · منشور 14 من 40</small></div><ul class="toc"><li data-n="001"><a href="/c/001"><span class="n">1</span><span class="t">ثلاثة أفراد</span></a></li><li data-n="002"><a href="/c/002"><span class="n">2</span><span class="t">الدخان</span></a></li><li data-n="003"><a href="/c/003"><span class="n">3</span><span class="t">حساب الفحم</span></a></li><li data-n="004"><a href="/c/004"><span class="n">4</span><span class="t">الحداد لا يجادل</span></a></li><li data-n="005"><a href="/c/005"><span class="n">5</span><span class="t">الطين لا يكذب</span></a></li><li data-n="006"><a href="/c/006"><span class="n">6</span><span class="t">الخسارة المحسوبة</span></a></li><li data-n="007"><a href="/c/007"><span class="n">7</span><span class="t">الكاتب وو</span></a></li><li data-n="008"><a href="/c/008"><span class="n">8</span><span class="t">الطاحونة المهجورة</span></a></li><li data-n="009"><a href="/c/009"><span class="n">9</span><span class="t">اتفاق بثلاثة أختام</span></a></li><li data-n="010"><a href="/c/010"><span class="n">10</span><span class="t">خشب الدولاب</span></a></li><li data-n="011"><a href="/c/011"><span class="n">11</span><span class="t">الحديد المغشوش</span></a></li><li data-n="012"><a href="/c/012"><span class="n">12</span><span class="t">الحديد القديم</span></a></li><li data-n="013"><a href="/c/013"><span class="n">13</span><span class="t">الماء البارد</span></a></li><li data-n="014"><a href="/c/014"><span class="n">14</span><span class="t">الحجر الأول يدور</span></a></li></ul>
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
-try{var l=localStorage.getItem('last');if(l){var a=document.getElementById('resume');a.href='/c/'+l;a.textContent='أكمل القراءة: الفصل '+parseInt(l,10);a.style.display='block'}}catch(e){}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
+document.querySelector('main').classList.add('wide');try{var l=localStorage.getItem('last');if(l){var a=document.getElementById('resume');a.href='/c/'+l;a.textContent='أكمل القراءة: الفصل '+parseInt(l,10);var li=document.querySelector('li[data-n="'+l+'"]');if(li)li.className='last'}}catch(e){}
 </script>
 </body>
 </html>

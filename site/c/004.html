@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>الفصل الرابع: الحداد لا يجادل — نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
@@ -19,7 +20,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><h1>الفصل الرابع: الحداد لا يجادل</h1>
+<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 4 من 14</div><h1>الحداد لا يجادل</h1>
 <p>وضعت هو سانيانغ الشرط على الطاولة كما تضع قطعة نحاس: «الموقد الصغير أولاً. موقد المطبخ.»</p>
 <p>كان ذلك في فجر اليوم الرابع، والقافلة ما زالت نائمة في الغرفة الكبيرة. كانت تقف بين القدور، وكوب الشاي في يدها، وتنظر إلى شين يان لا إلى لين.</p>
 <p>«إن فشل، فقد خسرت طيناً وبعض الحطب. وإن نجح، فأنتما تبنيان الثاني في الغرفة الكبيرة. وإن انهار الأول فوق رأس الطباخة، ترحلان قبل أن تعود القافلة من السوق.»</p>
@@ -161,11 +162,12 @@
 <p>لم يدرِ إن كانت صدّقته.</p>
 <p>أطفأ الشمعة، وبقي مفتوح العينين في الظلام، وفي زاوية رؤيته حروف زرقاء تنتظر بصبر، وفيها رقم واحد لا ينطفئ:</p>
 <div class="sys"><div><strong>الثقة: 58%</strong></div></div>
-</article><nav class="nav"><a href="/c/005">الفصل التالي ←</a><a href="/">الفهرس</a><a href="/c/003">→ الفصل السابق</a></nav>
+</article><nav class="nav"><a href="/c/003">→ السابق</a><a href="/">الفهرس</a><a class="next" href="/c/005">التالي ←</a></nav>
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','004')}catch(e){}
 </script>
 </body>

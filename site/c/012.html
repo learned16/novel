@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>الفصل الثاني عشر: الحديد القديم — نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
@@ -19,7 +20,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><h1>الفصل الثاني عشر: الحديد القديم</h1>
+<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 12 من 14</div><h1>الحديد القديم</h1>
 <p>بدأ الجمع صباح اليوم الثلاثين، بقدر مثقوب وضعته عجوز في كف شياو دو.</p>
 <p>وقفت المرأة عند باب بيتها، يدها ترتجف قليلاً، ونظرت إلى القدر كمن يودع شيئاً حياً. كان أسود من الخارج، مصقولاً من الداخل بسنوات من الطبخ، وفي قاعه ثقب بحجم عملة نحاسية.</p>
 <p>«أمي أعطتني إياه يوم زواجي.»</p>
@@ -142,11 +143,12 @@
 <p>«لهذا بالتحديد.» رفعت شين يان رأسها أخيراً، وفي عينيها ما يشبه الخوف المنظم. «رجل يأتي في الليل ولا يسرق، يريد أن نعرف أنه جاء.»</p>
 <p>ثم أضافت بصوت أخفض: «من يلبس جلداً في هذه القرية؟»</p>
 <p>لم يجب أحد، لأن الجواب كان طويلاً.</p>
-</article><nav class="nav"><a href="/c/013">الفصل التالي ←</a><a href="/">الفهرس</a><a href="/c/011">→ الفصل السابق</a></nav>
+</article><nav class="nav"><a href="/c/011">→ السابق</a><a href="/">الفهرس</a><a class="next" href="/c/013">التالي ←</a></nav>
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','012')}catch(e){}
 </script>
 </body>

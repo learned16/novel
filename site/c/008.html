@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>الفصل الثامن: الطاحونة المهجورة — نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
@@ -19,7 +20,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><h1>الفصل الثامن: الطاحونة المهجورة</h1>
+<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 8 من 14</div><h1>الطاحونة المهجورة</h1>
 <p>جاء الفلاح العجوز عند الفجر، قبل أن يصيح الديك الثاني.</p>
 <p>وقف عند باب المخزن في ظلام رمادي، يعصر قبعته المصنوعة من القش بين كفيه، ولم يقل شيئاً حتى خرج لين. كان خلفه، في الساحة، حمار صغير يجر عربة، وإحدى عجلتيها مائلة قليلاً كأنها تتعب.</p>
 <p>«قلت بعد أن تنتهي من الآخر.»</p>
@@ -146,11 +147,12 @@
 <p>نظر الفارس إلى لين، ثم إلى شين يان، ثم إلى دفترها المرفوع في يدها، ثم إلى الاتجاه الذي جاءوا منه، نحو منعطف النهر. نظر إلى الدولاب المكسور من بعيد، بعينين لا تقولان شيئاً. وبقي هكذا زمناً طويلاً.</p>
 <p>همس شياو دو: «وكيل ليو.»</p>
 <p>ثم حرك الرجل لجام حصانه ببطء، ومضى دون كلمة.</p>
-</article><nav class="nav"><a href="/c/009">الفصل التالي ←</a><a href="/">الفهرس</a><a href="/c/007">→ الفصل السابق</a></nav>
+</article><nav class="nav"><a href="/c/007">→ السابق</a><a href="/">الفهرس</a><a class="next" href="/c/009">التالي ←</a></nav>
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','008')}catch(e){}
 </script>
 </body>

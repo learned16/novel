@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>الفصل العاشر: خشب الدولاب — نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
@@ -19,7 +20,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><h1>الفصل العاشر: خشب الدولاب</h1>
+<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 10 من 14</div><h1>خشب الدولاب</h1>
 <p>في اليوم العاشر من العمل، خرج آخر حمل من الطمي من أرض الطاحونة، وانكشف الحجران أخيراً.</p>
 <p>وقف لين على حافة الحفرة ينظر إليهما. كانا مستديرين، رماديين، فيهما نقش حلزوني قديم أكله الماء، وأحدهما يحمل شقاً قصيراً لا يؤثر في العمل. بدا الحجران كأنهما ينتظران منذ خمس سنوات من يتذكرهما. كانت الريح تحمل رائحة الطين الرطب المقلوب، وفي فمه طعم معدني بارد، وتحت كفيه المتورمتين رعشة خفيفة من الإرهاق لا يريد أن يعترف بها أمام الرجال.</p>
 <p>كان في الحفرة أربعة عشر رجلاً، وبعضهم يصعد منها على سلم من جذوع، وجباههم تلمع بالعرق رغم أن الهواء يلسع. والمعاول مكدسة على الضفة، وعلى صخرة مسطحة قرب الجدول جلست شين يان، أمامها لوح خشبي مفروش بعيدان صغيرة، كل عود منها يمثل رجلاً.</p>
@@ -143,11 +144,12 @@
 <p>«وتشانغ ليس عنده حديد.» رفعت عينيها إلى الدولاب الذي رسمته العصا على التراب. «الحديد الذي يبيعه تشيان.»</p>
 <p>مدت يدها في العتمة، ووضعت قطعة من الخبز في كفه دون أن تنظر إليه، ثم عادت إلى الرسم على التراب.</p>
 <p>كان الظلام قد هبط. وأخذ الصبي يجمع الأعواد من على اللوح ويعدها ببطء، وهو يهمهم لحناً من الأعراس، ولا يعرف أن ما يعده في يده ليس أعواداً، بل أيام.</p>
-</article><nav class="nav"><a href="/c/011">الفصل التالي ←</a><a href="/">الفهرس</a><a href="/c/009">→ الفصل السابق</a></nav>
+</article><nav class="nav"><a href="/c/009">→ السابق</a><a href="/">الفهرس</a><a class="next" href="/c/011">التالي ←</a></nav>
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','010')}catch(e){}
 </script>
 </body>

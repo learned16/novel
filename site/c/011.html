@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>الفصل الحادي عشر: الحديد المغشوش — نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
@@ -19,7 +20,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><h1>الفصل الحادي عشر: الحديد المغشوش</h1>
+<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 11 من 14</div><h1>الحديد المغشوش</h1>
 <p>أجّل تشيان الحديد مرتين.</p>
 <p>في المرة الأولى أرسل خادماً إلى ورشة تشانغ في اليوم الخامس والعشرين، ومعه رسالة شفهية: «السيد تشيان يعتذر. وصلته سبعة وعشرون قضيباً من أصل مئتين، والباقي عالق على طريق النهر بسبب المطر. ثلاثة أيام، أو أربعة.» قالها الخادم بنبرة من حفظ الجملة في الطريق.</p>
 <p>وفي المرة الثانية، وهي التي ذهب فيها لين مع تشانغ بنفسه، كان اليوم السابع والعشرين، يوم السوق، وقد انقضت الأيام الأربعة.</p>
@@ -143,11 +144,12 @@
 <p>كان يفكر في الدولاب الذي ينتظر، وفي النهر الذي يتجمد، وفي ستين مسماراً لا وجود لها بعد. لكنه كان يفكر أيضاً في شيء آخر. في الصنعة التي رآها هنا: رجل يصنع كل ما يحتاجه الناس من حديد، ولا يملك حديداً. وقرية كاملة تتكل على هذا الرجل، وتتكل في الحقيقة على تاجر ابتسامته ثابتة على وجهه بمسمار.</p>
 <p>سأل، وكان صوته هادئاً:</p>
 <p>«كم سكة محراث مكسورة في هذه القرية؟»</p>
-</article><nav class="nav"><a href="/c/012">الفصل التالي ←</a><a href="/">الفهرس</a><a href="/c/010">→ الفصل السابق</a></nav>
+</article><nav class="nav"><a href="/c/010">→ السابق</a><a href="/">الفهرس</a><a class="next" href="/c/012">التالي ←</a></nav>
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','011')}catch(e){}
 </script>
 </body>
