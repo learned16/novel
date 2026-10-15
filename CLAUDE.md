@@ -12,6 +12,9 @@
 
 ## الموقع
 
+- **النسخة الأساسية للقراءة: Artifact على claude.ai** — https://claude.ai/artifact/NVhoCw8tEaoBBb7X9PHGsJ
+  - بعد كل دفعة فصول: `node build-artifact.js` ثم انشر `artifact/novel.html` بأداة Artifact مع `url` أعلاه (لا تنشئ artifact جديداً).
+
 - `node build.js` يبني `site/` من `chapters/NNN.md`.
 - ملف `wrangler.jsonc` ينشر `site/` على Cloudflare كـ Worker اسمه `novel` (https://novel.44trm84.workers.dev). لا تغيّر الاسم.
 
