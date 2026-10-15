@@ -47,7 +47,7 @@ const page = (title, body, extra = '') => `<!doctype html>
   <div class="tools">
     <button onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button>
     <button onclick="fsz(1)" aria-label="تكبير الخط">أ+</button>
-    <button onclick="theme()" aria-label="الوضع الليلي">◐</button>
+    <button onclick="theme()" aria-label="الوضع الليلي">ليلي</button>
   </div>
 </header>
 <main>
