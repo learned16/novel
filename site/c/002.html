@@ -12,27 +12,30 @@
 <title>الفصل الثاني: الدخان — نظام السيادة الحضارية</title>
 <link rel="preload" href="/fonts/NotoNaskhArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))document.documentElement.classList.add('cine');if(localStorage.getItem('fx')==='off')document.documentElement.classList.add('nofx')}catch(e){}</script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <div id="hud" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
     <button onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button>
     <button onclick="fsz(1)" aria-label="تكبير الخط">أ+</button>
+    <button class="fxb" onclick="fxToggle()" aria-label="جو المشهد" aria-pressed="true">جو</button><button onclick="cine(1)" aria-label="وضع القراءة السينمائي">سينما</button>
     <button onclick="theme()" aria-label="الوضع الليلي">ليلي</button>
   </div>
 </header>
 <main>
 <article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الأولى</div><div class="ch-num"><span>الفصل</span><b>2</b></div><h1>الدخان</h1></header>
-<p>أيقظه الديك.</p>
+<div class="scene" data-fx="night" aria-hidden="true"></div>
+<p class="shot">أيقظه الديك.</p>
 <p>لم يكن ديكاً واحداً. كان ثلاثة أو أربعة، يتبادلون الصياح من أطراف القرية المختلفة كأنهم يتجادلون. وفتح لين عينيه على ظلام رمادي يتسرب من شق الباب، ورائحة الحطب والقش، وألم حاد في كتفه اليسرى من النوم على الأرض.</p>
 <p>لم يتحرك فوراً. بقي ممدداً، ينظر إلى سقف المخزن المنخفض، إلى العوارض الخشبية السوداء من الدخان، وخيوط العنكبوت بينها.</p>
 <p>ثم ظهرت الحروف الزرقاء في زاوية عينه، هادئة، كأنها كانت تنتظره:</p>
 <div class="sys" data-lv="1"><div class="sys-h"><span class="t">نظام السيادة الحضارية</span><span class="lv">تكامل 3%</span></div><div class="sys-b"><div class="m" style="--i:0;--v:3"><span class="k">التكامل</span><span class="bar" aria-hidden="true"><i></i></span><b>3%</b></div><div class="m" style="--i:1;--v:100"><span class="k">طاقة التكامل</span><span class="bar" aria-hidden="true"><i></i></span><b>100%</b></div></div></div>
-<p>إذن لم يكن حلماً.</p>
+<p class="shot">إذن لم يكن حلماً.</p>
 <p>أدار رأسه. كانت شين يان مستيقظة. جالسة وظهرها إلى الجدار الدافئ، وسترته على كتفيها، وتنظر إليه.</p>
 <p>قالت: «ما زال هناك؟»</p>
 <p>«ما زال هناك.»</p>
@@ -43,13 +46,14 @@
 <p>«انظر في المرة القادمة. نحتاج أن نعرف كم يكلف كل نوع من التحليل، وكم يحتاج من الوقت ليتجدد.» قامت ونفضت القش عن سترة المختبر. «إذا كان عندنا مورد واحد، فيجب أن نعرف حدوده قبل أن نعتمد عليه.»</p>
 <p>كان هذا بالضبط ما كان سيقوله هو. لكنه لم يقله. ابتسم فقط، وقام.</p>
 <div class="break" role="separator"><span></span></div>
-<p>كانت هو سانيانغ في المطبخ قبلهما.</p>
+<div class="scene" data-fx="fire" aria-hidden="true"></div>
+<p class="shot">كانت هو سانيانغ في المطبخ قبلهما.</p>
 <p>المطبخ غرفة واسعة نسبياً، أرضها من الطين المدكوك، وفي وسطها موقد كبير مبني من الطوب والطين، عليه قدران حديديتان ضخمتان. وخلف الموقد، مستندة إلى الجدار، المدخنة: عمود مربع من الطوب يصعد عبر السقف.</p>
 <p>وكان الدخان في كل مكان.</p>
 <p>ليس كثيفاً، لكنه حاضر. طبقة رمادية تطفو تحت السقف، وتنزل كلما فتحت هو سانيانغ باب الموقد لتضيف حطباً. ورائحته تلتصق بكل شيء: بالجدران، وبالقدور، وبالسلال المعلقة، وبشعر هو سانيانغ نفسها.</p>
 <p>سعلت شين يان مرتين قبل أن تخطو داخل المطبخ.</p>
 <p>قالت هو سانيانغ دون أن تلتفت: «هكذا كل صباح. ولما أشعل النار في الغرفة الكبيرة، يصير أسوأ.» وأشارت بمغرفتها إلى الجدار الشرقي. «هناك. المدخنتان تلتقيان في الجدار، وتخرجان من فتحة واحدة في السقف.»</p>
-<p>اقترب لين من الموقد.</p>
+<p class="shot">اقترب لين من الموقد.</p>
 <p>كان يعرف المبدأ. كل مهندس يعرفه. الهواء الساخن أخف من البارد، فيصعد. والمدخنة الجيدة تستغل ذلك: يصعد الدخان الساخن عبرها، ويسحب خلفه هواءً جديداً من فتحة الموقد، فتشتعل النار أفضل، ويصعد مزيد من الهواء الساخن. حلقة تغذي نفسها.</p>
 <p>وحين ينكسر شيء في الحلقة، يرجع الدخان.</p>
 <p>ركز على المدخنة.</p>
@@ -75,6 +79,7 @@
 <p>لم تقل هو سانيانغ شيئاً. أعادت المغرفة إلى القدر، وحركت العصيدة، ثم قالت دون أن تلتفت:</p>
 <p>«عندكما حتى المساء. القافلة غداً ظهراً. وإذا خربتما شيئاً، تدفعان ثمنه.»</p>
 <div class="break" role="separator"><span></span></div>
+<div class="scene" data-fx="" aria-hidden="true"></div>
 <p>كانت المشكلة الأولى أنه لا يملك شيئاً.</p>
 <p>وقف لين في الساحة الخلفية للنزل، والبرد يعض أذنيه، وأحصى ما عنده.</p>
 <p>أداة متعددة في تخزين النظام. يمكن أن يخرجها، لكنها فولاذ مقاوم للصدأ لامع، بمفاصل دقيقة، لا يشبه أي شيء في هذه القرية. وإذا رآها أحد فسيسأل.</p>
@@ -96,7 +101,8 @@
 <p>قالت شين يان: «والقش؟ نحتاج قشاً مقطعاً قصيراً، لا أكثر من طول الإصبع.»</p>
 <p>نظر إليها شياو دو باحترام مفاجئ. «العمة تقطع القش هكذا للجدران. في الحظيرة كيس كامل.»</p>
 <div class="break" role="separator"><span></span></div>
-<p>فكا المدخنة قبل الظهر.</p>
+<div class="scene" data-fx="" aria-hidden="true"></div>
+<p class="shot">فكا المدخنة قبل الظهر.</p>
 <p>لم يفكاها كلها، فهذا مستحيل في يوم واحد. لكن شين يان اقترحت شيئاً جعل هو سانيانغ تحدق فيها كأنها مجنونة: أن يفتحا نافذة في جدار المدخنة نفسه، في الأسفل، على مستوى الركبة. فتحة بحجم طوبتين، تصل مباشرة إلى المجرى.</p>
 <p>قالت هو سانيانغ: «تريدين أن تثقبي مدختني؟»</p>
 <p>«أريد أن أرى داخلها. ثم نغلق الثقب.»</p>
@@ -120,14 +126,15 @@
 <p>«جزء منه سقط داخل المجرى. هو ما يسد الطريق.»</p>
 <p>ثلاثة وستون في المئة. التخمين الجيد كان صحيحاً.</p>
 <div class="break" role="separator"><span></span></div>
-<p>استغرق إخراج الطوبة المنكسرة ساعة كاملة.</p>
+<div class="scene" data-fx="fire water" aria-hidden="true"></div>
+<p class="shot">استغرق إخراج الطوبة المنكسرة ساعة كاملة.</p>
 <p>لم تكن ذراع لين طويلة بما يكفي. جرب شياو دو، فذراعه أنحف، لكنها كانت أقصر. وفي النهاية ربط لين قطعة خشب طويلة إلى عصا المجرفة بحبل، وصنع منها شيئاً يشبه الخطاف، وظل يحاول، والسخام يتساقط في عينيه وفمه، حتى انزلقت الطوبة أخيراً وسقطت عبر المجرى إلى الفتحة.</p>
 <p>صفق شياو دو.</p>
 <p>ثم نظفوا المجرى. على قدر ما استطاعوا: بالعصا، وبحزمة من الأغصان، وبيد شياو دو المغطاة بقطعة قماش. وامتلأت ثلاثة دلاء بالسخام.</p>
 <p>كانت الشمس قد تجاوزت منتصف السماء حين قالت شين يان: «الآن الشق.»</p>
 <p>«لا نستطيع الوصول إليه من الداخل.»</p>
 <p>«لا نحتاج إلى ذلك.» وأشارت إلى الجدار الخارجي للمدخنة، على ارتفاع صدرها. «الهواء البارد يدخل من الخارج، أليس كذلك؟ إذن نسده من الخارج.»</p>
-<p>خلطت المونة بنفسها.</p>
+<p class="shot">خلطت المونة بنفسها.</p>
 <p>جلست على كرسي خشبي صغير أحضره شياو دو، لأن لين رفض أن تنحني فوق الدلو، ورفضت هي أن تجلس دون أن تعمل، فكان هذا التسوية. وخلطت الطين الأحمر الذي جلبه شياو دو من النهر، مع الرمل والقش المقطع، وأضافت الماء ببطء، وعجنته بيديها، ثم رفعت قبضة منه وضغطتها.</p>
 <p>قالت: «جاف قليلاً.» وأضافت ماءً. عجنته مرة أخرى. ضغطت.</p>
 <p>هذه المرة، حين فتحت يدها، بقي الطين متماسكاً بشكل قبضتها، يحمل أثر أصابعها.</p>
@@ -141,7 +148,7 @@
 <p>«انظر. الهواء يدخل من الباب فقط، من الأعلى. يمر فوق الحطب لا تحته. فالنار تحترق ببطء من الأعلى، والحطب في الأسفل يدخن ولا يشتعل. دخان كثير، وحرارة قليلة.»</p>
 <p>«تريدين فتحة هواء من الأسفل.»</p>
 <p>«تحت الحطب. صف من الطوب المثقوب، أو قضبان حديد إذا وجدنا. يدخل الهواء من تحت، فتشتعل النار من تحت، وتحترق أنظف. ودخان أقل، يعني ضغطاً أقل على المدخنة.» أغلقت باب الموقد. «وحين يصعد الدخان أسخن، يسحب أقوى.»</p>
-<p>نظر إليها لين طويلاً.</p>
+<p class="shot">نظر إليها لين طويلاً.</p>
 <p>ثم ركز على الموقد. لم يكن يريد أن يتحقق من كلامها، فهو يعرف أنها محقة. أراد فقط أن يرى إن كان النظام يرى ما تراه.</p>
 <div class="sys" data-lv="1"><div class="sys-h"><span class="t">تحليل</span><span class="lv">تكامل 3%</span></div><div class="sys-b"><div style="--i:0">الهدف: موقد طبخ مغلق، تصميم محلي</div><div style="--i:1">كفاءة الاحتراق: منخفضة (تقدير)</div><div style="--i:2">المشكلة الرئيسية: إمداد هواء غير كافٍ أسفل منطقة الاحتراق.</div><div style="--i:3">اقتراح: لا تتوفر بيانات كافية لتقديم اقتراح محدد.</div><div class="m" style="--i:4;--v:52"><span class="k">الثقة</span><span class="bar" aria-hidden="true"><i></i></span><b>52%</b></div><div class="m" style="--i:5;--v:77"><span class="k">طاقة التكامل</span><span class="bar" aria-hidden="true"><i></i></span><b>77%</b></div></div></div>
 <p>اثنان وخمسون في المئة. والنظام لم يقترح شيئاً.</p>
@@ -149,13 +156,14 @@
 <p>قال بهدوء: «النظام لا يعرف أكثر منك.»</p>
 <p>قالت: «في هذا لا.» ثم رفعت حاجبيها. «لكن لا تحزن عليه. عمره يوم واحد.»</p>
 <div class="break" role="separator"><span></span></div>
+<div class="scene" data-fx="fire" aria-hidden="true"></div>
 <p>كانت الشمس قد اقتربت من التلال الغربية حين انتهيا.</p>
 <p>لم يكن الإصلاح جميلاً. الفتحة السفلية أُغلقت بطوبتين من كومة الطوب المكسور، ومونة شين يان تبرز من حوافهما كعجين فائض. والشق في الجدار الخارجي سُد بطبقة سميكة من الطين، ما زالت رطبة ومظلمة. وفي أسفل الموقد، تحت مكان الحطب، فتحا ممراً ضيقاً للهواء، ووضعا فوقه ثلاثة قضبان حديدية صدئة وجدها شياو دو في الحظيرة، بقايا محراث قديم.</p>
 <p>وقفت هو سانيانغ في باب المطبخ، ذراعاها على صدرها.</p>
 <p>قالت: «أشعلاها.»</p>
 <p>أشعلها شياو دو. حطب جاف من المخزن، ثم قطع أكبر. وانتظروا.</p>
 <p>اشتعلت النار. وبدا لهم في البداية أن شيئاً لم يتغير. الدخان نفسه، الرائحة نفسها.</p>
-<p>ثم سمعوا الصوت.</p>
+<p class="shot">ثم سمعوا الصوت.</p>
 <p>صوت منخفض، يشبه الهمس، يأتي من داخل الموقد. صوت الهواء وهو يندفع عبر الممر السفلي إلى النار. واشتعل الحطب في الأسفل، وتحول لونه من الأحمر الداكن إلى البرتقالي الساطع.</p>
 <p>وارتفع الدخان. لم يتراكم تحت السقف. ارتفع مباشرة إلى المدخنة وغاب.</p>
 <p>وقف أربعتهم صامتين، ينظرون إلى السقف.</p>
@@ -164,11 +172,12 @@
 <p>لم ترد هو سانيانغ.</p>
 <p>قال: «عمة، لا أسعل.»</p>
 <p>مشت هو سانيانغ إلى الموقد. وقفت أمامه، ونظرت إلى النار، ثم رفعت رأسها ونظرت إلى السقف. ثم فعلت شيئاً لم يتوقعه لين: أخذت نفساً عميقاً، عميقاً جداً، من أنفها.</p>
-<p>وزفرته ببطء.</p>
+<p class="shot">وزفرته ببطء.</p>
 <p>لم تقل شيئاً. لم تشكرهما، ولم تبتسم. فقط التفتت إلى شياو دو، وقالت:</p>
 <p>«أشعل النار في الغرفة الكبيرة. أريد أن أرى.»</p>
 <div class="sys" data-lv="1"><div class="sys-h"><span class="t">إنجاز</span><span class="lv">تكامل 3%</span></div><div class="sys-b"><div style="--i:0">أول إصلاح في العالم الجديد</div><div style="--i:1">مؤشر الحضارة: +1</div><div style="--i:2">ملاحظة: الإصلاح مؤقت. متانته المتوقعة: أسابيع قليلة.</div></div></div>
 <div class="break" role="separator"><span></span></div>
+<div class="scene" data-fx="fire night" aria-hidden="true"></div>
 <p>اشتعلت النار في الغرفة الكبيرة أيضاً. ليس بالنظافة نفسها، فالموقد هناك لم يُعدّل، لكن الدخان كان يصعد. والغرفة، التي كانت تفوح برائحة السخام القديم، بدأت تدفأ.</p>
 <p>وحين نزل الظلام، وعاد لين وشين يان إلى المخزن، كان في يد كل منهما وعاء من العصيدة، وفيه هذه المرة قطع صغيرة من اللحم المجفف.</p>
 <p>لم تقل هو سانيانغ إنها مكافأة. وضعتها أمامهما فقط وقالت: «كلا. غداً كلام.»</p>
@@ -181,7 +190,7 @@
 <p>«هو سانيانغ! وصلنا مبكراً، الطريق كان جافاً! هل عندك مكان لعشرين جائعاً؟»</p>
 <p>ظهرت هو سانيانغ في الباب. «عندي.»</p>
 <p>«والمدخنة؟» ضحك الرجل ضحكة عالية. «هل ستخنقيننا هذه المرة أيضاً؟ قلت لك في الربيع…»</p>
-<p>توقف.</p>
+<p class="shot">توقف.</p>
 <p>كان قد وصل إلى العتبة، ونظر عبر الباب إلى الغرفة الكبيرة، حيث النار تشتعل في الموقد، والدفء يتسرب إلى الخارج في هواء الليل البارد. ونظر إلى السقف.</p>
 <p>بقي واقفاً هكذا لحظة.</p>
 <p>ثم قال، بنبرة مختلفة تماماً، نبرة رجل يسأل عن شيء له قيمة:</p>
@@ -193,6 +202,64 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','002')}catch(e){}resume('002');
+
+function cine(on){var r=document.documentElement;r.classList.toggle('cine',!!on);try{on?localStorage.setItem('cine','1'):localStorage.removeItem('cine')}catch(e){}if(on)scrollBy(0,1)}
+addEventListener('keydown',function(e){if(e.key==='Escape')cine(0)});
+(function(){
+var R=document.documentElement,cv=document.getElementById('fx'),mk=[].slice.call(document.querySelectorAll('.scene')),still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var fb=document.querySelector('.fxb');
+if(still){R.classList.add('still');if(fb)fb.hidden=true}
+function label(){if(fb)fb.setAttribute('aria-pressed',R.classList.contains('nofx')?'false':'true')}
+window.fxToggle=function(){var off=!R.classList.contains('nofx');R.classList.toggle('nofx',off);try{off?localStorage.setItem('fx','off'):localStorage.removeItem('fx')}catch(e){}label();pick()};
+label();
+if('IntersectionObserver' in window&&!still){R.classList.add('rv');var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');so.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('.shot').forEach(function(x){so.observe(x)})}
+if(!cv||still||!cv.getContext)return;
+var g=cv.getContext('2d'),W=0,H=0,D=Math.min(devicePixelRatio||1,1.5),L={snow:0,fire:0,rain:0,water:0},T={},ps=[],rp=[],run=0,dark=false,fr=0,vg=document.getElementById('vig'),pl=document.getElementById('pulse'),cur='';
+function size(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0)}
+size();addEventListener('resize',size);
+function rnd(a,b){return a+Math.random()*(b-a)}
+function spawn(k){
+ if(k==='snow')return{k:k,x:rnd(0,W),y:-8,r:rnd(1,2.8),vy:rnd(.4,1.1),ph:rnd(0,6.3),a:rnd(.35,.8)};
+ if(k==='fire')return{k:k,x:rnd(0,W),y:H+6,r:rnd(1,2.6),vy:-rnd(.5,1.5),ph:rnd(0,6.3),a:rnd(.4,.9),life:rnd(.5,1)};
+ return{k:k,x:rnd(0,W+60),y:-20,vy:rnd(9,14),l:rnd(10,18),a:rnd(.15,.35)}
+}
+var cap={snow:welcome(70),fire:welcome(34),rain:welcome(55)};
+function welcome(n){return Math.round(n*Math.min(1,W/700+.45))}
+function tick(){
+ run=0;fr++;
+ if(fr%45===1){var bg=getComputedStyle(document.body).backgroundColor.match(/\d+/g)||[255,255,255];dark=(+bg[0]+ +bg[1]+ +bg[2])<300}
+ g.clearRect(0,0,W,H);
+ for(var k in L){var t=T[k]?1:0;L[k]+=(t-L[k])*.03;if(Math.abs(t-L[k])<.01)L[k]=t;if(L[k]>0)run=1}
+ ['snow','fire','rain'].forEach(function(k){var n=Math.round((cap[k]||0)*L[k]),c=0;for(var i=0;i<ps.length;i++)if(ps[i].k===k)c++;if(c<n&&Math.random()<.5)ps.push(spawn(k))});
+ for(var i=ps.length-1;i>=0;i--){
+  var p=ps[i],lv=L[p.k];
+  if(p.k==='snow'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.02)*.5;g.fillStyle=dark?'rgba(235,242,255,'+p.a*lv*.7+')':'rgba(110,140,175,'+p.a*lv*.55+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.y>H+6||lv<.02)ps.splice(i,1)}
+  else if(p.k==='fire'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.07)*.6;p.life-=.004;var fl=.6+.4*Math.sin(fr*.3+p.ph);g.fillStyle=dark?'rgba(255,'+(150+(p.life*80|0))+',60,'+p.a*lv*fl*p.life+')':'rgba(220,'+(70+(p.life*50|0))+',20,'+p.a*lv*fl*p.life*1.1+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.life<=0||p.y<-8||lv<.02)ps.splice(i,1)}
+  else{p.y+=p.vy;p.x-=p.vy*.22;g.strokeStyle=dark?'rgba(170,200,235,'+p.a*lv+')':'rgba(70,100,140,'+p.a*lv*.8+')';g.lineWidth=1;g.beginPath();g.moveTo(p.x,p.y);g.lineTo(p.x+p.l*.22,p.y-p.l);g.stroke();if(p.y>H+20||lv<.02)ps.splice(i,1)}
+ }
+ if(L.water>0){if(rp.length<5&&Math.random()<.03*L.water)rp.push({x:rnd(.1,.9)*W,y:rnd(.15,.9)*H,r:2,a:.4});
+  for(var j=rp.length-1;j>=0;j--){var q=rp[j];q.r+=.55;q.a-=.003;if(q.a<=0){rp.splice(j,1);continue}g.strokeStyle=dark?'rgba(150,190,230,'+q.a*L.water*.7+')':'rgba(60,100,150,'+q.a*L.water*.55+')';g.lineWidth=1;g.beginPath();g.ellipse(q.x,q.y,q.r*1.9,q.r*.6,0,0,6.3);g.stroke()}}
+ if(ps.length||rp.length||run)requestAnimationFrame(tick);else go=0
+}
+var go=0;
+function start(){if(!go&&!document.hidden){go=1;requestAnimationFrame(tick)}}
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&(run||ps.length))start()});
+function apply(fx){
+ var off=R.classList.contains('nofx'),s=fx&&!off?fx.split(' '):[];
+ T={snow:s.indexOf('snow')>-1,fire:s.indexOf('fire')>-1,rain:s.indexOf('rain')>-1,water:s.indexOf('water')>-1};
+ if(vg)vg.classList.toggle('on',s.indexOf('night')>-1);
+ if(s.indexOf('blood')>-1&&pl&&cur!==fx){pl.classList.remove('on');void pl.offsetWidth;pl.classList.add('on')}
+ cur=fx;start()
+}
+function pick(){
+ var a=null,y=innerHeight*.5;
+ for(var i=0;i<mk.length;i++){if(mk[i].getBoundingClientRect().top<y)a=mk[i];else break}
+ apply(a?a.dataset.fx:'')
+}
+var pt;addEventListener('scroll',function(){if(pt)return;pt=setTimeout(function(){pt=0;pick()},120)},{passive:true});
+pick();
+})();
+
 (function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var hud=document.getElementById('hud'),ht;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var x=e.target;x.classList.add('in');io.unobserve(x);if(hud&&!x.classList.contains('sys--echo')){hud.className=x.classList.contains('sys--b')?'b':'';void hud.offsetWidth;hud.classList.add(x.classList.contains('sys--up')?'up':'on');clearTimeout(ht);ht=setTimeout(function(){hud.className=''},1400)}}})},{rootMargin:'0px 0px -15% 0px'});s.forEach(function(x){io.observe(x)})})();
 function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
 if('serviceWorker' in navigator){

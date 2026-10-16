@@ -12,21 +12,24 @@
 <title>الفصل الثامن والعشرون: الشتاء طويل — نظام السيادة الحضارية</title>
 <link rel="preload" href="/fonts/NotoNaskhArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))document.documentElement.classList.add('cine');if(localStorage.getItem('fx')==='off')document.documentElement.classList.add('nofx')}catch(e){}</script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <div id="hud" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
     <button onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button>
     <button onclick="fsz(1)" aria-label="تكبير الخط">أ+</button>
+    <button class="fxb" onclick="fxToggle()" aria-label="جو المشهد" aria-pressed="true">جو</button><button onclick="cine(1)" aria-label="وضع القراءة السينمائي">سينما</button>
     <button onclick="theme()" aria-label="الوضع الليلي">ليلي</button>
   </div>
 </header>
 <main>
 <article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الأولى</div><div class="ch-num"><span>الفصل</span><b>28</b></div><h1>الشتاء طويل</h1></header>
+<div class="scene" data-fx="snow" aria-hidden="true"></div>
 <p>في صباح اليوم العاشر بعد المئة، استيقظت شين يان قبله، وظلت تراقب وجهه حتى فتح عينيه.</p>
 <p>وحين فتح عينيه قالت، دون تحية: «سامحتك.»</p>
 <p>«ماذا؟»</p>
@@ -45,7 +48,7 @@
 <p>خلال الأيام الخمسة التالية، أخذت الطاحونة تستعيد زبائنها.</p>
 <p>لم يعد الصمت صمت الحجر الفارغ. صار في الغرفة الحجرية في الصباح طابور قصير أمام الفتحة: رجال ونساء بأكياسهم، يتبادلون أخبار الطقس والحمير، ويتجنبون النظر إلى الغريبين. ولم يتجنبوا دفع الأجر. جزء من عشرين بالميزان، أمام أعينهم، ثم يغادرون وفي أكياسهم دقيق ناعم مغربل.</p>
 <p>أحصت شين يان في الدفتر: أربعة أكياس في اليوم الأول، وأربعة ونصفاً في الثاني، وفي اليوم الثالث رفضت أن تطحن أكثر لأن الحمار تعب، وعاد الناس في الغد. وكان معظم الأجر نحاساً مقبوضاً بدلاً من الحبوب، بعد أن صار بعضهم، مثل الجزار، يفضل دفع النحاس والاحتفاظ بحبوبه.</p>
-<p>والإشاعة لم تمت.</p>
+<p class="shot">والإشاعة لم تمت.</p>
 <p>كان لين يسمعها أحياناً في الأزقة، بصوت أخفض وأكثر تردداً، كنار تحت رماد. «لكن الأيدي...» «ومن أين جاءت المعرفة؟» «هل تعرف أنها تكتب حتى الآن؟» لكن الجمل كانت تنتهي الآن بسكوت، لا بحكم. وحين مرت امرأة بباب الطاحونة ونظرت إلى شين يان الجالسة على مقعدها بدفترها، لم تشر إليها. فقط أومأت برأسها إيماءة قصيرة، وأسرعت.</p>
 <p>كان ذلك أكثر مما توقعاه.</p>
 <p>وفي ظهيرة اليوم الخامس عشر بعد المئة، جاء رجل لا يحمل كيساً.</p>
@@ -64,7 +67,8 @@
 <p>«جميلة.» وخفض عينيه إلى المقبض مرة أخرى. «الشتاء طويل ويصعب أن يعرف المرء لماذا يحتاج إليها.»</p>
 <p>ثم انحنى، ومضى. بقي لين واقفاً حتى اختفى صوت الحذاء على الجليد. لم يرفع يده عن المقبض، ولم يلحق بالرجل.</p>
 <div class="break" role="separator"><span></span></div>
-<p>جاء تشانغ بعد الظهر.</p>
+<div class="scene" data-fx="fire" aria-hidden="true"></div>
+<p class="shot">جاء تشانغ بعد الظهر.</p>
 <p>ولم يكن وحده. كان يحمل على كتفه حزمة ملفوفة بجلد قديم، وخلفه شياو دو يحمل حزمة أخرى، وعلى وجه الصبي تعبير من يعرف شيئاً مهماً ولا يستطيع أن يقوله.</p>
 <p>وضع تشانغ الحزمة على الصخرة المسطحة قرب الدولاب المتجمد، وفكّ الجلد. ظهرت تحته سكة محراث.</p>
 <p>لم تكن سكة عادية. أثقل وأعرض، سوداء لامعة، وحافتها السفلى بيضاء من التجليخ. وعلى طرفها حرف صغير منقوش.</p>
@@ -92,10 +96,11 @@
 <p>«حين تريد.» ثم حمل الحزمة الأخرى ووضعها على الصخرة. «هذه لك. لا شكر.»</p>
 <p>فتح لين الجلد. ظهرت مطرقة صغيرة، في آخر مقبضها ثقب يمر منه رباط، ورأسها مدور ثقيل.</p>
 <p>كان حديدها مقسّى مصقولاً، وطولها نحو ساعده. قلبها في يده، وأدخل إبهامه تحت رباطها. كانت أثقل كثيراً من مطرقة يانغ الخشبية.</p>
-<p>نظر إلى تشانغ.</p>
+<p class="shot">نظر إلى تشانغ.</p>
 <p>«الأولاد يقولون إن طريق الجسر مظلم بالليل.» قال الحداد دون أن ينظر إليه. «والبلوط يتشقق.»</p>
 <p>ثم مضى.</p>
 <div class="break" role="separator"><span></span></div>
+<div class="scene" data-fx="fire" aria-hidden="true"></div>
 <p>في مساء ذلك اليوم نفسه، طلبت هو سانيانغ أن تتحدث إليهما.</p>
 <p>وقفت عند باب المخزن بعد العشاء، وفي يدها مصباح زيت، وقالت بصوت جاف: «في المطبخ.» ثم مضت.</p>
 <p>دخلا خلفها. كان المطبخ ساخناً كعادته، والنار في الموقد منخفضة، وشياو دو غائب. جلست هو سانيانغ على كرسيها المعتاد قرب النار، وقدماها على الحجر الدافئ، وأمامها الطاولة، وعليها لا كتاب ولا شيء.</p>
@@ -105,7 +110,7 @@
 <p>«جاءني أمس.» كان صوتها هادئاً، منتظماً، وهي تتابع بصرها الشق في حجر الموقد. «في الظهيرة. جاء إلى النزل نفسه. جلس هناك.» أشارت بذقنها إلى الكرسي الذي يجلس عليه التجار. «طلب شاياً. شربه كله.»</p>
 <p>«ماذا قال؟»</p>
 <p>«قال إنه يعرف أنني كفيلة لكما.» لم تتحرك. «وقال إن الكفالة، في هذا الشتاء، قد تكلفني أكثر مما أظن.»</p>
-<p>لم يتكلم أحد.</p>
+<p class="shot">لم يتكلم أحد.</p>
 <p>«لم يقل ماذا يعني ذلك.» أضافت. «ولم يهددني. هو لا يهدد. هو يخبر.» أغمضت عينيها لحظة وفتحتهما. «لكنني فهمت.»</p>
 <p>نظرت شين يان إلى يد هو سانيانغ، ثم إلى الرف الذي كانت تضع عليه كتاب الحسابات.</p>
 <p>قالت: «الدين.»</p>
@@ -116,12 +121,13 @@
 <p>قال لين، بعد صمت: «وماذا قلتِ له؟»</p>
 <p>التفتت هو سانيانغ إليه. وبقيت يدها على حافة الطاولة.</p>
 <p>«قلت له إن كفالتي في دفتر الحكومة.» رفعت ذقنها. «لا في دفتره.»</p>
-<p>ظل الصمت.</p>
+<p class="shot">ظل الصمت.</p>
 <p>«وقلت له إن النزل نزلي. وإن الباب مفتوح لمن أشاء.» أخذت نفساً. «وإنني لم أدعه إلى الجلوس. هو جلس.»</p>
 <p>«وهل رحل؟»</p>
 <p>«رحل. بعد أن دفع ثمن الشاي.» ضحكت ضحكة قصيرة لا تحمل شيئاً. «بنحاس كامل.»</p>
 <div class="break" role="separator"><span></span></div>
-<p>ثم نهضت.</p>
+<div class="scene" data-fx="fire" aria-hidden="true"></div>
+<p class="shot">ثم نهضت.</p>
 <p>لم يتوقع لين ما فعلته. نهضت ببطء، كأنها تحمل شيئاً ثقيلاً، ودارت حول الطاولة نحو الموقد. أخذت من الرف وعاءين خشبيين كبيرين. وضعتهما على الطاولة، واحداً بجانب الآخر، ثم أخذت المغرفة الكبيرة ومضت إلى القدر على النار.</p>
 <p>ملأت الوعاء الأول بعصيدة الدخن الساخنة، وعليها قطع من لحم مقدد ثخينة، وملعقة من البصل المقلي. ثم الثاني. ثم وضعت قطعتين من الخبز الطازج بجانب كل وعاء، بلا تعليق.</p>
 <p>لم تقل شيئاً. لم تنظر إليهما.</p>
@@ -131,7 +137,7 @@
 <p>لم يتحرك أحد.</p>
 <p>دفع البخار وجه لين حين انحنى فوق وعائه. قربت هو سانيانغ طبق البصل من شين يان، ثم رجعت إلى النار من غير أن تنتظر جواباً.</p>
 <p>جلست شين يان أولاً. أخذت الملعقة بيد ترتجف، وبدأت تأكل.</p>
-<p>وجلس لين.</p>
+<p class="shot">وجلس لين.</p>
 <p>كانت العصيدة حارة، ثقيلة، بنكهة لم يتذوقها منذ الخريف، حين كانت البداية. وقف أمامه الموقد يتنفس خلف هو سانيانغ، ولم يسمع في المطبخ إلا احتكاك الملاعق بأطراف الوعاءين.</p>
 <p>حين انتهت شين يان، رفعت رأسها. قالت، بصوت خافت:</p>
 <p>«هو سانيانغ. أنا...»</p>
@@ -140,16 +146,17 @@
 <p>«لا حاجة.» لم ترفع هو سانيانغ عينيها عن النار. «خذي الوعاء إلى الخارج حين تنتهين. شياو دو ينام.»</p>
 <p>لكن لين رأى أن زاوية فمها، لحظة، تحركت.</p>
 <div class="break" role="separator"><span></span></div>
+<div class="scene" data-fx="snow blood" aria-hidden="true"></div>
 <p>في صباح اليوم السادس عشر بعد المئة، غطى ثلج خفيف الدرب إلى الطاحونة.</p>
 <p>كان لين على الطريق إلى الطاحونة، يحمل المطرقة الجديدة في حزامه، ويفكر في السكك الثمانين، حين سمع الأصوات من جهة بوابة القرية.</p>
 <p>لم تكن أصواتاً عادية. أصوات منخفضة، مبحوحة، متداخلة. وبكاء طفل. وأنين.</p>
-<p>توقف، ثم سار نحو البوابة.</p>
+<p class="shot">توقف، ثم سار نحو البوابة.</p>
 <p>كانت بوابة القرية الخشبية، التي رآها يوم وصل، مفتوحة على اتساعها، والكلاب الثلاثة النحيلة الصفراء واقفة أمامها لا تنبح. وعلى الدرب الذي يؤدي إلى الجنوب، في الثلج، جماعة من البشر.</p>
 <p>كانوا عشرين تقريباً، لا أكثر. رجال ونساء وأطفال، بثياب ممزقة لا تتناسب مع البرد، ملفوفين بخرق وأغطية وأكياس خيش. وجوههم رمادية من الجوع، وعيونهم غائرة، وأيديهم متشققة حتى النزف. وبعضهم حافي القدمين، وأقدامهم ملفوفة بخرق مبللة، ملطخة بالدم الأسود.</p>
 <p>وقف في المقدمة رجل نحيل طويل، بلحية مغبرة، يحمل بين ذراعيه طفلاً ملفوفاً بقماش أزرق.</p>
 <p>لم يكن ما يحمله ثقيلاً. كان يحمله كما يحمل الناس ما لا يستطيعون أن يتركوه.</p>
 <p>حين رآه لين، رأى القماش ينفرج قليلاً عند الأعلى، ويظهر منه وجه صغير. عينان مغمضتان، وشفتان زرقاوان، وبشرة بلون الشمع.</p>
-<p>طفل. ميت.</p>
+<p class="shot">طفل. ميت.</p>
 <p>كان الرجل يحدق في الأرض أمامه، لا في أحد. ولما رفع رأسه، توقفت عيناه على دخان أول بيت، ثم انخفضتا إلى الطفل في ذراعيه.</p>
 <p>«نريد مأوى.» قال بصوت مبحوح، جاف، بلهجة غريبة. «أي مأوى. حظيرة. أي شيء.» أخذ نفساً. «لم نستطع... لم نستطع أن ندفنه. الأرض...» ولم يكمل.</p>
 <p>وخلفه امرأة أخرى رفعت ذراعها المقيدة بقماش متسخ. تحته جرح عميق أسود على الساعد، منتفخ، تسيل منه رطوبة صفراء، وتفوح منه رائحة حلوة مقززة تعرفها كل غرفة جرحى. قالت بصوت واهن: «قطاع طرق. على الطريق، قبل أسبوع. أرسلوا رجلين... ثلاثة...»</p>
@@ -170,6 +177,64 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','028')}catch(e){}resume('028');
+
+function cine(on){var r=document.documentElement;r.classList.toggle('cine',!!on);try{on?localStorage.setItem('cine','1'):localStorage.removeItem('cine')}catch(e){}if(on)scrollBy(0,1)}
+addEventListener('keydown',function(e){if(e.key==='Escape')cine(0)});
+(function(){
+var R=document.documentElement,cv=document.getElementById('fx'),mk=[].slice.call(document.querySelectorAll('.scene')),still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var fb=document.querySelector('.fxb');
+if(still){R.classList.add('still');if(fb)fb.hidden=true}
+function label(){if(fb)fb.setAttribute('aria-pressed',R.classList.contains('nofx')?'false':'true')}
+window.fxToggle=function(){var off=!R.classList.contains('nofx');R.classList.toggle('nofx',off);try{off?localStorage.setItem('fx','off'):localStorage.removeItem('fx')}catch(e){}label();pick()};
+label();
+if('IntersectionObserver' in window&&!still){R.classList.add('rv');var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');so.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('.shot').forEach(function(x){so.observe(x)})}
+if(!cv||still||!cv.getContext)return;
+var g=cv.getContext('2d'),W=0,H=0,D=Math.min(devicePixelRatio||1,1.5),L={snow:0,fire:0,rain:0,water:0},T={},ps=[],rp=[],run=0,dark=false,fr=0,vg=document.getElementById('vig'),pl=document.getElementById('pulse'),cur='';
+function size(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0)}
+size();addEventListener('resize',size);
+function rnd(a,b){return a+Math.random()*(b-a)}
+function spawn(k){
+ if(k==='snow')return{k:k,x:rnd(0,W),y:-8,r:rnd(1,2.8),vy:rnd(.4,1.1),ph:rnd(0,6.3),a:rnd(.35,.8)};
+ if(k==='fire')return{k:k,x:rnd(0,W),y:H+6,r:rnd(1,2.6),vy:-rnd(.5,1.5),ph:rnd(0,6.3),a:rnd(.4,.9),life:rnd(.5,1)};
+ return{k:k,x:rnd(0,W+60),y:-20,vy:rnd(9,14),l:rnd(10,18),a:rnd(.15,.35)}
+}
+var cap={snow:welcome(70),fire:welcome(34),rain:welcome(55)};
+function welcome(n){return Math.round(n*Math.min(1,W/700+.45))}
+function tick(){
+ run=0;fr++;
+ if(fr%45===1){var bg=getComputedStyle(document.body).backgroundColor.match(/\d+/g)||[255,255,255];dark=(+bg[0]+ +bg[1]+ +bg[2])<300}
+ g.clearRect(0,0,W,H);
+ for(var k in L){var t=T[k]?1:0;L[k]+=(t-L[k])*.03;if(Math.abs(t-L[k])<.01)L[k]=t;if(L[k]>0)run=1}
+ ['snow','fire','rain'].forEach(function(k){var n=Math.round((cap[k]||0)*L[k]),c=0;for(var i=0;i<ps.length;i++)if(ps[i].k===k)c++;if(c<n&&Math.random()<.5)ps.push(spawn(k))});
+ for(var i=ps.length-1;i>=0;i--){
+  var p=ps[i],lv=L[p.k];
+  if(p.k==='snow'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.02)*.5;g.fillStyle=dark?'rgba(235,242,255,'+p.a*lv*.7+')':'rgba(110,140,175,'+p.a*lv*.55+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.y>H+6||lv<.02)ps.splice(i,1)}
+  else if(p.k==='fire'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.07)*.6;p.life-=.004;var fl=.6+.4*Math.sin(fr*.3+p.ph);g.fillStyle=dark?'rgba(255,'+(150+(p.life*80|0))+',60,'+p.a*lv*fl*p.life+')':'rgba(220,'+(70+(p.life*50|0))+',20,'+p.a*lv*fl*p.life*1.1+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.life<=0||p.y<-8||lv<.02)ps.splice(i,1)}
+  else{p.y+=p.vy;p.x-=p.vy*.22;g.strokeStyle=dark?'rgba(170,200,235,'+p.a*lv+')':'rgba(70,100,140,'+p.a*lv*.8+')';g.lineWidth=1;g.beginPath();g.moveTo(p.x,p.y);g.lineTo(p.x+p.l*.22,p.y-p.l);g.stroke();if(p.y>H+20||lv<.02)ps.splice(i,1)}
+ }
+ if(L.water>0){if(rp.length<5&&Math.random()<.03*L.water)rp.push({x:rnd(.1,.9)*W,y:rnd(.15,.9)*H,r:2,a:.4});
+  for(var j=rp.length-1;j>=0;j--){var q=rp[j];q.r+=.55;q.a-=.003;if(q.a<=0){rp.splice(j,1);continue}g.strokeStyle=dark?'rgba(150,190,230,'+q.a*L.water*.7+')':'rgba(60,100,150,'+q.a*L.water*.55+')';g.lineWidth=1;g.beginPath();g.ellipse(q.x,q.y,q.r*1.9,q.r*.6,0,0,6.3);g.stroke()}}
+ if(ps.length||rp.length||run)requestAnimationFrame(tick);else go=0
+}
+var go=0;
+function start(){if(!go&&!document.hidden){go=1;requestAnimationFrame(tick)}}
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&(run||ps.length))start()});
+function apply(fx){
+ var off=R.classList.contains('nofx'),s=fx&&!off?fx.split(' '):[];
+ T={snow:s.indexOf('snow')>-1,fire:s.indexOf('fire')>-1,rain:s.indexOf('rain')>-1,water:s.indexOf('water')>-1};
+ if(vg)vg.classList.toggle('on',s.indexOf('night')>-1);
+ if(s.indexOf('blood')>-1&&pl&&cur!==fx){pl.classList.remove('on');void pl.offsetWidth;pl.classList.add('on')}
+ cur=fx;start()
+}
+function pick(){
+ var a=null,y=innerHeight*.5;
+ for(var i=0;i<mk.length;i++){if(mk[i].getBoundingClientRect().top<y)a=mk[i];else break}
+ apply(a?a.dataset.fx:'')
+}
+var pt;addEventListener('scroll',function(){if(pt)return;pt=setTimeout(function(){pt=0;pick()},120)},{passive:true});
+pick();
+})();
+
 (function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var hud=document.getElementById('hud'),ht;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var x=e.target;x.classList.add('in');io.unobserve(x);if(hud&&!x.classList.contains('sys--echo')){hud.className=x.classList.contains('sys--b')?'b':'';void hud.offsetWidth;hud.classList.add(x.classList.contains('sys--up')?'up':'on');clearTimeout(ht);ht=setTimeout(function(){hud.className=''},1400)}}})},{rootMargin:'0px 0px -15% 0px'});s.forEach(function(x){io.observe(x)})})();
 function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
 if('serviceWorker' in navigator){

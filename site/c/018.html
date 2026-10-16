@@ -12,21 +12,24 @@
 <title>الفصل الثامن عشر: تروس من خشب — نظام السيادة الحضارية</title>
 <link rel="preload" href="/fonts/NotoNaskhArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))document.documentElement.classList.add('cine');if(localStorage.getItem('fx')==='off')document.documentElement.classList.add('nofx')}catch(e){}</script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <div id="hud" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
     <button onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button>
     <button onclick="fsz(1)" aria-label="تكبير الخط">أ+</button>
+    <button class="fxb" onclick="fxToggle()" aria-label="جو المشهد" aria-pressed="true">جو</button><button onclick="cine(1)" aria-label="وضع القراءة السينمائي">سينما</button>
     <button onclick="theme()" aria-label="الوضع الليلي">ليلي</button>
   </div>
 </header>
 <main>
 <article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الأولى</div><div class="ch-num"><span>الفصل</span><b>18</b></div><h1>تروس من خشب</h1></header>
+<div class="scene" data-fx="" aria-hidden="true"></div>
 <p>لم يقطع العجوز يانغ الوتد الأول بالمنشار.</p>
 <p>وقف في ورشته المؤقتة تحت سقف خيش مشدود إلى أعمدة بين الطاحونة والحظيرة. أمامه جذع زان جاف انتُزع من عوارض بيت مهدوم، وفي يده فأس صغيرة حادة. دار حول الخشب مرة، ثم ثانية وثالثة، يتحسس الشقوق واتجاه خطوطه بأطراف أصابعه.</p>
 <p>سأله شياو دو، الذي وقف قريباً يحمل مصباحاً لا حاجة إليه: «لماذا لا تبدأ؟»</p>
@@ -37,6 +40,7 @@
 <p>«جياو علمني أن أسأل الخشب. أما الباقي فتعلمته من الأخطاء.»</p>
 <p>كان لين يراقب من بعيد، ومعه لوحة بيضاء في ذهنه.</p>
 <div class="break" role="separator"><span></span></div>
+<div class="scene" data-fx="" aria-hidden="true"></div>
 <p>فتحها صباح اليوم الرابع والخمسين، وبدأ يملؤها بحذر.</p>
 <div class="sys" data-lv="2"><div class="sys-h"><span class="t">التخطيط الصناعي — المستوى 1</span><span class="lv">تكامل 4%</span></div><div class="sys-b"><div style="--i:0">المشروع: ترس الفانوس لإدارة الحجر بدابة</div><div style="--i:1">المراحل: (1) تجهيز الخشب (2) التركيب (3) التجربة</div><div style="--i:2">المدة المقدرة: 6 أيام</div><div style="--i:3">تنبيه: دقة الأوتاد والقضبان تحتاج إلى قياس مباشر، ولا تتحقق منها هذه الأداة.</div><div class="m" style="--i:4;--v:58"><span class="k">الثقة</span><span class="bar" aria-hidden="true"><i></i></span><b>58%</b></div><div class="m" style="--i:5;--v:90"><span class="k">طاقة التكامل</span><span class="bar" aria-hidden="true"><i></i></span><b>90%</b></div></div></div>
 <p>توقف عند نسبة الثقة وهز رأسه.</p>
@@ -56,7 +60,8 @@
 <p>«هل تعرف طريقة أخرى؟»</p>
 <p>قلّب العجوز العصا في أصابعه ثم قال: «لا.»</p>
 <div class="break" role="separator"><span></span></div>
-<p>استغرق التجهيز أربعة أيام.</p>
+<div class="scene" data-fx="" aria-hidden="true"></div>
+<p class="shot">استغرق التجهيز أربعة أيام.</p>
 <p>كان العجوز يانغ يعمل ببطء لا يعرف التعجل، يرفض تثبيت وتد قبل أن يقيسه مرتين. ساعده لاو دونغ في الفأس، وكان يقطع الأوتاد الخام، وتشيو في الإزميل، يصقل كل وتد حتى تصير سطوحه ملساء كسطح العظم. جلس لين وشين يان إلى جانبهم، يقيسان ويسجلان.</p>
 <p>في اليوم الثاني، كسر لاو دونغ وتداً.</p>
 <p>لم يقل شيئاً. نظر إليه، ثم رماه في الكومة، وبدأ آخر. لكن لين رأى أن يده ارتجفت، وأن أذنيه احمرتا. اقترب العجوز يانغ ورفع الوتد المكسور، وفحصه، وقال دون أن يرفع صوته: «العقدة.» ثم أضاف: «لا بأس. الخشب يخبئها حتى الضربة الأخيرة.»</p>
@@ -67,24 +72,25 @@
 <p>«الحمار... هل سيتعب؟»</p>
 <p>«سيعمل ساعتين، ثم يستريح ساعة. لن نتركه يعمل أكثر.» أجابت شين يان قبل لين. «وسيأكل شعيراً من الطاحونة.»</p>
 <p>نظر الفلاح إلى الحمار طويلاً. «اسمه زاو. لأن لونه لون التمر.» ثم أضاف، كأنه يعترف بشيء: «ابني الذي مات علمني أن أسميه.»</p>
-<p>لم يعلق أحد.</p>
+<p class="shot">لم يعلق أحد.</p>
 <p>وبعد لحظة، قال: «طحن مجاني لعائلتي طوال الشتاء، وجزء من أجر طحن الحمار.»</p>
 <p>«جزء من أربعين.» قالت شين يان.</p>
 <p>«جزء من أربعين...» أعاد الكلمات بتأنٍّ، يحسبها في رأسه. «جزء من أربعين من مال حماري.»</p>
 <p>«من مال الطاحونة. التي يدير حمارك حجرها.»</p>
 <p>وافق. ولم يبتسم، لكن لين رأى أنه يربت على عنق زاو، ربتة سريعة وكأنه يبرئ نفسه.</p>
 <div class="break" role="separator"><span></span></div>
-<p>وفي اليوم الخامس ركّبوا الترس.</p>
+<div class="scene" data-fx="" aria-hidden="true"></div>
+<p class="shot">وفي اليوم الخامس ركّبوا الترس.</p>
 <p>فصلوا محور الطاحونة الخشبي عن الدولاب المائي، وأبقوا الوصلة التي تنقل دورانه إلى الحجر. في الساحة ثبتوا العجلة الكبيرة أفقياً على عمود الحمار، وأوتادها بارزة إلى أسفل. وتحت حافتها ركبوا القفص الصغير على طرف محور الطاحونة الممتد من الغرفة. حين تدخل الأوتاد بين قضبانه من أعلى يدور المحور، ويدير الحجر بوصلته القديمة. بقي مسار الدابة حول العمود مكشوفاً في الساحة، بعيداً عن الجدار.</p>
 <p>كل شيء بدا جميلاً. عجلة من الزان الأصفر، أوتادها بارزة على مسافات متساوية، وقفص صغير من ستة قضبان ملساء.</p>
 <p>قال العجوز يانغ: «حرّكه.»</p>
 <p>دفع لاو دونغ الذراع.</p>
 <p>دارت العجلة الكبيرة ربع دورة. ودخل أول وتد بين قضيبين من قضبان الفانوس...</p>
-<p>وتوقف.</p>
+<p class="shot">وتوقف.</p>
 <p>لم يتحرك شيء. بقي الوتد عالقاً، وبدا القفص كله كأنه يشد نفسه نحو العجلة بقوة لا يراها أحد. ثم سمع الجميع صوت الخشب يئن.</p>
 <p>صاح العجوز: «اترك!»</p>
 <p>رفع لاو دونغ يديه. ارتد الذراع قليلاً. وفي مكان الوتد المحشور، صدر صوت رفيع ضعيف، تشقق صغير يتسلل من القاعدة.</p>
-<p>وقف الجميع بلا حراك.</p>
+<p class="shot">وقف الجميع بلا حراك.</p>
 <p>قال تشيو، بصوت خافت: «أنا قطعت الأوتاد. أنا قست.»</p>
 <p>«لا.» قال العجوز يانغ. «لا أحد منا.»</p>
 <p>فتح لين اللوحة في ذهنه، وركز على الترس.</p>
@@ -99,6 +105,7 @@
 <p>«كان عليّ أن أنتبه.» وضعت الخيط على الدفتر. «نحتاج مقياساً لا يتغير بين أيدينا.»</p>
 <p>وقفت، بصعوبة، ومدت يدها إلى العصا الطويلة التي استعملتها على الثلج، وتقدمت نحو الترس.</p>
 <div class="break" role="separator"><span></span></div>
+<div class="scene" data-fx="" aria-hidden="true"></div>
 <p>أشارت إلى اللوح: «أمهلوني ساعة.»</p>
 <p>رسمت دائرة بالفحم على لوح أملس، وعلمت عليها مواضع الأوتاد الستين. صنعت من عود بلوط جاف مقياساً للفراغ بين قضبان القفص، ثم قارنته بعرض كل وتد. حين لم يدخل المقياس إلى جانب أحد الأوتاد وضعت تحته علامة، وأكملت حتى عادت إلى أول العجلة. ثم قالت للعجوز يانغ:</p>
 <p>«ثلاثة أوتاد من الستين تزيد عن عرضها المطلوب. هنا يعلق الترس. باقي الأوتاد يمر.»</p>
@@ -115,6 +122,7 @@
 <p>«لم نطلب...»</p>
 <p>«الخشب على الحجر يأكل نفسه في شهر.» حك أذنه الصماء بإبهامه. «الحديد على الحجر يعيش سنة.» ثم وضع المخروط في مكانه بيديه، ودقّه دقتين، ومضى كما جاء.</p>
 <div class="break" role="separator"><span></span></div>
+<div class="scene" data-fx="" aria-hidden="true"></div>
 <p>لكن الحمار لم يوافق في المرة الأولى.</p>
 <p>حين ربطه تيان بالذراع الطويلة وشدّ الحبل، تقدم زاو ثلاث خطوات ثم توقف. أذناه إلى الأمام، وعيناه الكبيرتان على الحجر الدوار الذي يخشخش خلفه، والدقيق الأبيض ينفث من النافذة. لم يتحرك. دفعه تيان من الخلف، فرفس رفسة صغيرة، ورفع رأسه ونهق نهيقاً مبحوحاً هز الساحة كلها.</p>
 <p>قال شياو دو بجدية: «يقول إنه لا يريد.»</p>
@@ -130,6 +138,7 @@
 <p>قال تيان بصوت متهدج: «هو يظن أنه ذاهب إلى مكان.»</p>
 <p>قالت شين يان: «نوقفه عند أول تعب. هذا شرطنا.» أومأ تيان وبقي يمشي إلى جواره.</p>
 <div class="break" role="separator"><span></span></div>
+<div class="scene" data-fx="" aria-hidden="true"></div>
 <p>وقفا آخر النهار، لين وشين يان، على حافة الساحة الصغيرة، حيث ربط العم تيان زاو بالذراع الطويلة.</p>
 <p>كان الحمار يمشي حول العمود، رأسه منخفض، وحوافره تدوس الثلج المتراكم دائرة بعد دائرة. ومن الغرفة الحجرية تأتي خشخشة الحجر الدوار، ويرتفع غبار دقيق خفيف من النافذة.</p>
 <p>تبع لين الأوتاد بإصبعه من بعيد، وعد المواضع الثلاثة التي أعادوا نحتها. لم يظهر عندها احتكاك جديد. وضع العجوز يانغ إلى جانبه وتداً احتياطياً وإسفيناً صغيراً.</p>
@@ -144,13 +153,14 @@
 <p>«أنت من علمني.»</p>
 <p>ثم ظلا واقفين، يحدقان في الحمار.</p>
 <div class="break" role="separator"><span></span></div>
+<div class="scene" data-fx="night" aria-hidden="true"></div>
 <p>في تلك الليلة، في المخزن، جلست شين يان على القش وأشعلت الشمعة الصغيرة، ولم تقل شيئاً.</p>
 <p>كان لين يرتب الأغطية. التفت، فوجدها تنظر إليه.</p>
 <p>قالت: «أخرجهما.»</p>
 <p>«ماذا؟»</p>
 <p>«المكوّن. والحجر الصدئ.» لم يتغير صوتها. «أريد أن أمسكهما.»</p>
 <p>لم يكن عنده ما يعترض به. لم يسبق أن طلبت ذلك منذ أن أخرجه في اليوم الأول. ركز على التخزين، وأحس الشيئين يستجيبان، وخرجا في كفه: القطعة السوداء المربعة بحجم الظفر، والحجر المحمر المسامي.</p>
-<p>مدّ يده.</p>
+<p class="shot">مدّ يده.</p>
 <p>أخذت المكوّن أولاً. ثبتته بين إصبعيها، ورفعته إلى ضوء الشمعة. تذكر لين ملمسه الأملس وبرودته في كفه.</p>
 <p>أغمضت عينيها.</p>
 <p>مرّت عشر ثوانٍ. لم يتحرك وجهها. كانت أنفاسها هادئة جداً.</p>
@@ -165,7 +175,7 @@
 <p>«أعرف أنه بارد عندك.» لم تشك في كلامه ولم تبدُ متحيرة. «أنا فقط أقول ما أحسه.»</p>
 <p>ركز عليه بالنظام. ارتعشت الحروف الزرقاء، كما ترتعش دائماً، ثم عادت:</p>
 <div class="sys" data-lv="2"><div class="sys-h"><span class="t">تحليل</span><span class="lv">تكامل 4%</span></div><div class="sys-b"><div style="--i:0">الهدف: مكوّن مجهول</div><div style="--i:1"><strong>غير قابل للتحليل.</strong></div></div></div>
-<p>كالعادة. لا شيء.</p>
+<p class="shot">كالعادة. لا شيء.</p>
 <p>أخذت منه الحجر الصدئ، وأمسكته في الكف الأخرى. قالت: «هذا بارد.» وأعادته. ثم قبضت على المكوّن مرة ثانية، وأدارته في أصابعها، وابتسمت ابتسامة صغيرة حائرة.</p>
 <p>قال لين: «أعيديه. لا أحب أن يبقى خارجاً.»</p>
 <p>«ولا أنا.»</p>
@@ -181,6 +191,64 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','018')}catch(e){}resume('018');
+
+function cine(on){var r=document.documentElement;r.classList.toggle('cine',!!on);try{on?localStorage.setItem('cine','1'):localStorage.removeItem('cine')}catch(e){}if(on)scrollBy(0,1)}
+addEventListener('keydown',function(e){if(e.key==='Escape')cine(0)});
+(function(){
+var R=document.documentElement,cv=document.getElementById('fx'),mk=[].slice.call(document.querySelectorAll('.scene')),still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var fb=document.querySelector('.fxb');
+if(still){R.classList.add('still');if(fb)fb.hidden=true}
+function label(){if(fb)fb.setAttribute('aria-pressed',R.classList.contains('nofx')?'false':'true')}
+window.fxToggle=function(){var off=!R.classList.contains('nofx');R.classList.toggle('nofx',off);try{off?localStorage.setItem('fx','off'):localStorage.removeItem('fx')}catch(e){}label();pick()};
+label();
+if('IntersectionObserver' in window&&!still){R.classList.add('rv');var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');so.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('.shot').forEach(function(x){so.observe(x)})}
+if(!cv||still||!cv.getContext)return;
+var g=cv.getContext('2d'),W=0,H=0,D=Math.min(devicePixelRatio||1,1.5),L={snow:0,fire:0,rain:0,water:0},T={},ps=[],rp=[],run=0,dark=false,fr=0,vg=document.getElementById('vig'),pl=document.getElementById('pulse'),cur='';
+function size(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0)}
+size();addEventListener('resize',size);
+function rnd(a,b){return a+Math.random()*(b-a)}
+function spawn(k){
+ if(k==='snow')return{k:k,x:rnd(0,W),y:-8,r:rnd(1,2.8),vy:rnd(.4,1.1),ph:rnd(0,6.3),a:rnd(.35,.8)};
+ if(k==='fire')return{k:k,x:rnd(0,W),y:H+6,r:rnd(1,2.6),vy:-rnd(.5,1.5),ph:rnd(0,6.3),a:rnd(.4,.9),life:rnd(.5,1)};
+ return{k:k,x:rnd(0,W+60),y:-20,vy:rnd(9,14),l:rnd(10,18),a:rnd(.15,.35)}
+}
+var cap={snow:welcome(70),fire:welcome(34),rain:welcome(55)};
+function welcome(n){return Math.round(n*Math.min(1,W/700+.45))}
+function tick(){
+ run=0;fr++;
+ if(fr%45===1){var bg=getComputedStyle(document.body).backgroundColor.match(/\d+/g)||[255,255,255];dark=(+bg[0]+ +bg[1]+ +bg[2])<300}
+ g.clearRect(0,0,W,H);
+ for(var k in L){var t=T[k]?1:0;L[k]+=(t-L[k])*.03;if(Math.abs(t-L[k])<.01)L[k]=t;if(L[k]>0)run=1}
+ ['snow','fire','rain'].forEach(function(k){var n=Math.round((cap[k]||0)*L[k]),c=0;for(var i=0;i<ps.length;i++)if(ps[i].k===k)c++;if(c<n&&Math.random()<.5)ps.push(spawn(k))});
+ for(var i=ps.length-1;i>=0;i--){
+  var p=ps[i],lv=L[p.k];
+  if(p.k==='snow'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.02)*.5;g.fillStyle=dark?'rgba(235,242,255,'+p.a*lv*.7+')':'rgba(110,140,175,'+p.a*lv*.55+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.y>H+6||lv<.02)ps.splice(i,1)}
+  else if(p.k==='fire'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.07)*.6;p.life-=.004;var fl=.6+.4*Math.sin(fr*.3+p.ph);g.fillStyle=dark?'rgba(255,'+(150+(p.life*80|0))+',60,'+p.a*lv*fl*p.life+')':'rgba(220,'+(70+(p.life*50|0))+',20,'+p.a*lv*fl*p.life*1.1+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.life<=0||p.y<-8||lv<.02)ps.splice(i,1)}
+  else{p.y+=p.vy;p.x-=p.vy*.22;g.strokeStyle=dark?'rgba(170,200,235,'+p.a*lv+')':'rgba(70,100,140,'+p.a*lv*.8+')';g.lineWidth=1;g.beginPath();g.moveTo(p.x,p.y);g.lineTo(p.x+p.l*.22,p.y-p.l);g.stroke();if(p.y>H+20||lv<.02)ps.splice(i,1)}
+ }
+ if(L.water>0){if(rp.length<5&&Math.random()<.03*L.water)rp.push({x:rnd(.1,.9)*W,y:rnd(.15,.9)*H,r:2,a:.4});
+  for(var j=rp.length-1;j>=0;j--){var q=rp[j];q.r+=.55;q.a-=.003;if(q.a<=0){rp.splice(j,1);continue}g.strokeStyle=dark?'rgba(150,190,230,'+q.a*L.water*.7+')':'rgba(60,100,150,'+q.a*L.water*.55+')';g.lineWidth=1;g.beginPath();g.ellipse(q.x,q.y,q.r*1.9,q.r*.6,0,0,6.3);g.stroke()}}
+ if(ps.length||rp.length||run)requestAnimationFrame(tick);else go=0
+}
+var go=0;
+function start(){if(!go&&!document.hidden){go=1;requestAnimationFrame(tick)}}
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&(run||ps.length))start()});
+function apply(fx){
+ var off=R.classList.contains('nofx'),s=fx&&!off?fx.split(' '):[];
+ T={snow:s.indexOf('snow')>-1,fire:s.indexOf('fire')>-1,rain:s.indexOf('rain')>-1,water:s.indexOf('water')>-1};
+ if(vg)vg.classList.toggle('on',s.indexOf('night')>-1);
+ if(s.indexOf('blood')>-1&&pl&&cur!==fx){pl.classList.remove('on');void pl.offsetWidth;pl.classList.add('on')}
+ cur=fx;start()
+}
+function pick(){
+ var a=null,y=innerHeight*.5;
+ for(var i=0;i<mk.length;i++){if(mk[i].getBoundingClientRect().top<y)a=mk[i];else break}
+ apply(a?a.dataset.fx:'')
+}
+var pt;addEventListener('scroll',function(){if(pt)return;pt=setTimeout(function(){pt=0;pick()},120)},{passive:true});
+pick();
+})();
+
 (function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var hud=document.getElementById('hud'),ht;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var x=e.target;x.classList.add('in');io.unobserve(x);if(hud&&!x.classList.contains('sys--echo')){hud.className=x.classList.contains('sys--b')?'b':'';void hud.offsetWidth;hud.classList.add(x.classList.contains('sys--up')?'up':'on');clearTimeout(ht);ht=setTimeout(function(){hud.className=''},1400)}}})},{rootMargin:'0px 0px -15% 0px'});s.forEach(function(x){io.observe(x)})})();
 function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
 if('serviceWorker' in navigator){
