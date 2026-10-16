@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#8a4b1f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="السيادة الحضارية">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="icon" type="image/png" href="/icon-192.png">
 <title>الفصل الثاني: الدخان — نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
@@ -20,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 2 من 28</div><h1>الدخان</h1>
+<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 2 من 50</div><h1>الدخان</h1>
 <p>أيقظه الديك.</p>
 <p>لم يكن ديكاً واحداً. كان ثلاثة أو أربعة، يتبادلون الصياح من أطراف القرية المختلفة كأنهم يتجادلون. وفتح لين عينيه على ظلام رمادي يتسرب من شق الباب، ورائحة الحطب والقش، وألم حاد في كتفه اليسرى من النوم على الأرض.</p>
 <p>لم يتحرك فوراً. بقي ممدداً، ينظر إلى سقف المخزن المنخفض، إلى العوارض الخشبية السوداء من الدخان، وخيوط العنكبوت بينها.</p>
@@ -187,6 +193,17 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','002')}catch(e){}
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
+    var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
+  }).catch(function(){var status=document.getElementById('offline-status');if(status)status.textContent='تعذر حفظ الفصول. أعد فتح الموقع وأنت متصل بالإنترنت.'});
+}
+var installPrompt,installButton=document.getElementById('install-app');
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();installPrompt=e;if(installButton)installButton.hidden=false;});
+if(installButton)installButton.addEventListener('click',async function(){
+  if(!installPrompt)return;await installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installButton.hidden=true;
+});
+window.addEventListener('appinstalled',function(){var help=document.getElementById('install-help');if(help)help.hidden=true;if(installButton)installButton.hidden=true;});
 </script>
 </body>
 </html>

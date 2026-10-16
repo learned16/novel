@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#8a4b1f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="السيادة الحضارية">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="icon" type="image/png" href="/icon-192.png">
 <title>الفصل الثالث: حساب الفحم — نظام السيادة الحضارية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
@@ -20,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 3 من 28</div><h1>حساب الفحم</h1>
+<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 3 من 50</div><h1>حساب الفحم</h1>
 <p>لم تجب هو سانيانغ فوراً.</p>
 <p>وقفت في الباب، بين الرجل الضخم ذي اللحية الرمادية وبين الغرفة الدافئة، ونظرت إليه نظرة طويلة. ورأى لين، من مكانه في الساحة، أنها تحسب شيئاً. لم يكن يعرف ما هو، لكنه رأى الحساب يتحرك خلف عينيها كما تتحرك الأرقام على شاشة.</p>
 <p>قالت أخيراً: «عامل.»</p>
@@ -124,7 +130,7 @@
 <p>«واحد وعشرون ونصف مقابل ثماني عشرة.»</p>
 <p>«ثلاث سلال ونصف في اليوم. ستة عشر في المئة تقريباً.»</p>
 <p>«ستة عشر في المئة.» فكر لين. «هذا جيد. لكنه ليس كثيراً.»</p>
-<p>«ليس كثيراً.» أغلقت الدفتر. «لأن الإصلاح أمس كان نصف إصلاح. الموقد في الغرفة الكبيرة لم نلمسه. والمدخنة ما زالت ضيقة، والطوب الذي سددنا به الثقب لن يصمد شهراً.» نظرت إليه. «لو أعدنا بناء الموقدين كما يجب، مع فتحة الهواء السفلية، ومخمد في المدخنة نتحكم به في السحب، وعزلنا جدار الموقد حتى لا تضيع الحرارة في الجدار…»</p>
+<p>«ليس كثيراً.» أغلقت الدفتر. «لأن إصلاح أمس لم يكن إلا نصف إصلاح. لم نلمس موقد الغرفة الكبيرة، والمدخنة ما زالت ضيقة، والطوب الذي سدَدنا به الثقب لن يصمد شهراً.» نظرت إليه. «لو أعدنا بناء الموقدين كما ينبغي، وأضفنا فتحة هواء سفلية وصفيحة تضبط سحب الدخان، وعزلنا جدار الموقد كيلا تتسرب الحرارة إليه…»</p>
 <p>«كم؟»</p>
 <p>«ثلاثين في المئة. ربما خمسة وثلاثين.»</p>
 <p>صمت لين.</p>
@@ -248,6 +254,17 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','003')}catch(e){}
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
+    var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
+  }).catch(function(){var status=document.getElementById('offline-status');if(status)status.textContent='تعذر حفظ الفصول. أعد فتح الموقع وأنت متصل بالإنترنت.'});
+}
+var installPrompt,installButton=document.getElementById('install-app');
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();installPrompt=e;if(installButton)installButton.hidden=false;});
+if(installButton)installButton.addEventListener('click',async function(){
+  if(!installPrompt)return;await installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installButton.hidden=true;
+});
+window.addEventListener('appinstalled',function(){var help=document.getElementById('install-help');if(help)help.hidden=true;if(installButton)installButton.hidden=true;});
 </script>
 </body>
 </html>
