@@ -35,6 +35,12 @@ const page = (title, body, extra = '') => `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#8a4b1f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="السيادة الحضارية">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="icon" type="image/png" href="/icon-192.png">
 <title>${esc(title)}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
@@ -59,6 +65,17 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 ${extra}
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
+    var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
+  }).catch(function(){var status=document.getElementById('offline-status');if(status)status.textContent='تعذر حفظ الفصول. أعد فتح الموقع وأنت متصل بالإنترنت.'});
+}
+var installPrompt,installButton=document.getElementById('install-app');
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();installPrompt=e;if(installButton)installButton.hidden=false;});
+if(installButton)installButton.addEventListener('click',async function(){
+  if(!installPrompt)return;await installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installButton.hidden=true;
+});
+window.addEventListener('appinstalled',function(){var help=document.getElementById('install-help');if(help)help.hidden=true;if(installButton)installButton.hidden=true;});
 </script>
 </body>
 </html>
@@ -94,6 +111,12 @@ h1{font-family:var(--f-display);font-weight:700;font-size:calc(var(--fs) * 1.45)
 .hero .blurb{max-width:34em;margin:0 auto 18px;color:var(--fg);font-size:17px}
 .hero .meta{color:var(--muted);font-size:14px;margin:0 0 22px;font-variant-numeric:tabular-nums}
 .cta{display:inline-block;padding:12px 28px;border-radius:10px;background:var(--accent);color:var(--bg);font-weight:600}
+.install{margin:24px auto 0;padding:18px;max-width:36em;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.install p{margin:0 0 8px}.install small{display:block;color:var(--muted)}
+.install button{font:inherit;cursor:pointer;border:1px solid var(--accent);padding:8px 22px;margin-bottom:10px}
+.install details{text-align:right;font-size:15px}.install summary{cursor:pointer;color:var(--accent)}
+[hidden]{display:none!important}
+@media (display-mode:standalone){#install-help,#install-app{display:none}}
 .arc{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin:40px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
 .arc h2{font-family:var(--f-display);font-weight:500;margin:0;color:var(--accent);font-size:20px}
 .arc small{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
@@ -137,7 +160,82 @@ for (const [a, b, name] of ARCS) {
   toc += `<div class="arc"><h2>${name}</h2><small>الفصول ${a}–${b} · منشور ${list.length} من ${b - a + 1}</small></div><ul class="toc">` + list.map((c) => `<li data-n="${pad(c.n)}"><a href="/c/${pad(c.n)}"><span class="n">${c.n}</span><span class="t">${esc(c.title.replace(/^الفصل [^:]+:\s*/, ''))}</span></a></li>`).join('') + '</ul>';
 }
 const count = (n) => n === 1 ? 'فصل واحد' : n === 2 ? 'فصلان' : n <= 10 ? `${n} فصول` : `${n} فصلاً`;
-const index = `<section class="hero"><div class="kicker">خيال علمي · بناء حضارة · سياسة وحروب</div><h1>${TITLE}</h1><p class="blurb">مهندس وزوجته الحامل ينتقلان إلى قرية فقيرة في عالم مجهول، ومعه نظام غامض لا يعرف أكثر مما تسمح به بياناته. من مدخنة تخنق ضيوف نزل، تبدأ حضارة.</p><p class="meta">المنشور حتى الآن: ${count(chapters.length)} من أصل 1000</p><a id="resume" class="cta" href="/c/001">ابدأ القراءة</a></section>${toc || '<p>لا توجد فصول بعد.</p>'}`;
+const index = `<section class="hero"><div class="kicker">خيال علمي · بناء حضارة · سياسة وحروب</div><h1>${TITLE}</h1><p class="blurb">مهندس وزوجته الحامل ينتقلان إلى قرية فقيرة في عالم مجهول، ومعه نظام غامض لا يعرف أكثر مما تسمح به بياناته. من مدخنة تخنق ضيوف نزل، تبدأ حضارة.</p><p class="meta">المنشور حتى الآن: ${count(chapters.length)} من أصل 1000</p><a id="resume" class="cta" href="/c/001">ابدأ القراءة</a><section class="install" aria-label="تثبيت التطبيق"><p>روايتك معك، حتى دون إنترنت</p><button id="install-app" class="cta" hidden>ثبّت التطبيق</button><details id="install-help"><summary>طريقة التثبيت على الهاتف</summary><p>أندرويد: افتح الموقع في Chrome، ثم اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية» من قائمة ⋮.</p><p>آيفون: افتح الموقع في Safari، واضغط زر المشاركة، ثم «إضافة إلى الشاشة الرئيسية».</p></details><small id="offline-status" role="status">جارٍ حفظ ${count(chapters.length)} للقراءة دون إنترنت… أبقِ الموقع مفتوحاً حتى يكتمل الحفظ.</small></section></section>${toc || '<p>لا توجد فصول بعد.</p>'}`;
 fs.writeFileSync(path.join(OUT, 'index.html'), page(TITLE, index, `document.querySelector('main').classList.add('wide');try{var l=localStorage.getItem('last');if(l){var a=document.getElementById('resume');a.href='/c/'+l;a.textContent='أكمل القراءة: الفصل '+parseInt(l,10);var li=document.querySelector('li[data-n="'+l+'"]');if(li)li.className='last'}}catch(e){}`));
 
 console.log(`built ${chapters.length} chapters`);
+
+// أيقونة كتاب بسيطة، تُولَّد أثناء البناء بلا تبعيات إضافية.
+function bookIcon(size) {
+  const zlib = require('node:zlib');
+  const pixels = Buffer.alloc(size * (size * 3 + 1));
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      const u = x / size, v = y / size;
+      let color = [138, 75, 31];
+      if (u > .23 && u < .77 && v > .25 && v < .75) color = [246, 241, 231];
+      if (Math.abs(u - .5) < .012 && v > .26 && v < .74) color = [138, 75, 31];
+      if (u > .29 && u < .43 && [.37, .46, .55, .64].some(n => Math.abs(v - n) < .009)) color = [194, 166, 128];
+      if (u > .57 && u < .71 && [.37, .46, .55, .64].some(n => Math.abs(v - n) < .009)) color = [194, 166, 128];
+      const offset = y * (size * 3 + 1) + 1 + x * 3;
+      pixels.set(color, offset);
+    }
+  }
+  function chunk(type, data) {
+    const bytes = Buffer.concat([Buffer.from(type), data]);
+    let crc = 0xffffffff;
+    for (const byte of bytes) { crc ^= byte; for (let i = 0; i < 8; i++) crc = (crc >>> 1) ^ ((crc & 1) ? 0xedb88320 : 0); }
+    const length = Buffer.alloc(4), checksum = Buffer.alloc(4);
+    length.writeUInt32BE(data.length); checksum.writeUInt32BE((crc ^ 0xffffffff) >>> 0);
+    return Buffer.concat([length, bytes, checksum]);
+  }
+  const header = Buffer.alloc(13);
+  header.writeUInt32BE(size, 0); header.writeUInt32BE(size, 4); header[8] = 8; header[9] = 2;
+  return Buffer.concat([Buffer.from([137,80,78,71,13,10,26,10]),chunk('IHDR',header),chunk('IDAT',zlib.deflateSync(pixels)),chunk('IEND',Buffer.alloc(0))]);
+}
+for (const size of [192, 512]) fs.writeFileSync(path.join(OUT, `icon-${size}.png`), bookIcon(size));
+fs.writeFileSync(path.join(OUT, 'manifest.webmanifest'), JSON.stringify({
+  id: '/', name: TITLE, short_name: 'السيادة الحضارية', lang: 'ar', dir: 'rtl',
+  start_url: '/', scope: '/', display: 'standalone',
+  background_color: '#f6f1e7', theme_color: '#8a4b1f',
+  description: 'اقرأ رواية نظام السيادة الحضارية، حتى دون اتصال بالإنترنت.',
+  icons: [192, 512].map(size => ({src: `/icon-${size}.png`, sizes: `${size}x${size}`, type: 'image/png', purpose: 'any maskable'}))
+}, null, 2));
+const precache = ['/', '/style.css', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', ...chapters.map(c => `/c/${pad(c.n)}`)];
+const digest = require('node:crypto').createHash('sha256');
+for (const url of precache) {
+  const filename = url === '/' ? 'index.html' : /^\/c\//.test(url) ? `${url.slice(1)}.html` : url.slice(1);
+  digest.update(fs.readFileSync(path.join(OUT, filename)));
+}
+const version = digest.digest('hex').slice(0, 16);
+fs.writeFileSync(path.join(OUT, 'sw.js'), `
+const CACHE = 'novel-${version}';
+const FILES = ${JSON.stringify(precache)};
+self.addEventListener('install', event => {
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)).then(() => self.skipWaiting()));
+});
+self.addEventListener('activate', event => {
+  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('novel-') && key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()));
+});
+self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+  if (event.request.method !== 'GET' || url.origin !== self.location.origin) return;
+  const key = url.pathname === '/index.html' ? '/' : url.pathname.replace(/\\.html$/, '').replace(/\\/$/, '') || '/';
+  if (!FILES.includes(key)) return;
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE);
+    try {
+      const response = await fetch(event.request);
+      if (response.ok && !response.redirected) {
+        const copy = response.clone();
+        event.waitUntil(cache.put(key, copy));
+        return response;
+      }
+      return (await cache.match(key)) || response;
+    } catch (error) {
+      return (await cache.match(key)) || new Response('هذا الفصل غير محفوظ بعد. اتصل بالإنترنت ثم أعد فتحه.', {status: 503, headers: {'Content-Type':'text/plain; charset=utf-8'}});
+    }
+  })());
+});
+`);
+fs.writeFileSync(path.join(OUT, '_headers'), '/sw.js\n  Cache-Control: no-cache\n  Service-Worker-Allowed: /\n/manifest.webmanifest\n  Content-Type: application/manifest+json; charset=utf-8\n');
