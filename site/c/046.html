@@ -10,13 +10,13 @@
 <link rel="apple-touch-icon" href="/icon-192.png">
 <link rel="icon" type="image/png" href="/icon-192.png">
 <title>الفصل السادس والأربعون: جدار يحفظ النار — نظام السيادة الحضارية</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/NotoNaskhArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px')}catch(e){}</script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
+<div id="hud" aria-hidden="true"></div>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
@@ -39,7 +39,7 @@
 <p>قال لين: «الرماد يجعلها أقل التصاقاً.»</p>
 <p>«أو أن الماء في هذه العينة أقل.» قالت شين يان. «لا نعرف بعد. أكتب هذا احتمالاً، لا حكماً.»</p>
 <p>أخرج لين من واجهته مقداراً محدوداً من التحليل بعد أن وضع عينة من الطين قربه. لم تمنحه الواجهة وصفة، بل عرضت أن اختلاف الرطوبة بين العينات أكبر مما ظنوا.</p>
-<div class="sys"><div class="sys-h">تحليل المواد — المستوى 1</div><div class="sys-b"><div>تفاوت الرطوبة بين العينات أكبر من المتوقع؛ لا تكفي للمقارنة قبل إعادة الخلط.</div><div>الثقة: 68%</div><div>طاقة التكامل: 74%</div></div></div>
+<div class="sys" data-lv="2"><div class="sys-h"><span class="t">تحليل المواد — المستوى 1</span><span class="lv">تكامل 4%</span></div><div class="sys-b"><div style="--i:0">تفاوت الرطوبة بين العينات أكبر من المتوقع؛ لا تكفي للمقارنة قبل إعادة الخلط.</div><div class="m" style="--i:1;--v:68"><span class="k">الثقة</span><span class="bar" aria-hidden="true"><i></i></span><b>68%</b></div><div class="m" style="--i:2;--v:74"><span class="k">طاقة التكامل</span><span class="bar" aria-hidden="true"><i></i></span><b>74%</b></div></div></div>
 <p>أغلق التحليل قبل أن يكرر السؤال بصيغ أخرى.</p>
 <p>قال: «المقارنة ليست نظيفة. أعددناها بيدينا، لكننا لم نزن الماء.»</p>
 <p>رفعت شين يان نظرها عن لوحها. «نبدأ من جديد بكمية ماء واحدة. وإذا بقي الفرق بعد الجفاف، نعرف أن الإضافة أثرت. لا أريد رقماً يطمئننا لأننا نريده.»</p>
@@ -111,8 +111,9 @@
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
-try{localStorage.setItem('last','046')}catch(e){}
-(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
+try{localStorage.setItem('last','046')}catch(e){}resume('046');
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var hud=document.getElementById('hud'),ht;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var x=e.target;x.classList.add('in');io.unobserve(x);if(hud&&!x.classList.contains('sys--echo')){hud.className=x.classList.contains('sys--b')?'b':'';void hud.offsetWidth;hud.classList.add(x.classList.contains('sys--up')?'up':'on');clearTimeout(ht);ht=setTimeout(function(){hud.className=''},1400)}}})},{rootMargin:'0px 0px -15% 0px'});s.forEach(function(x){io.observe(x)})})();
+function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
