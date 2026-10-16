@@ -12,6 +12,8 @@
 
 ## الموقع
 
+- **اقرأ `TECH.md` قبل أي عمل تقني.** فيه عقد شكل الفصل الذي يعتمد عليه الكود، وميزات الموقع، والأفكار المؤجلة.
+
 
 - `node build.js` يبني `site/` من `chapters/NNN.md`.
 - ملف `wrangler.jsonc` ينشر `site/` على Cloudflare كـ Worker اسمه `novel` (https://novel.44trm84.workers.dev). لا تغيّر الاسم.
