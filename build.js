@@ -19,10 +19,12 @@ function render(md) {
     const b = raw.trim();
     if (!b) continue;
     if (b.startsWith('# ')) { title = b.slice(2).trim(); continue; }
-    if (b === '***') { html.push('<div class="break">✦ ✦ ✦</div>'); continue; }
+    if (b === '***') { html.push('<div class="break" role="separator"><span></span></div>'); continue; }
     if (b.startsWith('>')) {
       const lines = b.split('\n').map((l) => l.replace(/^>\s?/, ''));
-      html.push('<div class="sys">' + lines.map((l) => `<div>${inline(l)}</div>`).join('') + '</div>');
+      const head = /^\*\*\[.+\]\*\*$/.test(lines[0].trim()) ? lines.shift() : '';
+      const h = head ? `<div class="sys-h">${inline(head.trim().replace(/^\*\*\[(.+)\]\*\*$/, '$1'))}</div>` : '';
+      html.push(`<div class="sys">${h}<div class="sys-b">` + lines.map((l) => `<div>${inline(l)}</div>`).join('') + '</div></div>');
       continue;
     }
     html.push(`<p>${inline(b).replace(/\n/g, '<br>')}</p>`);
@@ -65,6 +67,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 ${extra}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
@@ -81,9 +84,9 @@ window.addEventListener('appinstalled',function(){var help=document.getElementBy
 </html>
 `;
 
-const css = `:root{--bg:#f6f1e7;--fg:#2a2420;--muted:#7b6f61;--line:#e2d8c6;--card:#fffaf1;--accent:#8a4b1f;--accent-soft:#f0e2d2;--sys-bg:#e9f1fb;--sys-fg:#1c4e86;--sys-line:#b7d0ec;--fs:20px;--f-body:"Noto Naskh Arabic","Amiri",serif;--f-display:"Reem Kufi","Noto Naskh Arabic",sans-serif}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15130f;--fg:#e8e0d2;--muted:#9d9180;--line:#2f2a23;--card:#1d1a15;--accent:#e2a56b;--accent-soft:#2a2118;--sys-bg:#0f1d2c;--sys-fg:#91c2f2;--sys-line:#22415f;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#15130f;--fg:#e8e0d2;--muted:#9d9180;--line:#2f2a23;--card:#1d1a15;--accent:#e2a56b;--accent-soft:#2a2118;--sys-bg:#0f1d2c;--sys-fg:#91c2f2;--sys-line:#22415f;color-scheme:dark}
+const css = `:root{--bg:#f6f1e7;--fg:#2a2420;--muted:#7b6f61;--line:#e2d8c6;--card:#fffaf1;--accent:#8a4b1f;--accent-soft:#f0e2d2;--sys-bg:#e9f1fb;--sys-fg:#1c4e86;--sys-line:#b7d0ec;--sys-glow:rgba(28,78,134,.25);--tone:rgba(42,36,32,.13);--fs:20px;--f-body:"Noto Naskh Arabic","Amiri",serif;--f-display:"Reem Kufi","Noto Naskh Arabic",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15130f;--fg:#e8e0d2;--muted:#9d9180;--line:#2f2a23;--card:#1d1a15;--accent:#e2a56b;--accent-soft:#2a2118;--sys-bg:#0f1d2c;--sys-fg:#91c2f2;--sys-line:#22415f;--sys-glow:rgba(145,194,242,.35);--tone:rgba(232,224,210,.10);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15130f;--fg:#e8e0d2;--muted:#9d9180;--line:#2f2a23;--card:#1d1a15;--accent:#e2a56b;--accent-soft:#2a2118;--sys-bg:#0f1d2c;--sys-fg:#91c2f2;--sys-line:#22415f;--sys-glow:rgba(145,194,242,.35);--tone:rgba(232,224,210,.10);color-scheme:dark}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);line-height:2}
@@ -99,8 +102,25 @@ main.wide{max-width:960px}
 h1{font-family:var(--f-display);font-weight:700;font-size:calc(var(--fs) * 1.45);line-height:1.6;margin:4px 0 28px;text-align:center;text-wrap:balance}
 .eyebrow{text-align:center;color:var(--muted);font-size:14px;letter-spacing:.02em;margin-top:8px}
 .chapter p{font-size:var(--fs);margin:0 0 1em;text-align:justify}
-.break{text-align:center;color:var(--muted);margin:2em 0;letter-spacing:.5em}
-.sys{font-size:calc(var(--fs) * .88);background:var(--sys-bg);color:var(--sys-fg);border:1px solid var(--sys-line);border-right:4px solid var(--sys-fg);border-radius:8px;padding:12px 16px;margin:1.2em 0;line-height:1.9;font-variant-numeric:tabular-nums}
+.ch-head{position:relative;text-align:center;padding:26px 12px 6px;margin:0 0 30px;border-bottom:3px solid var(--fg);background:linear-gradient(to bottom,transparent,var(--bg) 85%),radial-gradient(circle,var(--tone) 1.1px,transparent 1.3px) 0 0/7px 7px}
+.ch-head .eyebrow{margin:0 0 10px}
+.ch-num{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-display);background:var(--fg);color:var(--bg);padding:4px 16px 4px 6px;transform:skewX(-8deg);margin-bottom:12px}
+.ch-num span{font-size:15px;transform:skewX(8deg)}
+.ch-num b{font-size:26px;line-height:1.3;background:var(--bg);color:var(--fg);padding:0 10px;font-variant-numeric:tabular-nums;transform:skewX(8deg)}
+.ch-head h1{margin:0 0 14px}
+.break{display:flex;align-items:center;gap:14px;margin:2.4em auto;max-width:60%;color:var(--fg)}
+.break::before,.break::after{content:"";flex:1;height:2px;background:linear-gradient(to left,currentColor,transparent);border-radius:2px}
+.break::after{background:linear-gradient(to right,currentColor,transparent)}
+.break span{width:9px;height:9px;background:currentColor;transform:rotate(45deg);box-shadow:0 0 0 4px var(--bg),0 0 0 5px currentColor}
+.sys{position:relative;font-size:calc(var(--fs) * .88);background:var(--sys-bg);color:var(--sys-fg);border:1px solid var(--sys-line);border-radius:4px;margin:1.6em 0;line-height:1.9;font-variant-numeric:tabular-nums;box-shadow:0 0 0 1px var(--sys-bg),0 0 18px -4px var(--sys-glow);overflow:hidden}
+.sys::before,.sys::after{content:"";position:absolute;width:12px;height:12px;border:2px solid var(--sys-fg);pointer-events:none}
+.sys::before{top:4px;right:4px;border-left:0;border-bottom:0}
+.sys::after{bottom:4px;left:4px;border-right:0;border-top:0}
+.sys-h{font-family:var(--f-display);font-weight:700;font-size:.95em;letter-spacing:.02em;padding:6px 16px;border-bottom:1px solid var(--sys-line);background:linear-gradient(to left,var(--sys-line),transparent)}
+.sys-h::before{content:"";display:inline-block;width:7px;height:7px;margin-left:10px;vertical-align:middle;background:var(--sys-fg);border-radius:50%;box-shadow:0 0 6px var(--sys-fg)}
+.sys-b{padding:10px 16px 12px}
+.fx .sys{opacity:0;transform:translateY(8px) scaleY(.96);transform-origin:top;transition:opacity .45s ease,transform .45s ease}
+.fx .sys.in{opacity:1;transform:none}
 .nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
 .nav a,.nav span{text-align:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
 .nav span{color:var(--muted)}
@@ -149,7 +169,7 @@ chapters.forEach((c, i) => {
   const prev = chapters[i - 1], next = chapters[i + 1];
   const nav = `<nav class="nav">${prev ? `<a href="/c/${pad(prev.n)}">→ السابق</a>` : '<span>البداية</span>'}<a href="/">الفهرس</a>${next ? `<a class="next" href="/c/${pad(next.n)}">التالي ←</a>` : '<span>قريباً</span>'}</nav>`;
   const arc = ARCS.find(([a, b]) => c.n >= a && c.n <= b);
-  const body = `<article class="chapter"><div class="eyebrow">${arc ? arc[2].split(':')[0] : ''} · الفصل ${c.n} من ${chapters.length}</div><h1>${esc(c.title.replace(/^الفصل [^:]+:\s*/, ''))}</h1>\n${c.body}\n</article>${nav}`;
+  const body = `<article class="chapter"><header class="ch-head"><div class="eyebrow">${arc ? arc[2].split(':')[0] : ''}</div><div class="ch-num"><span>الفصل</span><b>${c.n}</b></div><h1>${esc(c.title.replace(/^الفصل [^:]+:\s*/, ''))}</h1></header>\n${c.body}\n</article>${nav}`;
   fs.writeFileSync(path.join(OUT, 'c', `${pad(c.n)}.html`), page(`${c.title} — ${TITLE}`, body, `try{localStorage.setItem('last','${pad(c.n)}')}catch(e){}`));
 });
 

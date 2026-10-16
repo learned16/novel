@@ -26,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 35 من 50</div><h1>تحت الختم</h1>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الأولى</div><div class="ch-num"><span>الفصل</span><b>35</b></div><h1>تحت الختم</h1></header>
 <p>خرجوا من النزل قبل أن يشتد الثلج. حملت هو سانيانغ كيس ختمها في كمها، ومشى لين إلى جانبها بالعقد ملفوفًا في قماش لا ينفذ إليه البلل. كانت شين يان تحمل اللفافة التي صاغتها في الصباح، وتضع يدها الأخرى على طرف معطفها كي لا يفتحها الهواء. بقي شياو دو عند الباب يتابعهم بعينيه، ثم عاد إلى الداخل حين طلبت منه عمته أن يراقب القدر.</p>
 <p>لم يكن الطريق إلى بيت الكاتب بعيدًا، لكن الثلج القديم صار طينًا زلقًا عند المنعطف. مشت هو سانيانغ بحذر، من دون أن تتكئ على أحد. وحين وصلوا إلى الساحة رأوا تشانغ ينتظر قرب العمود الخشبي، يحمل مطرقته على كتفه. رفع يده تحية قصيرة، ثم نظر إلى العقد في يد لين.</p>
 <p>قال: «طلبت أن أشهد على الحصص. لن أترككم تضيفون اسمي إلى غيرها.»</p>
@@ -57,7 +57,7 @@
 <p>أجابت شين يان: «لا يوجد أجر يُقسم في يوم الوعد. نكتب عدد الأكياس التي طُحنت مجانًا في سجل منفصل، كما نفعل الآن.»</p>
 <p>هز وو رأسه. «جيد. لا أريد أن أرى بعد شهر مطالبة على كيس لم يُدفع ثمنه.»</p>
 <p>عاد إلى الورقة، وأضاف العبارة في موضع فاصل: «لا تشمل الزيادة الإيجار ولا الديون السابقة ولا أي عمل خارج الطحن.» ثم قرأها بصوت مسموع. طلب من الجميع أن يراجعوها، لا أن يكتفوا بكلامه.</p>
-<div class="break">✦ ✦ ✦</div>
+<div class="break" role="separator"><span></span></div>
 <p>دخل الرجل ذو الوشاح الأخضر بعد أن طرق الباب طرقة واحدة. لم يستأذن. وضع لوحه على طرف الطاولة وقال: «السيد ليو يطلب نسخة من كل تعديل يمس الطاحونة.»</p>
 <p>لم يرفع وو رأسه. «هذا التعديل لا يمس ملك الأرض ولا الإيجار. لكنه يسجل حصة الشركاء، لذلك سأعطي نسخة لأصحاب العقد.»</p>
 <p>«والكفالة؟»</p>
@@ -105,7 +105,7 @@
 <p>عند الباب كان تشانغ قد انتهى من تثبيت كم معطفه. قال: «صار لكل ورقة مكان.»</p>
 <p>قال لين: «ليس لكل سؤال جواب.»</p>
 <p>«السؤال لا يثبت شيئًا.» ثم مضى أمامهم.</p>
-<div class="break">✦ ✦ ✦</div>
+<div class="break" role="separator"><span></span></div>
 <p>في الخارج كان الثلج يخف. مشت هو سانيانغ إلى النزل ببطء، ثم توقفت حين لمحوا سون لي قرب البوابة. كان يحمل رزمة صغيرة من الحطب اليابس على كتفه، وساقه المصابة ملفوفة تحت الثوب. لم يضعها على الأرض حتى رآهم.</p>
 <p>قال لين: «لا تحملها وحدك. كان يمكن أن تنتظر.»</p>
 <p>«أخذت أقل مما ظننت.» نظر إلى شين يان. «قالت لي إن النقل الخفيف يناسبني. لو تركت الحطب هناك لابتل.»</p>
@@ -138,6 +138,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','035')}catch(e){}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';

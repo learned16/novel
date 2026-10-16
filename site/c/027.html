@@ -26,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 27 من 50</div><h1>ثلاثة أفراد</h1>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الأولى</div><div class="ch-num"><span>الفصل</span><b>27</b></div><h1>ثلاثة أفراد</h1></header>
 <p>في اليوم التاسع بعد المئة، أحصت شين يان الأكياس عند الباب مرتين. منذ عودة وانغ الأكبر أخذ آخرون يأتون، يتوقفون قليلاً على العتبة، ثم يضعون أكياسهم قرب الحجر. وفي صباح اليوم السابق جاءت امرأتان من القرية الشمالية، لم يسبق لهما أن دخلتا الطاحونة، ووقفتا عند الباب تنظران إلى الترس الدوار وتسألان عن وقت الفراغ من الطحن، ثم دفعتا الأجر كاملاً بالنحاس. وسمع لين رنين النحاس في كف شين يان فرفع عينيه عن المحور وتبادل معها نظرة سريعة.</p>
 <p>لم يعتذر أحد عما قيل، ولم يسأل لين أحداً عنه.</p>
 <p>وفي ظهيرة اليوم التاسع بعد المئة، وقف تشيو عند باب الغرفة الحجرية لأول مرة منذ الاعتداء عليه، متكئاً على ذراع شياو دو، ووجهه ما زال بنفسجياً أصفر، وعلى زاوية فمه بقية دم جاف، لكنه ابتسم حين رأى الترس. قال وهو يحاول أن يعد دورات الأوتاد: «ما زال يدور. حسبته سيتوقف بدوني.»</p>
@@ -68,7 +68,7 @@
 <p>«وأمه تعرف؟»</p>
 <p>«أمه تعرف أنها خائفة جداً.» همست. «لكنها سعيدة أكثر.»</p>
 <p>بقيا هكذا، لا يعرفان كم، والحركة تعود كل دقيقة أو دقيقتين، خفيفة أحياناً، قوية أحياناً. وحين انتهت، وسكن الداخل كأن طفلاً نام بعد لعب، بقيت يده على بطنها لا تتحرك.</p>
-<div class="break">✦ ✦ ✦</div>
+<div class="break" role="separator"><span></span></div>
 <p>هدأت حركة الطفل، وبقي لين مستيقظاً.</p>
 <p>مررت شين يان إبهامها فوق يده ثم أغمضت عينيها. تذكر وعده القديم عند حديثهما عن النظام: كل رقم يعرفه، تعرفه هي أيضاً.</p>
 <p>وكان قد أبقى سطراً.</p>
@@ -132,7 +132,7 @@
 <p>«أن يكون النظام يعدّه.»</p>
 <p>وتذكر ما رآه في تلك اللحظة في الحقل المحصود: يدها على بطنها قبل أن تقول شيئاً، وهي تحاول أن تطمئن إلى أن جسدها لم يصبه شيء. وتذكر أنه رأى السطر ثم رآها، وجمع الاثنين في رأسه، وأحس بشيء يتجمد في صدره لا علاقة له بالبرد. كانت في الشهر الثالث. ولم تكن تعرف بعد إن كان الجنين قد سلم من الانتقال. والنظام قال: ثلاثة.</p>
 <p>مد يده نحوها، ثم تركها تسقط فوق الغطاء. منذ الحقل كان يؤجل الحديث إلى يوم يفهم فيه السطر. ومضى يوم وراء يوم، وكلما سألته صار قول الحقيقة أصعب.</p>
-<div class="break">✦ ✦ ✦</div>
+<div class="break" role="separator"><span></span></div>
 <p>لم تتحرك.</p>
 <p>اتسعت عيناه في العتمة، وبان له طرف خدها قرب شق الباب. رأى ظلها الجالس، رأسها المنحني قليلاً، يداها على بطنها.</p>
 <p>«يعدّه.»</p>
@@ -199,6 +199,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','027')}catch(e){}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';

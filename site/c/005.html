@@ -26,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الأولى · الفصل 5 من 50</div><h1>الطين لا يكذب</h1>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الأولى</div><div class="ch-num"><span>الفصل</span><b>5</b></div><h1>الطين لا يكذب</h1></header>
 <p>بعد يومين من البناء، صار لين يفتح أصابعه ببطء كي لا تتسع شقوق الجلد.</p>
 <p>تشققت راحتاه من الماء البارد والطين الجاف، وصار الجلد في أطراف أصابعه أحمر داكناً يلسع كلما لمس شيئاً خشناً. كان يمسك الملعقة الخشبية في الصباح فتلسعه حافتها. ووجد على عتبة المخزن وعاءً صغيراً فيه شحم حيوان ممزوج بعشب أخضر مسحوق، ولم يسأل من وضعه. دهن به راحتيه، فتحسنتا، وتظاهرت شين يان أنها لم ترَ.</p>
 <p>في صباح اليوم السادس، حان وقت اختبار النار.</p>
@@ -46,7 +46,7 @@
 <p>قال: «هي محقة.»</p>
 <p>نظر إلى البطانة الرطبة. كان يستطيع أن يؤيدها في التجفيف، لكن ذلك لن يغير الخلطة التي أخفى عنها شكه فيها.</p>
 <p>قالت هو سانيانغ: «إلى الظهر أطعم الناس من موقد الغرفة الكبيرة. بعده أحتاج إلى هذا القدر.»</p>
-<div class="break">✦ ✦ ✦</div>
+<div class="break" role="separator"><span></span></div>
 <p>أشعلها لين بنفسه.</p>
 <p>جثا أمام فم الموقد، وفي يده شعلة من قش مجدول، ووضعها في غرفة الاحتراق على فرش من قشور البصل اليابسة والأغصان الدقيقة. التهم اللهب القش بصوت ناعم، ثم تسلق الأغصان. وانتظر لين أن يرتد الدخان إلى وجهه كما حدث دائماً مع الموقد القديم.</p>
 <p>لم يرتد.</p>
@@ -101,7 +101,7 @@
 <p>سأل لين: «كم أقل؟»</p>
 <p>«هذا يوم واحد. اسألني حين يكون عندي حساب أثق به.»</p>
 <p>أعادت الحطب الباقي إلى المخزن بيديها، ولم تسمح لشياو دو أن يخلطه بحطب الغد.</p>
-<div class="break">✦ ✦ ✦</div>
+<div class="break" role="separator"><span></span></div>
 <p>بعد العشاء، أخرجت هو سانيانغ كتابها الأصفر المخيط بخيط القنب، ووضعته على طاولة المطبخ، وأشارت لشين يان بذقنها.</p>
 <p>«اجلسي.»</p>
 <p>جلست شين يان على الكرسي المقابل، وجلس لين على الأرض قرب الموقد. لم يقل أحد إن عليه أن يبتعد.</p>
@@ -125,7 +125,7 @@
 <p>«الطين جيد.»</p>
 <p>شعر لين بشيء يضغط على صدره. «الطين...»</p>
 <p>«يعمل. هذا ما أقوله.» ثم أخذت كتابها ومضت.</p>
-<div class="break">✦ ✦ ✦</div>
+<div class="break" role="separator"><span></span></div>
 <p>في المخزن، حين انطفأت الشمعة، قالت شين يان بلغتهما: «كتبت الكلمة سبع مرات.»</p>
 <p>«رأيتك.»</p>
 <p>«في المرة الأولى لم أعرف أين ينتهي الخط. وفي السابعة عرفتها من دون أن أنظر إلى كتابها.» سمع في صوتها رضا مختلطاً بشيء آخر. «لكنني لا أعرف ما تقوله العلامات الأخرى حولها. كل علامة أعرفها الآن تجعلني أرى عشر علامات لا أعرفها.»</p>
@@ -162,6 +162,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','005')}catch(e){}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';

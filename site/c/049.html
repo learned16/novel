@@ -26,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الثانية · الفصل 49 من 50</div><h1>ثمن السكة</h1>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>49</b></div><h1>ثمن السكة</h1></header>
 <p>في صباح اليوم الثامن والأربعين بعد المئة، جاء الرجل الذي سأل عن سكة المحراث إلى دكان تشانغ، يحمل قطعة مكسورة ملفوفة بقماش خشن. كان الشق عند عنق السكة، قريباً من الموضع الذي تتصل فيه بالخشب.</p>
 <p>وضعها على الطاولة من غير أن يفكها. قال: «هذه التي عندي. إن أصلحتموها اليوم، أزرع الطرف الشرقي بعد يومين. لا أستطيع شراء حديد جديد.»</p>
 <p>فتح تشانغ القماش، ونظر إلى طرف الكسر. لم يلمس الحافة فوراً. مرر عينه على موضع التواء المعدن، ثم رفع القطعة إلى الضوء. «من أين انكسرت؟»</p>
@@ -77,7 +77,7 @@
 <p>لم يجادل. انتظر حتى استقرت الجمرات، ثم واصل. لم يكن الإصلاح سريعاً، وكان الحديد القديم يذكرهم بكل ضربة أنه ليس قطعة جديدة. عند الظهيرة، أعاد تشانغ الطرق إلى الموضع الملتوي. ثبتت الحافة أفضل مما كانت، لكن اللون عند العنق ظل غير متساوٍ.</p>
 <p>قال لين: «هل ننهيها الآن؟»</p>
 <p>«بعد أن تبرد أفحصها. لا أختبرها وهي ساخنة.»</p>
-<div class="break">✦ ✦ ✦</div>
+<div class="break" role="separator"><span></span></div>
 <p>أطفأوا النار عن السكة، وتركها تشانغ على جانب السندان حتى تبرد. لم يطلب من الرجل دفع بقية المال، ولم يطلبه الرجل. وقف عند الباب يراقب السندان، ثم قال إنه سيعود في الموعد المتفق عليه للاختبار والتسليم. دوّنت شين يان الموعد في طرف الاتفاق، حتى لا يصبح الوعد الشفهي تاريخاً مختلفاً في ذاكرة كل واحد منهم.</p>
 <p>جمع لين وشين يان أرقام الوقود والحديد والعمل. وزن الفحم قبل التجربة وبعدها، وسجل الحديد الذي أزيل من الحافة، والوقت الذي بقي فيه تشانغ بعيداً عن إصلاح الأدوات الأخرى. لم يسجلوا الطاحونة على أنها أوقفت طوال اليوم؛ فقد استمرت بعض ساعات العمل، وتوقف الطحن في الفترة التي احتاجوا فيها إلى يد لين عند السندان.</p>
 <p>قال لين: «تكلفة المنجل الأول لا تصلح سعراً للسكة. الحديد فيها ملك الرجل.»</p>
@@ -115,6 +115,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','049')}catch(e){}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';

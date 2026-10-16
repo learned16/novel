@@ -26,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الثانية · الفصل 47 من 50</div><h1>أول منجل</h1>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>47</b></div><h1>أول منجل</h1></header>
 <p>في صباح اليوم الخامس والأربعين بعد المئة، عاد لين إلى دكان تشانغ بعد يومين من تجفيف البطانة. كان الطريق موحلاً عند أطرافه؛ ذاب الثلج عن الحجارة، لكنه بقي متماسكاً في الظل. حمل لين سجل الفحم والعينات في كيس من القماش، فيما مشت شين يان إلى جانبه من غير أن تحمل شيئاً ثقيلاً.</p>
 <p>لم يشعل تشانغ الفرن بعد. وقف عند الجدار، ومرر ظهر إصبعه على الرقعة التي جف سطحها أولاً. لم يتفتت الطين، لكن طرفها انفصل قليلاً عن الطوب.</p>
 <p>قال: «هذه لم تثبت. لا تدخل في الجدار.»</p>
@@ -70,7 +70,7 @@
 <p>«بعد أن تبرد.»</p>
 <p>«نسجل ما نعرفه اليوم، ونترك الباقي فارغاً.»</p>
 <p>«افعلي.»</p>
-<div class="break">✦ ✦ ✦</div>
+<div class="break" role="separator"><span></span></div>
 <p>بعد أن خمدت النار، بقي المنجل على السندان حتى زال عنه وهج الحرارة. لم يسمح تشانغ لأحد أن يسكب الماء عليه؛ قال إن سرعة التبريد قد تفسد ما بقي متماسكاً. حين برد، مرر حجر شحذ على حدّه، ثم أمسكه من قاعدته وجرّب الضغط على قطعة قش سميكة. انثنى طرفه قليلاً، ولم ينفصل.</p>
 <p>قال لين: «أهو صالح؟»</p>
 <p>«هو قابل للاختبار. لا تسأل عن البيع قبل المقبض.»</p>
@@ -103,6 +103,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','047')}catch(e){}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';

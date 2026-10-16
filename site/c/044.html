@@ -26,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الثانية · الفصل 44 من 50</div><h1>نافذتان</h1>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>44</b></div><h1>نافذتان</h1></header>
 <p>في اليوم نفسه، بعد أن انتهت تجربة الماء، لم يعد لين وشين يان إلى الطاحونة. مشيا من الورشة حتى مخزن الحطب، ثم تابعا بمحاذاة الجدار إلى الممر الضيق خلف النزل. لم يكن المكان بعيداً، لكنه حجب عنهما أصوات تشانغ وشياو دو، وأعطاهما ما يكفي من الخصوصية ليتكلما بلغتهما الأصلية.</p>
 <p>لم يفتح لين واجهته أولاً. جلس على صندوق فارغ وأخرج دفتره، بينما بقيت شين يان واقفة. أرادت أن تروي ما رأته بالترتيب، من غير أن يملأ لها الفراغات.</p>
 <p>قالت: «حين تحرك الماء، رأيت ضوءاً أزرق عند طرف بصري. ظننته انعكاساً. ثم ظهر أمامي لوح مكتوب.»</p>
@@ -83,7 +83,7 @@
 <p>«لا أعرف إن كان ذلك أمراً أو مجرد سطر.»</p>
 <p>«جربي.»</p>
 <p>ركزت على الواجهة، وسألتها عن حرارة الجمرة. لم يظهر جواب فوري. ظهر سطر واحد، ثم تلاه آخر.</p>
-<div class="sys"><div><strong>[قياس حراري — تقدير أولي]</strong></div><div>العينة: سطح الطين قرب جمرة صغيرة.</div><div>المدى التقريبي: دافئ إلى ساخن.</div><div>الثقة: 38%</div><div>طاقة التكامل: 96%</div></div>
+<div class="sys"><div class="sys-h">قياس حراري — تقدير أولي</div><div class="sys-b"><div>العينة: سطح الطين قرب جمرة صغيرة.</div><div>المدى التقريبي: دافئ إلى ساخن.</div><div>الثقة: 38%</div><div>طاقة التكامل: 96%</div></div></div>
 <p>لم يكن في الرسالة رقم درجات، ولم يظهر كيف وصل النظام إلى التقدير. لم تعرف شين يان إن كانت الطاقة قد نقصت أربعة بالمئة بسبب السؤال، أم لأن الواجهة استهلكت شيئاً لتعمل. لم تقل إنه يقين.</p>
 <p>قال لين: «هذا ليس رقماً مفيداً.»</p>
 <p>قالت: «يعطيني حدّاً عاماً. لكن الثقة منخفضة.»</p>
@@ -159,6 +159,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','044')}catch(e){}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';

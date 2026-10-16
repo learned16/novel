@@ -26,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الثانية · الفصل 45 من 50</div><h1>نار لا تثبت</h1>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>45</b></div><h1>نار لا تثبت</h1></header>
 <p>في اليوم الحادي والأربعين بعد المئة، وبعد يومين من فحص الوصلة وإصلاح قاعدتها، عادوا إلى الورشة ومعهم قطعة حديد قصيرة لا تصلح لشيء آخر.</p>
 <p>لم تكن النار قد اشتعلت بعد. كان تشانغ قد اختار جزءاً من قضيب مشقوق، وقطع منه شريحة صغيرة عند موضع الشوائب. قال إن خسارتها لن تفسد أي أداة، وإن ما بقي منها يمكن أن يعود إلى الخردة. كتب لين وزن القطعة قبل العمل، ثم وضعها على ميزان شين يان الخشبي.</p>
 <p>قالت شين يان: «هذه تجربة واحدة. إذا احتجنا إلى إعادة التسخين، نوقف ونحسب قبل أن نكمل.»</p>
@@ -138,6 +138,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','045')}catch(e){}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';

@@ -26,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الثانية · الفصل 42 من 50</div><h1>ساعة من الماء</h1>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>42</b></div><h1>ساعة من الماء</h1></header>
 <p>في اليوم السابع والثلاثين بعد المئة، عاد الدفء إلى القرية قبل أن يقرر النهر إن كان سيستسلم له.</p>
 <p>كانت الشمس خافتة وراء سحب منخفضة، لكنها أذابت خطاً من الجليد عند طرف المجرى. لم يجر الماء عالياً؛ سال على الحصى بصوت خفيف، ثم اختفى تحت قشرة بيضاء عند المنعطف. وقف شو على الضفة، يحمل عصاه، ويراقب ذلك الخيط كأنه ينتظر منه اعترافاً.</p>
 <p>قال لين: «هل يكفي لتدوير الدولاب؟»</p>
@@ -138,6 +138,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','042')}catch(e){}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';

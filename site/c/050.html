@@ -26,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الثانية · الفصل 50 من 50</div><h1>حافة في التراب</h1>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>50</b></div><h1>حافة في التراب</h1></header>
 <p>في صباح اليوم الخمسين بعد المئة، حمل تشانغ السكة التي أصلحها ملفوفة بالقماش، وسار مع لين إلى قطعة الأرض التي وافق صاحبها على تجربتها فيها. لم تكن أرضاً جافة تماماً؛ انحسر عنها الثلج، وظهرت بقع من التراب اللين، لكن سطحها لم يجف بما يكفي للحرث. لم يكن الفلاح يريد زرعها الآن. أراد أن يرى إن كانت السكة ستنحني عند أول مقاومة.</p>
 <p>لحقت بهما شين يان، ومعها نسخة الاتفاق والدفتر، وقد ربطت شالها حول بطنها كي لا يجره الهواء. بقيت هو سانيانغ في النزل لتحسب أجور الطحن. منع لين زوجته من حمل السكة، فاكتفت بالدفتر وجلست عند طرف الأرض لتسجل الاختبار. عند باب الورشة، حاول لين أن يأخذ السكة عن تشانغ، فقال الحداد: «أستطيع حملها.»</p>
 <p>«أعرف. لا أريد أن أتركك تحملها وحدك إذا تعبت.»</p>
@@ -68,7 +68,7 @@
 <p>أومأ الرجل. أخرج قطعة قماش وربط بها المحراث. «إن بقيت على هذه الحال، أعود بقطعة أخرى.»</p>
 <p>قال تشانغ: «أحضرها أولاً. لا أعدك أن كل سكة تصلح للإصلاح.»</p>
 <p>ابتسم الفلاح ابتسامة صغيرة. «أعرف. هذه لا أريد أن أخسرها.»</p>
-<div class="break">✦ ✦ ✦</div>
+<div class="break" role="separator"><span></span></div>
 <p>عند عودتهم إلى الورشة، كانت شين يان تراجع رصيد الفحم والحديد. أعادت الست نحاسات إلى سجل الطلب، وأبقت العربون في خانته حتى طابقت الرقم مع الإيصال. لم تسمح للين أن يسجل الأجر كله في حساب الطحن.</p>
 <p>قالت: «ثماني نحاسات للإصلاح. منها أجرة تشانغ ومصروف الفحم. لا تدخل حصة الطحن هنا.»</p>
 <p>قال لين: «كتبتها كما اتفقنا.»</p>
@@ -109,6 +109,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','050')}catch(e){}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';

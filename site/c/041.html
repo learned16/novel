@@ -26,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الثانية · الفصل 41 من 50</div><h1>الحديد الذي نملكه</h1>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>41</b></div><h1>الحديد الذي نملكه</h1></header>
 <p>في اليوم الرابع والثلاثين بعد المئة، حمل لين وتشانغ الحديد القديم إلى ساحة الورشة، بعدما فتحا المخزن الذي أُغلق منذ انتهاء العمل على الطاحونة. كان إيصال نحاستي الجباية الثانية محفوظاً في غلاف الدفتر؛ دفعاه في اليوم132، بعد تسعة أيام من الدفعة الأولى، وكتب وو على الإيصال أن الموعد التالي هو اليوم141.</p>
 <p>لم يأتيا بكل شيء دفعة واحدة. كان تشانغ يرفع القطع بيديه، يزنها في الهواء، ثم يضعها في واحد من ثلاثة أكوام: قضبان يمكن أن تعود إلى النار، وقطع تحتاج إلى كسر وفحص، وأجزاء لا تستحق الوقود. أما لين فجلس عند طرف الساحة، وفتح دفتر المخزون إلى صفحة بيضاء، ورسم ثلاث خانات عريضة.</p>
 <p>قال تشانغ: «لا تكتب أسماء جميلة. اكتب ما أراه.»</p>
@@ -36,7 +36,7 @@
 <p>قال لين: «اختلاف الصوت؟»</p>
 <p>«لا تحكم من صوت واحد.» قلب تشانغ القضيب. «هنا حافة اللحام. أذابت النار طرفين ثم ضغطهما عامل لم يصبر. إن كانت الوصلة ضيقة، حملت الضربة. وإن بقي بينهما خبث، انفصلت حين يتغير اتجاه الطرق.»</p>
 <p>لم يقل لين إن النظام يستطيع رؤية ما تحت السطح. لم يكن يستطيع. أخرج الهاتف من التخزين، وقاس القضيب على طاولة العمل، ثم شغّل تحليل المواد المحدود. ظهرت أمامه خطوط قصيرة، ولم تتكون صورة كاملة.</p>
-<div class="sys"><div><strong>[تحليل المواد — المستوى 1]</strong></div><div>العينة: قضيب حديد قديم.</div><div>ملاحظات: تفاوت في الكثافة، وشوائب صخرية، واحتمال وجود خط التحام ضعيف.</div><div>الثقة: 62%</div><div>طاقة التكامل: 71%</div></div>
+<div class="sys"><div class="sys-h">تحليل المواد — المستوى 1</div><div class="sys-b"><div>العينة: قضيب حديد قديم.</div><div>ملاحظات: تفاوت في الكثافة، وشوائب صخرية، واحتمال وجود خط التحام ضعيف.</div><div>الثقة: 62%</div><div>طاقة التكامل: 71%</div></div></div>
 <p>انطفأت الشاشة. لم يشعر لين إلا بحرارة الهاتف في كفه، ثم أعاده إلى التخزين.</p>
 <p>قال تشانغ: «ماذا رأيت؟»</p>
 <p>«أنك كنت محقاً. فيه شوائب وخط ضعيف. لكن التحليل لا يقول لي أين تنتهي الوصلة.»</p>
@@ -148,6 +148,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','041')}catch(e){}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';

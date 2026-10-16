@@ -26,7 +26,7 @@
   </div>
 </header>
 <main>
-<article class="chapter"><div class="eyebrow">المرحلة الثانية · الفصل 48 من 50</div><h1>قبل البيع</h1>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>48</b></div><h1>قبل البيع</h1></header>
 <p>في صباح اليوم السادس والأربعين بعد المئة، جاء يانغ إلى دكان تشانغ ومعه مقبض من خشب جاف. كان قد اختار غصناً سميكاً من شجرة سقطت قبل الشتاء، ونزع قشره، لكنه لم يحفر موضع المنجل بعد.</p>
 <p>قال تشانغ: «أبطأت.»</p>
 <p>«لو أخذت خشباً أخضر لوصلت أسرع.» وضع يانغ المقبض على الطاولة. «لكنه كان سينكمش حين يجف.»</p>
@@ -64,7 +64,7 @@
 <p>قالت شين يان: «الثقة لا تزيد حين نخفي حد الاختبار.»</p>
 <p>بقي لين ينظر إلى المنجل. أراد أن يقول إن السعر سيبدو مرتفعاً إذا أرفقوا به كل تلك الشروط. ثم تذكر الحديد الذي فرزوه، والقطعة التي رفضها تشانغ، والساعات التي توقفت فيها الطاحونة عن العمل. قال: «نشرح ما جربناه، ثم نطلب سعراً يغطي العمل. لا نعد بعمر لا نملكه.»</p>
 <p>هزت شين يان رأسها، لا موافقة كاملة ولا اعتراضاً.</p>
-<div class="break">✦ ✦ ✦</div>
+<div class="break" role="separator"><span></span></div>
 <p>مر بهما رجل من طرف السوق، يحمل منجلاً قديماً مربوطاً بخيط عند المقبض. رفع عينيه إلى الأداة في يد تشانغ، ثم نظر إلى العودين المقطوعين.</p>
 <p>قال: «هل تبيعون مثلها؟»</p>
 <p>أجاب تشانغ: «هذه اجتازت اختباراً قصيراً. لم أقرر بعد أن أصنع غيرها.»</p>
@@ -121,6 +121,7 @@ function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).
 function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','048')}catch(e){}
+(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});s.forEach(function(x){io.observe(x)})})();
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
