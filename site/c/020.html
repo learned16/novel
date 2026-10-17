@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-lv="2" data-integ="4" data-season="winter" data-ch="20" data-total="50">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,29 +12,55 @@
 <title>الفصل العشرون: أول سداد — نظام السيادة الحضارية</title>
 <link rel="preload" href="/fonts/NotoNaskhArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))document.documentElement.classList.add('cine');if(localStorage.getItem('fx')==='off')document.documentElement.classList.add('nofx')}catch(e){}</script>
+<script>try{var R=document.documentElement,t=localStorage.getItem('theme');if(t)R.dataset.theme=t;var f=localStorage.getItem('fs');if(f)R.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))R.classList.add('cine');if(localStorage.getItem('fx')==='off')R.classList.add('nofx');var lv=+localStorage.getItem('lv');if(lv>+R.dataset.lv&&!R.dataset.ch)R.dataset.lv=lv}catch(e){}</script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <div id="hud" aria-hidden="true"></div>
-<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button>
+<div id="hudc" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="integ"></span></div>
+<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button><button type="button" class="here" id="here" hidden aria-label="مكان المشهد على الخريطة"><span class="pin"></span><span class="nmx"></span></button>
+<div class="sheet map-sheet" id="mapsheet" hidden role="dialog" aria-label="خريطة القرية"><div class="sheet-in"><div class="sheet-h"><b>القرية</b><span class="path"></span><button type="button" class="x" data-close aria-label="إغلاق">✕</button></div><svg class="map" viewBox="0 0 560 500" role="img" aria-label="خريطة القرية">
+<defs><filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter></defs>
+<g class="ink" filter="url(#ink)">
+<path class="river" d="M40 0 C70 90 160 120 150 200 C140 260 70 300 110 360 C150 420 120 470 140 500"/>
+<path class="river thin" d="M110 330 C180 340 230 360 300 360"/>
+<path class="road" d="M560 230 L400 230 C340 235 300 245 280 250 C250 260 230 230 220 210 L143 180 L60 175"/>
+<path class="road" d="M280 250 C300 290 320 300 330 300 M300 300 C305 350 300 400 300 440"/>
+<path class="road" d="M400 230 C430 200 450 170 470 150"/>
+<path class="hill" d="M410 165 Q470 90 540 165 M430 150 Q470 115 515 150"/>
+<path class="hill" d="M0 470 Q60 410 120 470 M440 40 Q480 0 530 40"/>
+<path class="field" d="M380 400 h90 v50 h-90z M385 410 h80 M385 420 h80 M385 430 h80 M385 440 h80"/>
+<path class="bridge" d="M128 170 l30 2 M128 186 l30 2"/>
+</g><g class="mp" data-pl="inn" transform="translate(330 295)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">نزل الصفصافة</text></g><g class="mp" data-pl="store" transform="translate(400 335)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">المخزن</text></g><g class="mp" data-pl="square" transform="translate(275 248)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الساحة</text></g><g class="mp" data-pl="market" transform="translate(225 185)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">السوق</text></g><g class="mp" data-pl="well" transform="translate(225 300)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">البئر</text></g><g class="mp" data-pl="forge" transform="translate(300 440)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">ورشة تشانغ</text></g><g class="mp" data-pl="mill" transform="translate(95 340)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الطاحونة</text></g><g class="mp" data-pl="bridge" transform="translate(118 178)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الجسر الصغير</text></g><g class="mp" data-pl="liu" transform="translate(480 150)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">بيت ليو</text></g><g class="mp" data-pl="gate" transform="translate(425 232)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">بوابة القرية</text></g><g class="mp" data-pl="fields" transform="translate(425 420)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الحقول</text></g></svg><p class="pl-d"></p></div></div>
+<script type="application/json" id="people">[{"id":"lin","name":"لين","role":"المهندس","desc":"مهندس انتقل مع زوجته إلى قرية في عالم مجهول، ومعه نظام لا يعرف أكثر مما تسمح به بياناته. مباشر، ويفكر بصوت مسموع بالأرقام والأسباب، وساخر في سره أحياناً.","color":"#2f6db3"},{"id":"shen","name":"شين يان","role":"زوجة لين","desc":"حامل، قصيرة الجمل وحادة، تسأل أكثر مما تجيب. تقول «أثبت» ولا تقول «أصدقك». الدفاتر والبنود سلاحها.","color":"#b0461f"},{"id":"hu","name":"هو سانيانغ","role":"صاحبة نزل الصفصافة","desc":"عملية، تتكلم بالأثمان والديون. لا تشكر، بل تضع طعاماً أمامك. النزل هو كل ما تملك.","color":"#7a5a12"},{"id":"xiaodu","name":"شياو دو","role":"صبي النزل","desc":"فضولي وثرثار، يقلد الناس ويضحك ثم يعتذر.","color":"#2e8a5b"},{"id":"wu","name":"الكاتب وو","role":"كاتب السجلات","desc":"مهذب أكثر من اللازم، ويسأل الأسئلة الصحيحة بنبرة عابرة.","color":"#6a3fa0"},{"id":"yang","name":"العجوز يانغ","role":"نجار عجوز","desc":"عجوز يعرف الخشب والدواليب، يقول «لا» من مكانه قبل أن يقوم.","color":"#4f6b2a"}]</script>
+<script type="application/json" id="places">[{"id":"inn","name":"نزل الصفصافة","desc":"نزل هو سانيانغ على طريق القوافل. هنا الموقد الأول."},{"id":"store","name":"المخزن","desc":"غرفة لين وشين يان خلف النزل."},{"id":"square","name":"الساحة","desc":"قلب القرية، حيث يجتمع الناس."},{"id":"market","name":"السوق","desc":"يوم السوق يجمع الباعة والقوافل."},{"id":"well","name":"البئر","desc":"بئر القرية، ومجلس أخبارها."},{"id":"forge","name":"ورشة تشانغ","desc":"ورشة الحداد عند الطرف الجنوبي للقرية."},{"id":"mill","name":"الطاحونة","desc":"الطاحونة المهجورة عند منعطف النهر، أعادها لين إلى الدوران."},{"id":"bridge","name":"الجسر الصغير","desc":"جسر خشبي صغير على النهر."},{"id":"liu","name":"بيت ليو","desc":"بيت عائلة ليو على التل الشرقي."},{"id":"gate","name":"بوابة القرية","desc":"حيث يدخل الغرباء ويخرجون."},{"id":"fields","name":"الحقول","desc":"حقول القرية إلى الجنوب الشرقي."}]</script>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
-    <button onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button>
-    <button onclick="fsz(1)" aria-label="تكبير الخط">أ+</button>
-    <button class="fxb" onclick="fxToggle()" aria-label="جو المشهد" aria-pressed="true">جو</button><button onclick="cine(1)" aria-label="وضع القراءة السينمائي">سينما</button>
-    <button onclick="theme()" aria-label="الوضع الليلي">ليلي</button>
+    <button type="button" id="listen" class="listen" hidden aria-label="استمع إلى الفصل">▶ استمع</button>
+    <button type="button" id="menu-b" aria-label="القائمة" aria-expanded="false" aria-controls="menu">☰</button>
   </div>
 </header>
+<div class="sheet" id="menu" hidden role="dialog" aria-label="القائمة"><div class="sheet-in">
+  <div class="row"><span>حجم الخط</span><span class="grp"><button type="button" onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button><button type="button" onclick="fsz(1)" aria-label="تكبير الخط">أ+</button></span></div>
+  <div class="row"><span>الوضع الليلي</span><button type="button" class="sw" data-sw="dark" onclick="theme()" aria-pressed="false"><i></i></button></div>
+  <div class="row fx-row"><span>جو المشهد <small>ثلج، شرر، مطر، ليل…</small></span><button type="button" class="sw" data-sw="fx" aria-pressed="true"><i></i></button></div>
+  <div class="row fx-row"><span>الصوت المحيط <small>يُولَّد في الجهاز بلا ملفات</small></span><button type="button" class="sw" data-sw="snd" aria-pressed="false"><i></i></button></div>
+  <div class="row vib-row"><span>الاهتزاز <small>عند الترقية والإنجاز</small></span><button type="button" class="sw" data-sw="vib" aria-pressed="true"><i></i></button></div>
+  <div class="row"><span>وضع السينما</span><button type="button" onclick="cine(1)">ادخل</button></div>
+  <div class="row"><span>الخريطة</span><button type="button" id="open-map">افتح</button></div>
+  <nav class="links"><a href="/people">الشخصيات</a><a href="/map">الخريطة</a><a href="/stats">لوحة الحضارة</a><a href="/host">سجل المضيف</a></nav>
+</div></div>
+<div class="sheet card-sheet" id="card" hidden role="dialog"><div class="sheet-in"></div></div>
 <main>
-<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الأولى</div><div class="ch-num"><span>الفصل</span><b>20</b></div><h1>أول سداد</h1></header>
-<div class="scene" data-fx="fire" aria-hidden="true"></div>
-<p>وضعت هو سانيانغ كتابها على الطاولة في صباح اليوم السادس والستين، وفتحته عند صفحة لم يرها لين من قبل، وقالت: «اجلسا. سنحسب.»</p>
-<p>دفّأ الموقدان المطبخ، وملأت رائحة العصيدة والبصل المقلي المكان. قشّر شياو دو الثوم عند الباب مصغياً إلى حديثهم، فيما جلست هو سانيانغ على كرسيها وقدماها فوق حجر دافئ. بقي كوب الشاي أمامها من دون أن تمسه، وتنقلت نظرتها بين وجهي الزوجين.</p>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الأولى</div><div class="ch-num"><span>الفصل</span><b>20</b></div><h1>أول سداد</h1><div class="when"><span class="se se-winter">الشتاء</span><span>اليوم 66</span></div></header>
+<aside class="recap" id="recap" hidden><div class="recap-h"><b>سابقاً</b><button type="button" class="x" aria-label="إغلاق">✕</button></div><p>فتح اللوحة البيضاء لأنه لم يستطع منع نفسه، وأدخل الأرقام. أربعة أكياس ونصف في اليوم، وجزء من عشرين أجراً للطحن. يخرج من الأجر أولاً جزء من أربعين لتيان وزاو، ثم يتقاسمان الباقي مع هو سانيانغ وتشانغ بحسب الاتفاق. لم يكن عنده جواب، وكان يعرف أن السؤال سيتكرر.</p></aside>
+<div class="scene" data-fx="fire" data-pl="market" aria-hidden="true"></div>
+<p>وضعت <span class="nm" data-p="hu" tabindex="0" role="button">هو سانيانغ</span> كتابها على الطاولة في صباح اليوم السادس والستين، وفتحته عند صفحة لم يرها <span class="nm" data-p="lin" tabindex="0" role="button">لين</span> من قبل، وقالت: «اجلسا. سنحسب.»</p>
+<p>دفّأ الموقدان <span class="nm" data-pl="inn" tabindex="0" role="button">المطبخ</span>، وملأت رائحة العصيدة والبصل المقلي المكان. قشّر <span class="nm" data-p="xiaodu" tabindex="0" role="button">شياو دو</span> الثوم عند الباب مصغياً إلى حديثهم، فيما جلست هو سانيانغ على كرسيها وقدماها فوق حجر دافئ. بقي كوب الشاي أمامها من دون أن تمسه، وتنقلت نظرتها بين وجهي الزوجين.</p>
 <p>قالت: «الخُمس.»</p>
-<p>أومأت شين يان. كانت قد أحصت الأيام في دفترها منذ بدأ بناء الموقد الثاني، وفصلت أيام تجفيفه عن أيام تشغيله، ولم تحتج إلى أن تُسأل.</p>
-<p>«أربعة وعشرون يوماً.» قالت هو سانيانغ. «من اليوم الثاني والأربعين إلى أمس. في الأربعة الأولى وفّر موقد المطبخ وحده، ثم عمل الموقدان عشرين يوماً. قارنت ما أحرقناه بما كنت أحرقه قبل الإصلاح، وراجعت أيام القافلة في كتاب السنة الماضية.» وضعت إصبعها على عمود. «ستون سلة موفرة. بسعر السوق الحالي، نحاسة للسلة. هذا ستون نحاسة. وخمسها اثنتا عشرة.»</p>
+<p>أومأت <span class="nm" data-p="shen" tabindex="0" role="button">شين يان</span>. كانت قد أحصت الأيام في دفترها منذ بدأ بناء الموقد الثاني، وفصلت أيام تجفيفه عن أيام تشغيله، ولم تحتج إلى أن تُسأل.</p>
+<p class="sp" data-sp="hu" style="--sp:#7a5a12"><span class="qm">«</span>أربعة وعشرون يوماً.<span class="qm">»</span> قالت هو سانيانغ. <span class="qm">«</span>من اليوم الثاني والأربعين إلى أمس. في الأربعة الأولى وفّر موقد المطبخ وحده، ثم عمل الموقدان عشرين يوماً. قارنت ما أحرقناه بما كنت أحرقه قبل الإصلاح، وراجعت أيام القافلة في كتاب السنة الماضية.<span class="qm">»</span> وضعت إصبعها على عمود. <span class="qm">«</span>ستون سلة موفرة. بسعر <span class="nm" data-pl="market" tabindex="0" role="button">السوق</span> الحالي، نحاسة للسلة. هذا ستون نحاسة. وخمسها اثنتا عشرة.<span class="qm">»</span></p>
 <p>«اثنتا عشرة.»</p>
 <p>«وهذا وحده.» رفعت إصبعاً ثانياً. «والدقيق.»</p>
 <p>نظر لين إلى شين يان. لم يكن يعرف شيئاً عن الدقيق.</p>
@@ -46,15 +72,15 @@
 <p>«أعرف. لهذا سألت.»</p>
 <p>ارتفعت زاوية فم هو سانيانغ ارتفاعاً لا يصل إلى ابتسامة. ثم قلبت صفحة وكتبت رقماً وشطبت آخر.</p>
 <p>«عشر نحاسات للدقيق. واثنتا عشرة للخُمس.»</p>
-<p>«اثنتان وعشرون.» قالت شين يان. «من مئة وست وأربعين.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f"><span class="qm">«</span>اثنتان وعشرون.<span class="qm">»</span> قالت شين يان. <span class="qm">«</span>من مئة وست وأربعين.<span class="qm">»</span></p>
 <p>«مئة وأربع وعشرون.» أغلقت الكتاب. «هذا ما بقي.»</p>
-<p>قال شياو دو من عند الباب، بصوت مختنق بالأمل: «وأنا؟ أنا الذي حملت الحطب كله.»</p>
+<p class="sp" data-sp="xiaodu" style="--sp:#2e8a5b">قال شياو دو من عند الباب، بصوت مختنق بالأمل: <span class="qm">«</span>وأنا؟ أنا الذي حملت الحطب كله.<span class="qm">»</span></p>
 <p>«أنت تأكل ثلاث مرات في اليوم.»</p>
 <p>«الأكل ليس أجراً!»</p>
-<p>«هو أجر.» ردت هو سانيانغ دون أن ترفع عينيها. «وأنت تأخذه منذ ولدت.» ثم، بعد لحظة، أخرجت من جيبها حبة تمر مجففة وقذفتها نحوه دون أن تنظر، فالتقطها في الهواء. «والآن اخرج وقشر الثوم قبل أن أضيف ثمن الحبة.»</p>
+<p class="sp" data-sp="hu" style="--sp:#7a5a12"><span class="qm">«</span>هو أجر.<span class="qm">»</span> ردت هو سانيانغ دون أن ترفع عينيها. <span class="qm">«</span>وأنت تأخذه منذ ولدت.<span class="qm">»</span> ثم، بعد لحظة، أخرجت من جيبها حبة تمر مجففة وقذفتها نحوه دون أن تنظر، فالتقطها في الهواء. <span class="qm">«</span>والآن اخرج وقشر الثوم قبل أن أضيف ثمن الحبة.<span class="qm">»</span></p>
 <p>ضحك الصبي ضحكة قصيرة وعاد إلى مكانه، وقضم التمرة على مهل ليدوم طعمها.</p>
 <div class="break" role="separator"><span></span></div>
-<div class="scene" data-fx="" aria-hidden="true"></div>
+<div class="scene" data-fx="" data-pl="" aria-hidden="true"></div>
 <p>وقف لين في الممر الضيق خارج المطبخ بعد أن انصرفت الجلسة، يحدق في الجدار، وفي رأسه الرقم: مئة وأربع وعشرون.</p>
 <p>أعاد الحساب في رأسه: مئة وست وأربعون، ناقص اثنتين وعشرين. بقي دين كبير، لكنه نقص من عملهما. مد أصابعه المتشققة ثم أغلقها؛ كانت تؤلمه، وصار لهذا الألم مبلغ يعرفه.</p>
 <p>ووقفت شين يان بجانبه، ولم تتكلم. نظر إليها، فوجدها تحدق في الحائط نفسه.</p>
@@ -65,8 +91,8 @@
 <p>«أعدته ثلاث مرات.» لم تلتفت. «خشيت أن أكون قرأته خطأ.»</p>
 <p>ضحك بصوت منخفض. ثم أخذ يدها وأدخلها في كمه، وبقيا هكذا لحظة، ثم أفسحا الطريق لهو سانيانغ وهي تمر بسلة الحطب.</p>
 <div class="break" role="separator"><span></span></div>
-<div class="scene" data-fx="" aria-hidden="true"></div>
-<p>قبل الظهر، جاء شياو دو يركض إلى الطاحونة، يتنفس بخاراً أبيض، وقال بصوت مرتفع كأنه يحمل خبراً عن الحرب: «الكاتب وو في النزل!»</p>
+<div class="scene" data-fx="" data-pl="inn" aria-hidden="true"></div>
+<p>قبل الظهر، جاء شياو دو يركض إلى <span class="nm" data-pl="mill" tabindex="0" role="button">الطاحونة</span>، يتنفس بخاراً أبيض، وقال بصوت مرتفع كأنه يحمل خبراً عن الحرب: «<span class="nm" data-p="wu" tabindex="0" role="button">الكاتب وو</span> في النزل!»</p>
 <p>توقف لين عن إصلاح مزلاج الباب. «متى؟»</p>
 <p>«الآن. جاء على بغل، وحارساه ينتظران في الخارج. طلب شاياً. قالت العمة إن ليس عندها إلا الشاي المغلي، وقال هو: لا بأس، أحب الشاي المغلي.»</p>
 <p>«ماذا يريد؟»</p>
@@ -76,8 +102,8 @@
 <p>«سيدي الكاتب.»</p>
 <p>«كنت أقول للسيدة هو إنني حزنت لما سمعت عن العجوز لي.» ارتشف الشاي. «امرأة كانت تبيع المخلل منذ أيام الحاكم السابق. أظن أنني اشتريت منها مرة. لم تدفع قط ضريبة السوق، لكن أحداً لم يطالبها، فهي أفقر من أن تُطالَب.»</p>
 <p class="shot">لم يقل لين شيئاً.</p>
-<p>«وسمعت أنها ماتت من البرد.» أضاف وو بنبرة عابرة، كأنه يذكر حالة الطقس. «في بيت بلا حطب. وقد دُفنت بحطب النزل.» رفع عينيه الناعستين. «كم حطباً تحتاج جنازة؟ سؤال أحمق، أعرف.»</p>
-<p>«حطب ثلاثة بيوت.» قالت شين يان من الموقد، دون أن تلتفت.</p>
+<p class="sp" data-sp="wu" style="--sp:#6a3fa0"><span class="qm">«</span>وسمعت أنها ماتت من البرد.<span class="qm">»</span> أضاف وو بنبرة عابرة، كأنه يذكر حالة الطقس. <span class="qm">«</span>في بيت بلا حطب. وقد دُفنت بحطب النزل.<span class="qm">»</span> رفع عينيه الناعستين. <span class="qm">«</span>كم حطباً تحتاج جنازة؟ سؤال أحمق، أعرف.<span class="qm">»</span></p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f"><span class="qm">«</span>حطب ثلاثة بيوت.<span class="qm">»</span> قالت شين يان من الموقد، دون أن تلتفت.</p>
 <p>«ثلاثة بيوت.» كرر. «في شتاء كهذا، ثلاثة بيوت.» ثم هز رأسه ببطء. «وبالمناسبة، سيدة شين، يقولون إنك تقرئين الآن.»</p>
 <p>توقفت الملعقة في القدر.</p>
 <p>«أقرأ قليلاً.»</p>
@@ -85,11 +111,11 @@
 <p>«أكتب أرقامي.»</p>
 <p>«أرقامك.» ابتسم. «إذن لك أرقام. يسرني أن أرى من يهتم بالحساب.»</p>
 <p>ثم وضع الكوب، ونهض، وانحنى انحناءة صغيرة للجميع، وقال وهو ينظر إلى هو سانيانغ: «أعتذر عن الإزعاج. كنت أمر.» وخرج.</p>
-<p>حين اختفى صوت الحوافر، قالت هو سانيانغ، وهي تحدق في الكوب الفارغ: «لا يمر.»</p>
+<p class="sp" data-sp="hu" style="--sp:#7a5a12">حين اختفى صوت الحوافر، قالت هو سانيانغ، وهي تحدق في الكوب الفارغ: <span class="qm">«</span>لا يمر.<span class="qm">»</span></p>
 <div class="break" role="separator"><span></span></div>
-<div class="scene" data-fx="night" aria-hidden="true"></div>
+<div class="scene" data-fx="night" data-pl="" aria-hidden="true"></div>
 <p class="shot">وجدته بعد الظهر في ورشة الترس.</p>
-<p>كان العجوز يانغ يصقل وتداً جديداً احتياطاً، ولاو دونغ يقطع الخشب، وزاو يرتاح على كومة من القش وعليه غطاء قديم. ودخلت شين يان بخطوات ثقيلة، ورائحة الشاي على أنفاسها، وجلست على الجذع بجانب لين.</p>
+<p>كان <span class="nm" data-p="yang" tabindex="0" role="button">العجوز يانغ</span> يصقل وتداً جديداً احتياطاً، ولاو دونغ يقطع الخشب، وزاو يرتاح على كومة من القش وعليه غطاء قديم. ودخلت شين يان بخطوات ثقيلة، ورائحة الشاي على أنفاسها، وجلست على الجذع بجانب لين.</p>
 <p>«سأعرض عليها شيئاً.»</p>
 <p>«من؟»</p>
 <p>«هو سانيانغ.»</p>
@@ -102,12 +128,12 @@
 <p>ثم أضافت: «سأعرض عليها أن أكتب لها الحساب اليومي. كل شيء: الحطب والدقيق والزبائن والمشتريات. مجاناً.»</p>
 <p>«مجاناً؟»</p>
 <p>«مقابل أن أتعلم.»</p>
-<p>قال لين: «سترفض؟»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>سترفض؟<span class="qm">»</span></p>
 <p>«ترفض أي شيء مجاني.» قالت. «لذلك سأبين لها ما آخذه في المقابل.»</p>
 <div class="break" role="separator"><span></span></div>
-<div class="scene" data-fx="" aria-hidden="true"></div>
+<div class="scene" data-fx="" data-pl="" aria-hidden="true"></div>
 <p>جلسا مرة أخرى في المطبخ عند المساء. كانت هو سانيانغ قد أكلت لتوها، ومسحت فمها بمريلتها، وجلست أمام الموقد.</p>
-<p>قالت شين يان من الباب بصوت مهذب: «هو سانيانغ.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان من الباب بصوت مهذب: <span class="qm">«</span>هو سانيانغ.<span class="qm">»</span></p>
 <p>«ماذا؟»</p>
 <p>«أريد أن أعرض عليك شيئاً.»</p>
 <p>«قولي.»</p>
@@ -142,9 +168,9 @@
 <p>مسحت شين يان الموضع بطرف خرقة، وانتظرت حتى جف. كتبت الكلمة من جديد، ثم أشارت إلى الرقم.</p>
 <p>«والعدد صحيح؟»</p>
 <p>عدت هو سانيانغ على أصابعها قبل أن تجيب. «صحيح. تابعي.»</p>
-<p>من عند الباب، رأى لين ظهر شين يان ينحني على الكتاب. ترك لها المقعد الآخر لتسند قدميها، ثم خرج إلى المخزن. بقيت تسمع خطواته حتى أغلق الباب، وعادت إلى السطر التالي.</p>
+<p>من عند الباب، رأى لين ظهر شين يان ينحني على الكتاب. ترك لها المقعد الآخر لتسند قدميها، ثم خرج إلى <span class="nm" data-pl="store" tabindex="0" role="button">المخزن</span>. بقيت تسمع خطواته حتى أغلق الباب، وعادت إلى السطر التالي.</p>
 <div class="break" role="separator"><span></span></div>
-<div class="scene" data-fx="night" aria-hidden="true"></div>
+<div class="scene" data-fx="night" data-pl="" aria-hidden="true"></div>
 <p>بقي لين وحده بعد ذلك في المخزن، ينتظر.</p>
 <p>جاءت شين يان في آخر الليل، حاملة الشمعة، وقد انتفخت قدماها قليلاً من الجلوس، ووجهها متعب ومضيء في آن. جلست على القش وخلعت حذاءها. قالت:</p>
 <p>«كتبت اليوم أربعة عشر سطراً.»</p>
@@ -157,7 +183,7 @@
 <p>«ثم تركتك تكملين.»</p>
 <p>«أعادت الصفحة أمامي. لم تتركني أكتب فيها حتى قرأت لها الرقم مرتين.» نظرت إلى الشمعة. «تخشى على هذا الكتاب أكثر مما تخشى على أثاث النزل كله.»</p>
 <div class="break" role="separator"><span></span></div>
-<div class="scene" data-fx="" aria-hidden="true"></div>
+<div class="scene" data-fx="" data-pl="inn" aria-hidden="true"></div>
 <p>وقبل أن تنام تلك الليلة، جلست شين يان على القش وفي حضنها ورقة من دفتر لين، وأمامها شياو دو متربعاً يعض طرف لسانه.</p>
 <p>كان الصبي قد عرض عليها أن يعلمها، حين رآها تتعثر، وقال بفخر لا يتناسب مع عمره: «أعرف مئة حرف. ليس مئة تماماً. ستة وتسعون.»</p>
 <p>«ممتاز. اقرأ هذه.»</p>
@@ -185,7 +211,7 @@
 <p>«جيد.» وضعت رأسها على صدره. «أنا أيضاً. لكن لا تعطِه أكثر مما سأل عنه.»</p>
 <p>وبقيا هكذا، حتى هدأ تنفسها، وبقي لين مستيقظاً يصغي إلى خطوات هو سانيانغ في المطبخ.</p>
 <div class="break" role="separator"><span></span></div>
-<div class="scene" data-fx="night" aria-hidden="true"></div>
+<div class="scene" data-fx="night" data-pl="store" aria-hidden="true"></div>
 <p>كان الليل متأخراً حين خرجت شين يان لتقضي حاجتها.</p>
 <p>عادت بعد قليل بخطوات صامتة، وبقي لين مستيقظاً في الظلام يستمع. لم تدخل المخزن فوراً. توقفت عند الباب الداخلي للنزل، الذي يؤدي من المطبخ إلى الغرفة الصغيرة الملاصقة لحجرة هو سانيانغ. كان الباب مفتوحاً قليلاً، ومصباح زيت صغير يضيء من الداخل خيطاً من ضوء أصفر.</p>
 <p class="shot">نظرت شين يان من الشق.</p>
@@ -198,69 +224,10 @@
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
-function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}document.dispatchEvent(new Event('themechange'))}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','020')}catch(e){}resume('020');
-
-function cine(on){var r=document.documentElement;r.classList.toggle('cine',!!on);try{on?localStorage.setItem('cine','1'):localStorage.removeItem('cine')}catch(e){}if(on)scrollBy(0,1)}
-addEventListener('keydown',function(e){if(e.key==='Escape')cine(0)});
-(function(){
-var R=document.documentElement,cv=document.getElementById('fx'),mk=[].slice.call(document.querySelectorAll('.scene')),still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var fb=document.querySelector('.fxb');
-if(still){R.classList.add('still');if(fb)fb.hidden=true}
-function label(){if(fb)fb.setAttribute('aria-pressed',R.classList.contains('nofx')?'false':'true')}
-window.fxToggle=function(){var off=!R.classList.contains('nofx');R.classList.toggle('nofx',off);try{off?localStorage.setItem('fx','off'):localStorage.removeItem('fx')}catch(e){}label();pick()};
-label();
-if('IntersectionObserver' in window&&!still){R.classList.add('rv');var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');so.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('.shot').forEach(function(x){so.observe(x)})}
-if(!cv||still||!cv.getContext)return;
-var g=cv.getContext('2d'),W=0,H=0,D=Math.min(devicePixelRatio||1,1.5),L={snow:0,fire:0,rain:0,water:0},T={},ps=[],rp=[],run=0,dark=false,fr=0,vg=document.getElementById('vig'),pl=document.getElementById('pulse'),cur='';
-function size(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0)}
-size();addEventListener('resize',size);
-function rnd(a,b){return a+Math.random()*(b-a)}
-function spawn(k){
- if(k==='snow')return{k:k,x:rnd(0,W),y:-8,r:rnd(1,2.8),vy:rnd(.4,1.1),ph:rnd(0,6.3),a:rnd(.35,.8)};
- if(k==='fire')return{k:k,x:rnd(0,W),y:H+6,r:rnd(1,2.6),vy:-rnd(.5,1.5),ph:rnd(0,6.3),a:rnd(.4,.9),life:rnd(.5,1)};
- return{k:k,x:rnd(0,W+60),y:-20,vy:rnd(9,14),l:rnd(10,18),a:rnd(.15,.35)}
-}
-var cap={snow:welcome(70),fire:welcome(34),rain:welcome(55)};
-function welcome(n){return Math.round(n*Math.min(1,W/700+.45))}
-function tick(){
- run=0;fr++;
- if(fr%45===1){var bg=getComputedStyle(document.body).backgroundColor.match(/\d+/g)||[255,255,255];dark=(+bg[0]+ +bg[1]+ +bg[2])<300}
- g.clearRect(0,0,W,H);
- for(var k in L){var t=T[k]?1:0;L[k]+=(t-L[k])*.03;if(Math.abs(t-L[k])<.01)L[k]=t;if(L[k]>0)run=1}
- ['snow','fire','rain'].forEach(function(k){var n=Math.round((cap[k]||0)*L[k]),c=0;for(var i=0;i<ps.length;i++)if(ps[i].k===k)c++;if(c<n&&Math.random()<.5)ps.push(spawn(k))});
- for(var i=ps.length-1;i>=0;i--){
-  var p=ps[i],lv=L[p.k];
-  if(p.k==='snow'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.02)*.5;g.fillStyle=dark?'rgba(235,242,255,'+p.a*lv*.7+')':'rgba(110,140,175,'+p.a*lv*.55+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.y>H+6||lv<.02)ps.splice(i,1)}
-  else if(p.k==='fire'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.07)*.6;p.life-=.004;var fl=.6+.4*Math.sin(fr*.3+p.ph);g.fillStyle=dark?'rgba(255,'+(150+(p.life*80|0))+',60,'+p.a*lv*fl*p.life+')':'rgba(220,'+(70+(p.life*50|0))+',20,'+p.a*lv*fl*p.life*1.1+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.life<=0||p.y<-8||lv<.02)ps.splice(i,1)}
-  else{p.y+=p.vy;p.x-=p.vy*.22;g.strokeStyle=dark?'rgba(170,200,235,'+p.a*lv+')':'rgba(70,100,140,'+p.a*lv*.8+')';g.lineWidth=1;g.beginPath();g.moveTo(p.x,p.y);g.lineTo(p.x+p.l*.22,p.y-p.l);g.stroke();if(p.y>H+20||lv<.02)ps.splice(i,1)}
- }
- if(L.water>0){if(rp.length<5&&Math.random()<.03*L.water)rp.push({x:rnd(.1,.9)*W,y:rnd(.15,.9)*H,r:2,a:.4});
-  for(var j=rp.length-1;j>=0;j--){var q=rp[j];q.r+=.55;q.a-=.003;if(q.a<=0){rp.splice(j,1);continue}g.strokeStyle=dark?'rgba(150,190,230,'+q.a*L.water*.7+')':'rgba(60,100,150,'+q.a*L.water*.55+')';g.lineWidth=1;g.beginPath();g.ellipse(q.x,q.y,q.r*1.9,q.r*.6,0,0,6.3);g.stroke()}}
- if(ps.length||rp.length||run)requestAnimationFrame(tick);else go=0
-}
-var go=0;
-function start(){if(!go&&!document.hidden){go=1;requestAnimationFrame(tick)}}
-document.addEventListener('visibilitychange',function(){if(!document.hidden&&(run||ps.length))start()});
-function apply(fx){
- var off=R.classList.contains('nofx'),s=fx&&!off?fx.split(' '):[];
- T={snow:s.indexOf('snow')>-1,fire:s.indexOf('fire')>-1,rain:s.indexOf('rain')>-1,water:s.indexOf('water')>-1};
- if(vg)vg.classList.toggle('on',s.indexOf('night')>-1);
- if(s.indexOf('blood')>-1&&pl&&cur!==fx){pl.classList.remove('on');void pl.offsetWidth;pl.classList.add('on')}
- cur=fx;start()
-}
-function pick(){
- var a=null,y=innerHeight*.5;
- for(var i=0;i<mk.length;i++){if(mk[i].getBoundingClientRect().top<y)a=mk[i];else break}
- apply(a?a.dataset.fx:'')
-}
-var pt;addEventListener('scroll',function(){if(pt)return;pt=setTimeout(function(){pt=0;pick()},120)},{passive:true});
-pick();
-})();
-
-(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var hud=document.getElementById('hud'),ht;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var x=e.target;x.classList.add('in');io.unobserve(x);if(hud&&!x.classList.contains('sys--echo')){hud.className=x.classList.contains('sys--b')?'b':'';void hud.offsetWidth;hud.classList.add(x.classList.contains('sys--up')?'up':'on');clearTimeout(ht);ht=setTimeout(function(){hud.className=''},1400)}}})},{rootMargin:'0px 0px -15% 0px'});s.forEach(function(x){io.observe(x)})})();
-function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
+function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);document.dispatchEvent(new Event('chapterdone'));return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
@@ -273,5 +240,6 @@ if(installButton)installButton.addEventListener('click',async function(){
 });
 window.addEventListener('appinstalled',function(){var help=document.getElementById('install-help');if(help)help.hidden=true;if(installButton)installButton.hidden=true;});
 </script>
+<script src="/reader.js"></script>
 </body>
 </html>

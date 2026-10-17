@@ -11,9 +11,20 @@ const TITLE = 'نظام السيادة الحضارية';
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const inline = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 
+// بيانات العالم: الشخصيات والأماكن (data/). تُستعمل للبطاقات والخريطة والشبكة وألوان المتحدثين.
+const PEOPLE = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'people.json'), 'utf8'));
+const PLACES = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'places.json'), 'utf8'));
+const AR = 'ء-ي';
+const alts = (list) => [...list].sort((a, b) => b.length - a.length).join('|');
+const nameRe = (list, flags = 'g') => new RegExp(`(?<![${AR}])(?:${alts(list)})(?![${AR}])`, flags);
+PEOPLE.forEach((p) => { p.re = nameRe(p.match); p.one = nameRe(p.match, ''); });
+PLACES.forEach((p) => { p.re = nameRe(p.match); p.one = nameRe(p.match, ''); });
+
 // نافذة النظام: تتطور مع «التكامل». المستوى يُحسب من آخر نسبة تكامل ظهرت في الرواية حتى تلك اللحظة.
 const level = (v) => v < 4 ? 1 : v < 6 ? 2 : v < 10 ? 3 : v < 16 ? 4 : 5;
 const METER = /^(.{1,40}?):\s*([0-9]{1,3}(?:\.[0-9]+)?)%\s*(.*)$/;
+// مفتاح «سجل النافذة»: العنوان قبل « — » (فكل «تحليل المواد — المستوى N» سجل واحد).
+const sysKey = (head) => head.split(' — ')[0].trim();
 function sysBox(lines, state) {
   let head = '';
   if (/^\*\*\[.+\]\*\*$/.test(lines[0].trim())) head = lines.shift().trim().replace(/^\*\*\[(.+)\]\*\*$/, '$1');
@@ -21,6 +32,7 @@ function sysBox(lines, state) {
   const echo = !head && lines.length === 1;
   const lv = level(state.integ);
   let up = false;
+  const meters = [];
   const rows = lines.map((l, i) => {
     const plain = l.replace(/\*\*/g, '').trim();
     const g = !half && !/طاقة/.test(plain) && plain.match(/التكامل[^0-9%]*([0-9]{1,3})%/);
@@ -28,19 +40,27 @@ function sysBox(lines, state) {
     const m = plain.match(METER);
     if (m && /الثقة|التكامل|الاحتمال|تطابق/.test(m[1])) {
       const v = Math.min(100, parseFloat(m[2]));
+      meters.push([m[1].trim(), v]);
       return `<div class="m" style="--i:${i};--v:${v}"><span class="k">${esc(m[1])}</span><span class="bar" aria-hidden="true"><i></i></span><b>${m[2]}%</b>${m[3] ? `<span class="x">${esc(m[3])}</span>` : ''}</div>`;
     }
     return `<div style="--i:${i}">${inline(l)}</div>`;
   });
+  let k = '', idx = 0;
+  if (head) {
+    k = sysKey(head);
+    (state.log[k] = state.log[k] || []).push({ c: state.ch, h: head, r: lines.map((l) => l.replace(/\*\*/g, '').trim()).slice(0, 8) });
+    idx = state.log[k].length;
+  }
+  state.meta.sys.push({ k, h: head, b: half ? 1 : 0, m: meters });
   const cls = ['sys', half && 'sys--b', echo && 'sys--echo', /مكتمل/.test(head) && 'sys--ok', up && 'sys--up'].filter(Boolean).join(' ');
   const tag = half ? 'النصف الثاني' : state.integ ? `تكامل ${state.integ}%` : '';
   const h = head ? `<div class="sys-h"><span class="t">${inline(head)}</span>${tag ? `<span class="lv">${up ? 'ترقية · ' : ''}${tag}</span>` : ''}</div>` : '';
-  return `<div class="${cls}" data-lv="${lv}">${h}<div class="sys-b">${rows.join('')}</div></div>`;
+  const data = k ? ` data-k="${esc(k)}" data-i="${idx}"` : '';
+  return `<div class="${cls}" data-lv="${lv}"${up ? ` data-nl="${level(state.integ)}" data-ni="${state.integ}"` : ''}${data}>${h}<div class="sys-b">${rows.join('')}</div></div>`;
 }
 
 // جو المشهد: كلمات تدل على الطقس والمكان، تُحصى في كل مشهد (بين فاصلين) فيُوسم بما يغلب عليه.
 // الأسماء تقبل أل التعريف وحروف الجر والضمائر المتصلة؛ ولا يُستعمل \b لأنه لا يعمل مع العربية.
-const AR = '\u0621-\u064A';
 const word = (list, pre = '(?:[وفبلك]?(?:ال)?|لل)') => new RegExp(`(?<![${AR}])${pre}(?:${list})(?:ه|ها|هم|هما|ك|كم|ي|نا|ان|ين|ات|ة)?(?![${AR}])`, 'g');
 const MOOD = [
   ['snow', word('ثلج|ثلوج|جليد|صقيع|ندف'), 2],
@@ -58,18 +78,68 @@ function mood(text) {
   if (hits.some(([k]) => k === 'blood')) list.push('blood');
   return list.slice(0, 3).join(' ');
 }
+// مكان المشهد: أكثر مكان ذُكر فيه (مرتين على الأقل).
+function place(text) {
+  let best = '', n = 1;
+  for (const p of PLACES) { const c = (text.match(p.re) || []).length; if (c > n) { best = p.id; n = c; } }
+  return best;
+}
+
+// اليوم والفصل من السنة: من عبارات «اليوم الثاني والستين» و«اليوم التاسع بعد المئة» في النص.
+const ORD = { 'الأول': 1, 'الحادي': 1, 'الثاني': 2, 'الثالث': 3, 'الرابع': 4, 'الخامس': 5, 'السادس': 6, 'السابع': 7, 'الثامن': 8, 'التاسع': 9, 'العاشر': 10 };
+const TENS = { 'العشرين': 20, 'الثلاثين': 30, 'الأربعين': 40, 'الخمسين': 50, 'الستين': 60, 'السبعين': 70, 'الثمانين': 80, 'التسعين': 90 };
+function days(text) {
+  const out = [];
+  const re = /اليوم\s+(الأول|الحادي|الثاني|الثالث|الرابع|الخامس|السادس|السابع|الثامن|التاسع|العاشر|العشرين|الثلاثين|الأربعين|الخمسين|الستين|السبعين|الثمانين|التسعين|المئة)(?:\s+(عشر)|\s+و(العشرين|الثلاثين|الأربعين|الخمسين|الستين|السبعين|الثمانين|التسعين))?(\s+بعد\s+المئة)?/g;
+  let m;
+  while ((m = re.exec(text))) {
+    let d = m[1] === 'المئة' ? 100 : (ORD[m[1]] || TENS[m[1]]);
+    if (m[2]) d += 10; if (m[3]) d += TENS[m[3]]; if (m[4]) d += 100;
+    out.push(d);
+  }
+  return out;
+}
+// اليوم 1 = الوصول في أواخر الخريف؛ الشتاء من اليوم 40 (تجمد النهر)، والربيع من 139 (تراجع الجليد). سنة من 360 يوماً.
+const SEASONS = [['autumn', 'الخريف'], ['winter', 'الشتاء'], ['spring', 'الربيع'], ['summer', 'الصيف']];
+const season = (d) => { const y = (d - 1) % 360; return y < 39 ? 0 : y < 138 ? 1 : y < 229 ? 2 : y < 320 ? 3 : 0; };
 
 // لقطة سينمائية: فقرة سردية قصيرة جداً منفردة (ليست حواراً، وليس بجوارها فقرات قصيرة).
 const words = (b) => b.split(/\s+/).length;
 const isPara = (b) => b && !/^(#|>|\*\*\*)/.test(b);
 const isShort = (b) => isPara(b) && words(b) <= 8;
 
-function render(md, state = { integ: 0 }) {
+// المتحدث: «قال لين» أو «قالت هو سانيانغ»… في فقرة فيها «».
+const SAY = '(?:قال|قالت|سأل|سألت|أجاب|أجابت|ردّ|رد|ردت|ردّت|صاح|صاحت|همس|همست|تمتم|تمتمت|أضاف|أضافت|هتف|هتفت|صرخ|صرخت)';
+const SPEAK = PEOPLE.map((p) => [p, new RegExp(`${SAY}\\s+(?:${alts(p.match)})(?![${AR}])|^(?:${alts(p.match)}):`)]);
+const speaker = (b) => /«/.test(b) ? (SPEAK.find(([, re]) => re.test(b)) || [])[0] : null;
+
+function render(md, state) {
   const blocks = md.replace(/\r/g, '').split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
   let title = '';
   const html = [];
+  const meta = state.meta = { sys: [], scenes: [], words: 0, days: [] };
+  const named = new Set();
   let scene = -1, sceneText = [], lastShot = -9;
-  const closeScene = () => { if (scene >= 0) html[scene] = `<div class="scene" data-fx="${mood(sceneText.join(' '))}" aria-hidden="true"></div>`; scene = -1; sceneText = []; };
+  const closeScene = () => {
+    if (scene >= 0) {
+      const t = sceneText.join(' ');
+      const fx = mood(t), pl = place(t), ppl = PEOPLE.filter((p) => p.one.test(t)).map((p) => p.id);
+      meta.scenes.push({ fx, pl, ppl });
+      html[scene] = `<div class="scene" data-fx="${fx}" data-pl="${pl}" aria-hidden="true"></div>`;
+    }
+    scene = -1; sceneText = [];
+  };
+  // أول ذكر لكل شخصية ومكان في الفصل يصير قابلاً للمس (بطاقة / موقع على الخريطة).
+  const tagNames = (h) => {
+    for (const [list, attr] of [[PEOPLE, 'data-p'], [PLACES, 'data-pl']]) {
+      for (const p of list) {
+        if (named.has(p.id)) continue;
+        let done = false;
+        h = h.replace(p.re, (s) => { if (done) return s; done = true; named.add(p.id); return `<span class="nm" ${attr}="${p.id}" tabindex="0" role="button">${s}</span>`; });
+      }
+    }
+    return h;
+  };
   blocks.forEach((b, i) => {
     if (b.startsWith('# ')) { title = b.slice(2).trim(); return; }
     if (b === '***') { closeScene(); html.push('<div class="break" role="separator"><span></span></div>'); return; }
@@ -79,77 +149,43 @@ function render(md, state = { integ: 0 }) {
       return;
     }
     sceneText.push(b);
+    meta.words += words(b);
+    meta.days.push(...days(b));
     const shot = words(b) <= 6 && !/[«»]/.test(b) && !b.includes('\n') && !isShort(blocks[i - 1]) && !isShort(blocks[i + 1]) && i - lastShot > 3;
     if (shot) lastShot = i;
-    html.push(`<p${shot ? ' class="shot"' : ''}>${inline(b).replace(/\n/g, '<br>')}</p>`);
+    const sp = speaker(b);
+    let h = tagNames(inline(b).replace(/\n/g, '<br>'));
+    if (sp) h = h.replace(/«/g, '<span class="qm">«</span>').replace(/»/g, '<span class="qm">»</span>');
+    const cls = shot ? ' class="shot"' : sp ? ` class="sp" data-sp="${sp.id}" style="--sp:${sp.color}"` : '';
+    html.push(`<p${cls}>${h}</p>`);
   });
   closeScene();
-  return { title, body: html.join('\n') };
+  return { title, body: html.join('\n'), meta };
 }
 
+// خريطة القرية بأسلوب الحبر. تُرسم مرة واحدة وتُضمَّن في الفصول وصفحة /map.
+function mapSvg() {
+  const pts = PLACES.map((p) => `<g class="mp" data-pl="${p.id}" transform="translate(${p.x} ${p.y})"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="${p.ly || -14}">${esc(p.name)}</text></g>`).join('');
+  return `<svg class="map" viewBox="0 0 560 500" role="img" aria-label="خريطة القرية">
+<defs><filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter></defs>
+<g class="ink" filter="url(#ink)">
+<path class="river" d="M40 0 C70 90 160 120 150 200 C140 260 70 300 110 360 C150 420 120 470 140 500"/>
+<path class="river thin" d="M110 330 C180 340 230 360 300 360"/>
+<path class="road" d="M560 230 L400 230 C340 235 300 245 280 250 C250 260 230 230 220 210 L143 180 L60 175"/>
+<path class="road" d="M280 250 C300 290 320 300 330 300 M300 300 C305 350 300 400 300 440"/>
+<path class="road" d="M400 230 C430 200 450 170 470 150"/>
+<path class="hill" d="M410 165 Q470 90 540 165 M430 150 Q470 115 515 150"/>
+<path class="hill" d="M0 470 Q60 410 120 470 M440 40 Q480 0 530 40"/>
+<path class="field" d="M380 400 h90 v50 h-90z M385 410 h80 M385 420 h80 M385 430 h80 M385 440 h80"/>
+<path class="bridge" d="M128 170 l30 2 M128 186 l30 2"/>
+</g>${pts}</svg>`;
+}
 
-// جو المشهد + اللقطات + وضع السينما (يعمل على كل فصل آلياً من وسوم render)
-const FX_JS = `
-function cine(on){var r=document.documentElement;r.classList.toggle('cine',!!on);try{on?localStorage.setItem('cine','1'):localStorage.removeItem('cine')}catch(e){}if(on)scrollBy(0,1)}
-addEventListener('keydown',function(e){if(e.key==='Escape')cine(0)});
-(function(){
-var R=document.documentElement,cv=document.getElementById('fx'),mk=[].slice.call(document.querySelectorAll('.scene')),still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var fb=document.querySelector('.fxb');
-if(still){R.classList.add('still');if(fb)fb.hidden=true}
-function label(){if(fb)fb.setAttribute('aria-pressed',R.classList.contains('nofx')?'false':'true')}
-window.fxToggle=function(){var off=!R.classList.contains('nofx');R.classList.toggle('nofx',off);try{off?localStorage.setItem('fx','off'):localStorage.removeItem('fx')}catch(e){}label();pick()};
-label();
-if('IntersectionObserver' in window&&!still){R.classList.add('rv');var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');so.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('.shot').forEach(function(x){so.observe(x)})}
-if(!cv||still||!cv.getContext)return;
-var g=cv.getContext('2d'),W=0,H=0,D=Math.min(devicePixelRatio||1,1.5),L={snow:0,fire:0,rain:0,water:0},T={},ps=[],rp=[],run=0,dark=false,fr=0,vg=document.getElementById('vig'),pl=document.getElementById('pulse'),cur='';
-function size(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0)}
-size();addEventListener('resize',size);
-function rnd(a,b){return a+Math.random()*(b-a)}
-function spawn(k){
- if(k==='snow')return{k:k,x:rnd(0,W),y:-8,r:rnd(1,2.8),vy:rnd(.4,1.1),ph:rnd(0,6.3),a:rnd(.35,.8)};
- if(k==='fire')return{k:k,x:rnd(0,W),y:H+6,r:rnd(1,2.6),vy:-rnd(.5,1.5),ph:rnd(0,6.3),a:rnd(.4,.9),life:rnd(.5,1)};
- return{k:k,x:rnd(0,W+60),y:-20,vy:rnd(9,14),l:rnd(10,18),a:rnd(.15,.35)}
-}
-var cap={snow:welcome(70),fire:welcome(34),rain:welcome(55)};
-function welcome(n){return Math.round(n*Math.min(1,W/700+.45))}
-function tick(){
- run=0;fr++;
- if(fr%45===1){var bg=getComputedStyle(document.body).backgroundColor.match(/\\d+/g)||[255,255,255];dark=(+bg[0]+ +bg[1]+ +bg[2])<300}
- g.clearRect(0,0,W,H);
- for(var k in L){var t=T[k]?1:0;L[k]+=(t-L[k])*.03;if(Math.abs(t-L[k])<.01)L[k]=t;if(L[k]>0)run=1}
- ['snow','fire','rain'].forEach(function(k){var n=Math.round((cap[k]||0)*L[k]),c=0;for(var i=0;i<ps.length;i++)if(ps[i].k===k)c++;if(c<n&&Math.random()<.5)ps.push(spawn(k))});
- for(var i=ps.length-1;i>=0;i--){
-  var p=ps[i],lv=L[p.k];
-  if(p.k==='snow'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.02)*.5;g.fillStyle=dark?'rgba(235,242,255,'+p.a*lv*.7+')':'rgba(110,140,175,'+p.a*lv*.55+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.y>H+6||lv<.02)ps.splice(i,1)}
-  else if(p.k==='fire'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.07)*.6;p.life-=.004;var fl=.6+.4*Math.sin(fr*.3+p.ph);g.fillStyle=dark?'rgba(255,'+(150+(p.life*80|0))+',60,'+p.a*lv*fl*p.life+')':'rgba(220,'+(70+(p.life*50|0))+',20,'+p.a*lv*fl*p.life*1.1+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.life<=0||p.y<-8||lv<.02)ps.splice(i,1)}
-  else{p.y+=p.vy;p.x-=p.vy*.22;g.strokeStyle=dark?'rgba(170,200,235,'+p.a*lv+')':'rgba(70,100,140,'+p.a*lv*.8+')';g.lineWidth=1;g.beginPath();g.moveTo(p.x,p.y);g.lineTo(p.x+p.l*.22,p.y-p.l);g.stroke();if(p.y>H+20||lv<.02)ps.splice(i,1)}
- }
- if(L.water>0){if(rp.length<5&&Math.random()<.03*L.water)rp.push({x:rnd(.1,.9)*W,y:rnd(.15,.9)*H,r:2,a:.4});
-  for(var j=rp.length-1;j>=0;j--){var q=rp[j];q.r+=.55;q.a-=.003;if(q.a<=0){rp.splice(j,1);continue}g.strokeStyle=dark?'rgba(150,190,230,'+q.a*L.water*.7+')':'rgba(60,100,150,'+q.a*L.water*.55+')';g.lineWidth=1;g.beginPath();g.ellipse(q.x,q.y,q.r*1.9,q.r*.6,0,0,6.3);g.stroke()}}
- if(ps.length||rp.length||run)requestAnimationFrame(tick);else go=0
-}
-var go=0;
-function start(){if(!go&&!document.hidden){go=1;requestAnimationFrame(tick)}}
-document.addEventListener('visibilitychange',function(){if(!document.hidden&&(run||ps.length))start()});
-function apply(fx){
- var off=R.classList.contains('nofx'),s=fx&&!off?fx.split(' '):[];
- T={snow:s.indexOf('snow')>-1,fire:s.indexOf('fire')>-1,rain:s.indexOf('rain')>-1,water:s.indexOf('water')>-1};
- if(vg)vg.classList.toggle('on',s.indexOf('night')>-1);
- if(s.indexOf('blood')>-1&&pl&&cur!==fx){pl.classList.remove('on');void pl.offsetWidth;pl.classList.add('on')}
- cur=fx;start()
-}
-function pick(){
- var a=null,y=innerHeight*.5;
- for(var i=0;i<mk.length;i++){if(mk[i].getBoundingClientRect().top<y)a=mk[i];else break}
- apply(a?a.dataset.fx:'')
-}
-var pt;addEventListener('scroll',function(){if(pt)return;pt=setTimeout(function(){pt=0;pick()},120)},{passive:true});
-pick();
-})();
-`;
-
-const page = (title, body, extra = '', isCh = body.includes('class="chapter"')) => `<!doctype html>
-<html lang="ar" dir="rtl">
+const page = (title, body, o = {}) => {
+  const isCh = !!o.ch;
+  const attrs = [`data-lv="${o.lv || 1}"`, `data-integ="${o.integ || 0}"`, o.season ? `data-season="${o.season}"` : '', isCh ? `data-ch="${o.ch}"` : '', o.kind ? `data-page="${o.kind}"` : '', `data-total="${o.total || 0}"`].filter(Boolean).join(' ');
+  return `<!doctype html>
+<html lang="ar" dir="rtl" ${attrs}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -162,32 +198,43 @@ const page = (title, body, extra = '', isCh = body.includes('class="chapter"')) 
 <title>${esc(title)}</title>
 <link rel="preload" href="/fonts/NotoNaskhArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))document.documentElement.classList.add('cine');if(localStorage.getItem('fx')==='off')document.documentElement.classList.add('nofx')}catch(e){}</script>
+<script>try{var R=document.documentElement,t=localStorage.getItem('theme');if(t)R.dataset.theme=t;var f=localStorage.getItem('fs');if(f)R.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))R.classList.add('cine');if(localStorage.getItem('fx')==='off')R.classList.add('nofx');var lv=+localStorage.getItem('lv');if(lv>+R.dataset.lv&&!R.dataset.ch)R.dataset.lv=lv}catch(e){}</script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <div id="hud" aria-hidden="true"></div>
-${isCh ? '<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button>' : ''}
+<div id="hudc" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="integ"></span></div>
+${isCh ? `<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button><button type="button" class="here" id="here" hidden aria-label="مكان المشهد على الخريطة"><span class="pin"></span><span class="nmx"></span></button>
+<div class="sheet map-sheet" id="mapsheet" hidden role="dialog" aria-label="خريطة القرية"><div class="sheet-in"><div class="sheet-h"><b>القرية</b><span class="path"></span><button type="button" class="x" data-close aria-label="إغلاق">✕</button></div>${mapSvg()}<p class="pl-d"></p></div></div>
+<script type="application/json" id="people">${JSON.stringify(PEOPLE.filter((p) => o.people && o.people.includes(p.id)).map(({ id, name, role, desc, color }) => ({ id, name, role, desc, color })))}</script>
+<script type="application/json" id="places">${JSON.stringify(PLACES.map(({ id, name, desc }) => ({ id, name, desc })))}</script>` : ''}
 <header class="bar">
   <a class="home" href="/">${TITLE}</a>
   <div class="tools">
-    <button onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button>
-    <button onclick="fsz(1)" aria-label="تكبير الخط">أ+</button>
-    ${isCh ? '<button class="fxb" onclick="fxToggle()" aria-label="جو المشهد" aria-pressed="true">جو</button><button onclick="cine(1)" aria-label="وضع القراءة السينمائي">سينما</button>' : ''}
-    <button onclick="theme()" aria-label="الوضع الليلي">ليلي</button>
+    ${isCh ? '<button type="button" id="listen" class="listen" hidden aria-label="استمع إلى الفصل">▶ استمع</button>' : ''}
+    <button type="button" id="menu-b" aria-label="القائمة" aria-expanded="false" aria-controls="menu">☰</button>
   </div>
 </header>
+<div class="sheet" id="menu" hidden role="dialog" aria-label="القائمة"><div class="sheet-in">
+  <div class="row"><span>حجم الخط</span><span class="grp"><button type="button" onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button><button type="button" onclick="fsz(1)" aria-label="تكبير الخط">أ+</button></span></div>
+  <div class="row"><span>الوضع الليلي</span><button type="button" class="sw" data-sw="dark" onclick="theme()" aria-pressed="false"><i></i></button></div>
+  ${isCh ? `<div class="row fx-row"><span>جو المشهد <small>ثلج، شرر، مطر، ليل…</small></span><button type="button" class="sw" data-sw="fx" aria-pressed="true"><i></i></button></div>
+  <div class="row fx-row"><span>الصوت المحيط <small>يُولَّد في الجهاز بلا ملفات</small></span><button type="button" class="sw" data-sw="snd" aria-pressed="false"><i></i></button></div>
+  <div class="row vib-row"><span>الاهتزاز <small>عند الترقية والإنجاز</small></span><button type="button" class="sw" data-sw="vib" aria-pressed="true"><i></i></button></div>
+  <div class="row"><span>وضع السينما</span><button type="button" onclick="cine(1)">ادخل</button></div>
+  <div class="row"><span>الخريطة</span><button type="button" id="open-map">افتح</button></div>` : ''}
+  <nav class="links"><a href="/people">الشخصيات</a><a href="/map">الخريطة</a><a href="/stats">لوحة الحضارة</a><a href="/host">سجل المضيف</a></nav>
+</div></div>
+<div class="sheet card-sheet" id="card" hidden role="dialog"><div class="sheet-in"></div></div>
 <main>
 ${body}
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
-function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}document.dispatchEvent(new Event('themechange'))}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
-${extra}
-${isCh ? FX_JS : ''}
-(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var hud=document.getElementById('hud'),ht;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var x=e.target;x.classList.add('in');io.unobserve(x);if(hud&&!x.classList.contains('sys--echo')){hud.className=x.classList.contains('sys--b')?'b':'';void hud.offsetWidth;hud.classList.add(x.classList.contains('sys--up')?'up':'on');clearTimeout(ht);ht=setTimeout(function(){hud.className=''},1400)}}})},{rootMargin:'0px 0px -15% 0px'});s.forEach(function(x){io.observe(x)})})();
-function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
+${o.extra || ''}
+function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);document.dispatchEvent(new Event('chapterdone'));return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
@@ -200,9 +247,11 @@ if(installButton)installButton.addEventListener('click',async function(){
 });
 window.addEventListener('appinstalled',function(){var help=document.getElementById('install-help');if(help)help.hidden=true;if(installButton)installButton.hidden=true;});
 </script>
+<script src="/reader.js"></script>
 </body>
 </html>
 `;
+};
 
 const css = `:root{--bg:#f6f1e7;--fg:#2a2420;--muted:#7b6f61;--line:#e2d8c6;--card:#fffaf1;--accent:#8a4b1f;--accent-soft:#f0e2d2;--sys-bg:#e9f1fb;--sys-fg:#1c4e86;--sys-line:#b7d0ec;--sys-glow:rgba(28,78,134,.28);--sys2-bg:#fbf0e0;--sys2-fg:#8a4b0f;--sys2-line:#e8c79c;--sys2-glow:rgba(176,104,30,.3);--ok:#2e7d4f;--tone:rgba(42,36,32,.13);--fs:20px;--f-body:"Noto Naskh Arabic","Amiri",serif;--f-display:"Reem Kufi","Noto Naskh Arabic",sans-serif}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15130f;--fg:#e8e0d2;--muted:#9d9180;--line:#2f2a23;--card:#1d1a15;--accent:#e2a56b;--accent-soft:#2a2118;--sys-bg:#0f1d2c;--sys-fg:#91c2f2;--sys-line:#22415f;--sys-glow:rgba(120,185,255,.45);--sys2-bg:#2a1c0d;--sys2-fg:#f0b56a;--sys2-line:#5c3d1a;--sys2-glow:rgba(240,170,90,.45);--ok:#6fd39a;--tone:rgba(232,224,210,.10);color-scheme:dark}}
@@ -310,39 +359,6 @@ h1{font-family:var(--f-display);font-weight:700;font-size:calc(var(--fs) * 1.45)
 .toc .t{min-width:0}
 .toc li.last a{background:var(--accent-soft);border-radius:6px}
 .toc li.last .t::after{content:" · آخر ما قرأت";color:var(--accent);font-size:13px}
-.scene{height:0;margin:0;padding:0}
-#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
-.nofx #fx,.nofx #vig,.still #fx,.still #vig,.still #pulse{display:none}
-.fxb[aria-pressed="false"]{opacity:.55;text-decoration:line-through}
-#vig,#cv{position:fixed;inset:0;pointer-events:none;opacity:0;z-index:4;transition:opacity 1.6s ease}
-#vig{background:radial-gradient(ellipse at 50% 45%,transparent 38%,rgba(70,38,12,.30) 100%);mix-blend-mode:multiply}
-#vig.on{opacity:1}
-:root[data-theme="dark"] #vig{background:radial-gradient(ellipse at 50% 45%,transparent 30%,rgba(0,0,0,.55) 100%);mix-blend-mode:normal}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #vig{background:radial-gradient(ellipse at 50% 45%,transparent 30%,rgba(0,0,0,.55) 100%);mix-blend-mode:normal}}
-#pulse{position:fixed;inset:0;pointer-events:none;opacity:0;z-index:49;box-shadow:inset 0 0 90px 10px rgba(170,20,20,.5)}
-#pulse.on{animation:bleed 1.8s ease-out both}
-@keyframes bleed{0%{opacity:0}18%{opacity:.9}100%{opacity:0}}
-.chapter p.shot{font-family:var(--f-display);font-size:calc(var(--fs) * 1.28);line-height:1.7;text-align:center;margin:1.9em 0;padding:.5em 0;position:relative}
-.chapter p.shot::before,.chapter p.shot::after{content:"";display:block;width:34px;height:2px;margin:0 auto;background:var(--accent);opacity:.7}
-.chapter p.shot::before{margin-bottom:.55em}.chapter p.shot::after{margin-top:.55em}
-.rv .chapter p.shot{opacity:0;letter-spacing:.12em;transform:scale(.97)}
-.rv .chapter p.shot.in{animation:shot 1.5s cubic-bezier(.2,.7,.2,1) .15s both}
-@keyframes shot{from{opacity:0;letter-spacing:.14em;transform:scale(.96)}to{opacity:1;letter-spacing:0;transform:none}}
-#cv{background:radial-gradient(ellipse at 50% 50%,transparent 42%,rgba(40,25,10,.38) 100%)}
-:root[data-theme="dark"] #cv{background:radial-gradient(ellipse at 50% 50%,transparent 35%,rgba(0,0,0,.7) 100%)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #cv{background:radial-gradient(ellipse at 50% 50%,transparent 35%,rgba(0,0,0,.7) 100%)}}
-.cine #cv{opacity:1}
-.cine-x{display:none;position:fixed;top:10px;left:10px;z-index:70;font:inherit;font-size:13px;line-height:1.8;background:var(--card);color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:0 10px;opacity:.55;cursor:pointer}
-.cine .cine-x{display:block}
-.cine .bar{display:none}
-.cine .progress{height:2px;opacity:.6}
-.cine main{max-width:620px;padding-top:56px}
-.cine .chapter p{line-height:2.45;margin-bottom:1.35em}
-.cine .chapter p.shot{margin:3em 0}
-.cine .sys{margin:2.6em 0}
-.cine .break{margin:3.8em auto}
-.cine .ch-head{margin-bottom:44px}
-@media (max-width:420px){.bar{gap:8px}.home{font-size:16px}.tools{gap:4px}.tools button{font-size:14px;padding:2px 7px}}
 @media (prefers-reduced-motion:reduce){.rv .chapter p.shot{opacity:1;transform:none}}
 @media (prefers-reduced-motion:no-preference){.progress{transition:transform .1s linear}}
 `;
@@ -357,24 +373,44 @@ const FONTS = path.join(ROOT, 'fonts');
 fs.mkdirSync(path.join(OUT, 'fonts'), { recursive: true });
 const fontFiles = fs.readdirSync(FONTS).filter((f) => f.endsWith('.woff2'));
 fontFiles.forEach((f) => fs.copyFileSync(path.join(FONTS, f), path.join(OUT, 'fonts', f)));
-fs.writeFileSync(path.join(OUT, 'style.css'), fs.readFileSync(path.join(FONTS, 'fonts.css'), 'utf8') + css);
+fs.writeFileSync(path.join(OUT, 'style.css'), fs.readFileSync(path.join(FONTS, 'fonts.css'), 'utf8') + css + fs.readFileSync(path.join(ROOT, 'client', 'reader.css'), 'utf8'));
+fs.copyFileSync(path.join(ROOT, 'client', 'reader.js'), path.join(OUT, 'reader.js'));
 
 const issues = require('./check')();
 issues.forEach((m) => console.warn('⚠ ' + m));
 
-const sysState = { integ: 0 };
+const sysState = { integ: 0, log: {} };
+let lastDay = 0;
 const chapters = files.map((f) => {
   const n = parseInt(f, 10);
-  const { title, body } = render(fs.readFileSync(path.join(SRC, f), 'utf8'), sysState);
-  return { n, title: title || `الفصل ${n}`, body };
+  const md = fs.readFileSync(path.join(SRC, f), 'utf8');
+  const integ0 = sysState.integ;
+  sysState.ch = n;
+  const { title, body, meta } = render(md, sysState);
+  // اليوم: أول تاريخ في الفصل لا يرجع إلى الوراء (يتجاهل «اليوم الثالث» بمعنى نسبي).
+  const valid = meta.days.filter((d) => d >= lastDay);
+  const day = valid.length ? valid[0] : 0;
+  if (valid.length) lastDay = Math.max(...valid);
+  const se = season(day || lastDay || 1);
+  // «سابقاً»: آخر فقرتين سرديتين (بلا حوار) من الفصل.
+  const narr = md.split(/\n\s*\n/).map((b) => b.trim()).filter((b) => isPara(b) && !/«/.test(b) && words(b) > 8);
+  const recap = narr.slice(-2).join(' ').replace(/\*\*/g, '');
+  return { n, title: title || `الفصل ${n}`, body, meta, integ0, integ1: sysState.integ, day, season: se, recap };
 });
 
 chapters.forEach((c, i) => {
   const prev = chapters[i - 1], next = chapters[i + 1];
   const nav = `<nav class="nav">${prev ? `<a href="/c/${pad(prev.n)}">→ السابق</a>` : '<span>البداية</span>'}<a href="/">الفهرس</a>${next ? `<a class="next" href="/c/${pad(next.n)}">التالي ←</a>` : '<span>قريباً</span>'}</nav>`;
   const arc = ARCS.find(([a, b]) => c.n >= a && c.n <= b);
-  const body = `<article class="chapter"><header class="ch-head"><div class="eyebrow">${arc ? arc[2].split(':')[0] : ''}</div><div class="ch-num"><span>الفصل</span><b>${c.n}</b></div><h1>${esc(c.title.replace(/^الفصل [^:]+:\s*/, ''))}</h1></header>\n${c.body}\n</article>${nav}`;
-  fs.writeFileSync(path.join(OUT, 'c', `${pad(c.n)}.html`), page(`${c.title} — ${TITLE}`, body, `try{localStorage.setItem('last','${pad(c.n)}')}catch(e){}resume('${pad(c.n)}');`));
+  const [sk, sn] = SEASONS[c.season];
+  const when = `<div class="when"><span class="se se-${sk}">${sn}</span>${c.day ? `<span>اليوم ${c.day}</span>` : ''}</div>`;
+  const recap = prev && prev.recap ? `<aside class="recap" id="recap" hidden><div class="recap-h"><b>سابقاً</b><button type="button" class="x" aria-label="إغلاق">✕</button></div><p>${esc(prev.recap)}</p></aside>` : '';
+  const body = `<article class="chapter"><header class="ch-head"><div class="eyebrow">${arc ? arc[2].split(':')[0] : ''}</div><div class="ch-num"><span>الفصل</span><b>${c.n}</b></div><h1>${esc(c.title.replace(/^الفصل [^:]+:\s*/, ''))}</h1>${when}</header>\n${recap}\n${c.body}\n</article>${nav}`;
+  const people = [...new Set(c.meta.scenes.flatMap((s) => s.ppl))];
+  fs.writeFileSync(path.join(OUT, 'c', `${pad(c.n)}.html`), page(`${c.title} — ${TITLE}`, body, {
+    ch: c.n, lv: level(c.integ0), integ: c.integ0, season: sk, people, total: files.length,
+    extra: `try{localStorage.setItem('last','${pad(c.n)}')}catch(e){}resume('${pad(c.n)}');`,
+  }));
 });
 
 let toc = '';
@@ -384,8 +420,29 @@ for (const [a, b, name] of ARCS) {
   toc += `<div class="arc"><h2>${name}</h2><small>الفصول ${a}–${b} · منشور ${list.length} من ${b - a + 1}</small></div><ul class="toc">` + list.map((c) => `<li data-n="${pad(c.n)}"><a href="/c/${pad(c.n)}"><span class="n">${c.n}</span><span class="t">${esc(c.title.replace(/^الفصل [^:]+:\s*/, ''))}</span></a></li>`).join('') + '</ul>';
 }
 const count = (n) => n === 1 ? 'فصل واحد' : n === 2 ? 'فصلان' : n <= 10 ? `${n} فصول` : `${n} فصلاً`;
-const index = `<section class="hero"><div class="kicker">خيال علمي · بناء حضارة · سياسة وحروب</div><h1>${TITLE}</h1><p class="blurb">مهندس وزوجته الحامل ينتقلان إلى قرية فقيرة في عالم مجهول، ومعه نظام غامض لا يعرف أكثر مما تسمح به بياناته. من مدخنة تخنق ضيوف نزل، تبدأ حضارة.</p><p class="meta">المنشور حتى الآن: ${count(chapters.length)} من أصل 1000</p><a id="resume" class="cta" href="/c/001">ابدأ القراءة</a><section class="install" aria-label="تثبيت التطبيق"><p>روايتك معك، حتى دون إنترنت</p><button id="install-app" class="cta" hidden>ثبّت التطبيق</button><details id="install-help"><summary>طريقة التثبيت على الهاتف</summary><p>أندرويد: افتح الموقع في Chrome، ثم اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية» من قائمة ⋮.</p><p>آيفون: افتح الموقع في Safari، واضغط زر المشاركة، ثم «إضافة إلى الشاشة الرئيسية».</p></details><small id="offline-status" role="status">جارٍ حفظ ${count(chapters.length)} للقراءة دون إنترنت… أبقِ الموقع مفتوحاً حتى يكتمل الحفظ.</small></section></section>${toc || '<p>لا توجد فصول بعد.</p>'}`;
-fs.writeFileSync(path.join(OUT, 'index.html'), page(TITLE, index, `document.querySelector('main').classList.add('wide');try{var l=localStorage.getItem('last');if(l){var a=document.getElementById('resume');a.href='/c/'+l;a.textContent='أكمل القراءة: الفصل '+parseInt(l,10);var li=document.querySelector('li[data-n="'+l+'"]');if(li)li.classList.add('last')}var k=parseInt(localStorage.getItem('known')||'0',10),mx=${chapters.length ? chapters[chapters.length - 1].n : 0};if(k){document.querySelectorAll('.toc li').forEach(function(x){if(parseInt(x.dataset.n,10)>k){x.classList.add('new');var s=document.createElement('span');s.className='new-b';s.textContent='جديد';x.firstChild.appendChild(s)}})}localStorage.setItem('known',mx)}catch(e){}`));
+const index = `<section class="hero"><div class="kicker">خيال علمي · بناء حضارة · سياسة وحروب</div><h1>${TITLE}</h1><p class="blurb">مهندس وزوجته الحامل ينتقلان إلى قرية فقيرة في عالم مجهول، ومعه نظام غامض لا يعرف أكثر مما تسمح به بياناته. من مدخنة تخنق ضيوف نزل، تبدأ حضارة.</p><p class="meta">المنشور حتى الآن: ${count(chapters.length)} من أصل 1000</p><a id="resume" class="cta" href="/c/001">ابدأ القراءة</a><nav class="explore"><a href="/map">الخريطة</a><a href="/people">الشخصيات</a><a href="/stats">لوحة الحضارة</a><a href="/host">سجل المضيف</a></nav><section class="install" aria-label="تثبيت التطبيق"><p>روايتك معك، حتى دون إنترنت</p><button id="install-app" class="cta" hidden>ثبّت التطبيق</button><details id="install-help"><summary>طريقة التثبيت على الهاتف</summary><p>أندرويد: افتح الموقع في Chrome، ثم اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية» من قائمة ⋮.</p><p>آيفون: افتح الموقع في Safari، واضغط زر المشاركة، ثم «إضافة إلى الشاشة الرئيسية».</p></details><small id="offline-status" role="status">جارٍ حفظ ${count(chapters.length)} للقراءة دون إنترنت… أبقِ الموقع مفتوحاً حتى يكتمل الحفظ.</small></section></section>${toc || '<p>لا توجد فصول بعد.</p>'}`;
+const finalInteg = sysState.integ;
+fs.writeFileSync(path.join(OUT, 'index.html'), page(TITLE, index, { total: chapters.length, kind: 'index', extra: `document.querySelector('main').classList.add('wide');try{var l=localStorage.getItem('last');if(l){var a=document.getElementById('resume');a.href='/c/'+l;a.textContent='أكمل القراءة: الفصل '+parseInt(l,10);var li=document.querySelector('li[data-n="'+l+'"]');if(li)li.classList.add('last')}var k=parseInt(localStorage.getItem('known')||'0',10),mx=${chapters.length ? chapters[chapters.length - 1].n : 0};if(k){document.querySelectorAll('.toc li').forEach(function(x){if(parseInt(x.dataset.n,10)>k){x.classList.add('new');var s=document.createElement('span');s.className='new-b';s.textContent='جديد';x.firstChild.appendChild(s)}})}localStorage.setItem('known',mx)}catch(e){}` }));
+
+
+// بيانات الصفحات التفاعلية (الشبكة، اللوحة، الخريطة، سجل المضيف) وسجل النوافذ.
+const DATA = {
+  people: PEOPLE.map(({ id, name, role, desc, color }) => ({ id, name, role, desc, color })),
+  places: PLACES.map(({ id, name, desc }) => ({ id, name, desc })),
+  seasons: SEASONS.map(([, s]) => s),
+  ch: chapters.map((c) => ({ n: c.n, t: c.title.replace(/^الفصل [^:]+:\s*/, ''), w: c.meta.words, day: c.day, se: c.season, i0: c.integ0, i1: c.integ1, sys: c.meta.sys.map(({ k, b, m }) => ({ k, b, m })), sc: c.meta.scenes })),
+};
+fs.writeFileSync(path.join(OUT, 'data.json'), JSON.stringify(DATA));
+fs.writeFileSync(path.join(OUT, 'syslog.json'), JSON.stringify(sysState.log));
+const PAGES = [
+  ['people', 'الشخصيات', '<h1>الشخصيات</h1><p class="lede">من يظهر مع من. كلما ظهر اسمان في المشهد نفسه اقتربا في الشبكة. الشبكة تقف عند آخر فصل قرأته، حتى لا تكشف ما لم تصل إليه.</p>'],
+  ['map', 'الخريطة', `<h1>القرية</h1><p class="lede">المس مكاناً لترى وصفه والفصول التي جرت فيه.</p><div class="map-page">${mapSvg()}</div>`],
+  ['stats', 'لوحة الحضارة', '<h1>لوحة الحضارة</h1><p class="lede">تقرير النظام عن تقدم الحضارة، مستخرج آلياً من نوافذه في الفصول. يقف عند آخر فصل قرأته.</p>'],
+  ['host', 'سجل المضيف', '<h1>سجل المضيف</h1><p class="lede">النظام يراقب لين. وهذا الموقع يراقبك أنت بالطريقة نفسها. كل شيء محفوظ في جهازك فقط.</p>'],
+];
+for (const [k, t, html] of PAGES) {
+  fs.writeFileSync(path.join(OUT, `${k}.html`), page(`${t} — ${TITLE}`, `<section class="pg pg-${k}">${html}<div id="app"></div></section>`, { total: chapters.length, kind: k }));
+}
 
 console.log(`built ${chapters.length} chapters`);
 
@@ -425,10 +482,10 @@ fs.writeFileSync(path.join(OUT, 'manifest.webmanifest'), JSON.stringify({
   description: 'اقرأ رواية نظام السيادة الحضارية، حتى دون اتصال بالإنترنت.',
   icons: [192, 512].map(size => ({src: `/icon-${size}.png`, sizes: `${size}x${size}`, type: 'image/png', purpose: 'any maskable'}))
 }, null, 2));
-const precache = ['/', '/style.css', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', ...fontFiles.map((f) => `/fonts/${f}`), ...chapters.map(c => `/c/${pad(c.n)}`)];
+const precache = ['/', '/style.css', '/reader.js', '/data.json', '/syslog.json', '/people', '/map', '/stats', '/host', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', ...fontFiles.map((f) => `/fonts/${f}`), ...chapters.map(c => `/c/${pad(c.n)}`)];
 const digest = require('node:crypto').createHash('sha256');
 for (const url of precache) {
-  const filename = url === '/' ? 'index.html' : /^\/c\//.test(url) ? `${url.slice(1)}.html` : url.slice(1);
+  const filename = url === '/' ? 'index.html' : /^\/(c\/|people$|map$|stats$|host$)/.test(url) ? `${url.slice(1)}.html` : url.slice(1);
   digest.update(fs.readFileSync(path.join(OUT, filename)));
 }
 const version = digest.digest('hex').slice(0, 16);

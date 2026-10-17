@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-lv="2" data-integ="4" data-season="spring" data-ch="43" data-total="50">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,90 +12,116 @@
 <title>الفصل الثالث والأربعون: ما تراه وحدها — نظام السيادة الحضارية</title>
 <link rel="preload" href="/fonts/NotoNaskhArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))document.documentElement.classList.add('cine');if(localStorage.getItem('fx')==='off')document.documentElement.classList.add('nofx')}catch(e){}</script>
+<script>try{var R=document.documentElement,t=localStorage.getItem('theme');if(t)R.dataset.theme=t;var f=localStorage.getItem('fs');if(f)R.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))R.classList.add('cine');if(localStorage.getItem('fx')==='off')R.classList.add('nofx');var lv=+localStorage.getItem('lv');if(lv>+R.dataset.lv&&!R.dataset.ch)R.dataset.lv=lv}catch(e){}</script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <div id="hud" aria-hidden="true"></div>
-<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button>
+<div id="hudc" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="integ"></span></div>
+<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button><button type="button" class="here" id="here" hidden aria-label="مكان المشهد على الخريطة"><span class="pin"></span><span class="nmx"></span></button>
+<div class="sheet map-sheet" id="mapsheet" hidden role="dialog" aria-label="خريطة القرية"><div class="sheet-in"><div class="sheet-h"><b>القرية</b><span class="path"></span><button type="button" class="x" data-close aria-label="إغلاق">✕</button></div><svg class="map" viewBox="0 0 560 500" role="img" aria-label="خريطة القرية">
+<defs><filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter></defs>
+<g class="ink" filter="url(#ink)">
+<path class="river" d="M40 0 C70 90 160 120 150 200 C140 260 70 300 110 360 C150 420 120 470 140 500"/>
+<path class="river thin" d="M110 330 C180 340 230 360 300 360"/>
+<path class="road" d="M560 230 L400 230 C340 235 300 245 280 250 C250 260 230 230 220 210 L143 180 L60 175"/>
+<path class="road" d="M280 250 C300 290 320 300 330 300 M300 300 C305 350 300 400 300 440"/>
+<path class="road" d="M400 230 C430 200 450 170 470 150"/>
+<path class="hill" d="M410 165 Q470 90 540 165 M430 150 Q470 115 515 150"/>
+<path class="hill" d="M0 470 Q60 410 120 470 M440 40 Q480 0 530 40"/>
+<path class="field" d="M380 400 h90 v50 h-90z M385 410 h80 M385 420 h80 M385 430 h80 M385 440 h80"/>
+<path class="bridge" d="M128 170 l30 2 M128 186 l30 2"/>
+</g><g class="mp" data-pl="inn" transform="translate(330 295)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">نزل الصفصافة</text></g><g class="mp" data-pl="store" transform="translate(400 335)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">المخزن</text></g><g class="mp" data-pl="square" transform="translate(275 248)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الساحة</text></g><g class="mp" data-pl="market" transform="translate(225 185)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">السوق</text></g><g class="mp" data-pl="well" transform="translate(225 300)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">البئر</text></g><g class="mp" data-pl="forge" transform="translate(300 440)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">ورشة تشانغ</text></g><g class="mp" data-pl="mill" transform="translate(95 340)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الطاحونة</text></g><g class="mp" data-pl="bridge" transform="translate(118 178)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الجسر الصغير</text></g><g class="mp" data-pl="liu" transform="translate(480 150)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">بيت ليو</text></g><g class="mp" data-pl="gate" transform="translate(425 232)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">بوابة القرية</text></g><g class="mp" data-pl="fields" transform="translate(425 420)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الحقول</text></g></svg><p class="pl-d"></p></div></div>
+<script type="application/json" id="people">[{"id":"lin","name":"لين","role":"المهندس","desc":"مهندس انتقل مع زوجته إلى قرية في عالم مجهول، ومعه نظام لا يعرف أكثر مما تسمح به بياناته. مباشر، ويفكر بصوت مسموع بالأرقام والأسباب، وساخر في سره أحياناً.","color":"#2f6db3"},{"id":"shen","name":"شين يان","role":"زوجة لين","desc":"حامل، قصيرة الجمل وحادة، تسأل أكثر مما تجيب. تقول «أثبت» ولا تقول «أصدقك». الدفاتر والبنود سلاحها.","color":"#b0461f"},{"id":"xiaodu","name":"شياو دو","role":"صبي النزل","desc":"فضولي وثرثار، يقلد الناس ويضحك ثم يعتذر.","color":"#2e8a5b"},{"id":"zhang","name":"تشانغ","role":"الحداد","desc":"قليل الكلام، ومتكبر في صنعته. يقول «جرّب» بدل «لا». ورشته عند الطرف الجنوبي للقرية.","color":"#5b5b5b"}]</script>
+<script type="application/json" id="places">[{"id":"inn","name":"نزل الصفصافة","desc":"نزل هو سانيانغ على طريق القوافل. هنا الموقد الأول."},{"id":"store","name":"المخزن","desc":"غرفة لين وشين يان خلف النزل."},{"id":"square","name":"الساحة","desc":"قلب القرية، حيث يجتمع الناس."},{"id":"market","name":"السوق","desc":"يوم السوق يجمع الباعة والقوافل."},{"id":"well","name":"البئر","desc":"بئر القرية، ومجلس أخبارها."},{"id":"forge","name":"ورشة تشانغ","desc":"ورشة الحداد عند الطرف الجنوبي للقرية."},{"id":"mill","name":"الطاحونة","desc":"الطاحونة المهجورة عند منعطف النهر، أعادها لين إلى الدوران."},{"id":"bridge","name":"الجسر الصغير","desc":"جسر خشبي صغير على النهر."},{"id":"liu","name":"بيت ليو","desc":"بيت عائلة ليو على التل الشرقي."},{"id":"gate","name":"بوابة القرية","desc":"حيث يدخل الغرباء ويخرجون."},{"id":"fields","name":"الحقول","desc":"حقول القرية إلى الجنوب الشرقي."}]</script>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
-    <button onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button>
-    <button onclick="fsz(1)" aria-label="تكبير الخط">أ+</button>
-    <button class="fxb" onclick="fxToggle()" aria-label="جو المشهد" aria-pressed="true">جو</button><button onclick="cine(1)" aria-label="وضع القراءة السينمائي">سينما</button>
-    <button onclick="theme()" aria-label="الوضع الليلي">ليلي</button>
+    <button type="button" id="listen" class="listen" hidden aria-label="استمع إلى الفصل">▶ استمع</button>
+    <button type="button" id="menu-b" aria-label="القائمة" aria-expanded="false" aria-controls="menu">☰</button>
   </div>
 </header>
+<div class="sheet" id="menu" hidden role="dialog" aria-label="القائمة"><div class="sheet-in">
+  <div class="row"><span>حجم الخط</span><span class="grp"><button type="button" onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button><button type="button" onclick="fsz(1)" aria-label="تكبير الخط">أ+</button></span></div>
+  <div class="row"><span>الوضع الليلي</span><button type="button" class="sw" data-sw="dark" onclick="theme()" aria-pressed="false"><i></i></button></div>
+  <div class="row fx-row"><span>جو المشهد <small>ثلج، شرر، مطر، ليل…</small></span><button type="button" class="sw" data-sw="fx" aria-pressed="true"><i></i></button></div>
+  <div class="row fx-row"><span>الصوت المحيط <small>يُولَّد في الجهاز بلا ملفات</small></span><button type="button" class="sw" data-sw="snd" aria-pressed="false"><i></i></button></div>
+  <div class="row vib-row"><span>الاهتزاز <small>عند الترقية والإنجاز</small></span><button type="button" class="sw" data-sw="vib" aria-pressed="true"><i></i></button></div>
+  <div class="row"><span>وضع السينما</span><button type="button" onclick="cine(1)">ادخل</button></div>
+  <div class="row"><span>الخريطة</span><button type="button" id="open-map">افتح</button></div>
+  <nav class="links"><a href="/people">الشخصيات</a><a href="/map">الخريطة</a><a href="/stats">لوحة الحضارة</a><a href="/host">سجل المضيف</a></nav>
+</div></div>
+<div class="sheet card-sheet" id="card" hidden role="dialog"><div class="sheet-in"></div></div>
 <main>
-<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>43</b></div><h1>ما تراه وحدها</h1></header>
-<div class="scene" data-fx="water fire" aria-hidden="true"></div>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>43</b></div><h1>ما تراه وحدها</h1><div class="when"><span class="se se-spring">الربيع</span><span>اليوم 139</span></div></header>
+<aside class="recap" id="recap" hidden><div class="recap-h"><b>سابقاً</b><button type="button" class="x" aria-label="إغلاق">✕</button></div><p>لم يصل الماء إلى المنفاخ. بقيت فتحة المجرى مسدودة بالجليد، وبقيت الوصلة في الساحة ساكنة. لكن ذراعها لم تعد مجرد خط على ورق؛ لقد دفعت مقبض المنفاخ وأعادته عشر مرات، وأظهرت أين تعلق وكيف تُصلح. حين انطفأ الضوء، حملوا الرسم إلى الداخل، وتركوا عند باب الورشة الخطاف الطويل الذي سيستعملونه من اليابسة. في الصباح، سيقرر شو إن كانت الحافة صلبة بما يكفي لبدء إزالة الجليد.</p></aside>
+<div class="scene" data-fx="water fire" data-pl="mill" aria-hidden="true"></div>
 <p>في اليوم التاسع والثلاثين بعد المئة، وقف شو على الضفة قبل أن يقترب أحد من بوابة المجرى.</p>
 <p>كان الجليد قد تراجع عن الحافة، لكنه بقي متراصاً في موضع ضيق أمام الفتحة. طرقه شو بعصاه من الأرض الصلبة، ثم أشار إلى يانغ. مد النجار خطافه الطويل، وسحب قطعة الثلج إلى اليابسة من غير أن يضع قدمه على الضفة الزلقة. تكسرت القطعة عند الحصى، وخرج الماء من خلفها خيطاً ضئيلاً.</p>
 <p>قال شو: «قطعة أخرى، ثم ننتظر.»</p>
-<p>قال لين: «كم؟»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال <span class="nm" data-p="lin" tabindex="0" role="button">لين</span>: <span class="qm">«</span>كم؟<span class="qm">»</span></p>
 <p>«حتى أسمع الماء لا الجليد.»</p>
 <p>لم يعجبه لين أن يتركوا الوقت للماء، لكنه لم يناقش. وقفوا جميعاً عند الطرف الآمن من المجرى، يراقبون شو وهو يرفع القطع الصغيرة واحدة واحدة. لم يوسعوا الفتحة، ولم ينزلوا إلى القناة. كل مرة كان يسحب قطعة، عاد الماء إلى السكون، ثم وجد طريقه بين الحصى.</p>
-<p>كان معهم لوح صغير أعدته شين يان، وفيه ثلاثة أسطر: «الماء»، «الوصلة»، «المنفاخ». أرادت أن يضع كل منهم علامة عند الجزء الذي يراقبه، لا أن يتجمعوا حول المقبض ويتركوا المجرى بلا مراقب. كتب لين عند الماء: «مستوى الفتحة»، وكتب يانغ عند الوصلة: «حركة القاعدة»، وكتبت هي عند المنفاخ: «عودة المقبض». أما تشانغ فاختار أن يقف في موضع يرى فيه الجميع.</p>
-<p>قال لين: «إذا لم نر الحركة كلها، لن نعرف أين بدأ الاضطراب.»</p>
-<p>قالت شين يان: «وإذا تابع كل واحد شيئاً واحداً، لا يضيع انتباهنا في اللحظة نفسها.»</p>
+<p>كان معهم لوح صغير أعدته <span class="nm" data-p="shen" tabindex="0" role="button">شين يان</span>، وفيه ثلاثة أسطر: «الماء»، «الوصلة»، «المنفاخ». أرادت أن يضع كل منهم علامة عند الجزء الذي يراقبه، لا أن يتجمعوا حول المقبض ويتركوا المجرى بلا مراقب. كتب لين عند الماء: «مستوى الفتحة»، وكتب يانغ عند الوصلة: «حركة القاعدة»، وكتبت هي عند المنفاخ: «عودة المقبض». أما <span class="nm" data-p="zhang" tabindex="0" role="button">تشانغ</span> فاختار أن يقف في موضع يرى فيه الجميع.</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>إذا لم نر الحركة كلها، لن نعرف أين بدأ الاضطراب.<span class="qm">»</span></p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>وإذا تابع كل واحد شيئاً واحداً، لا يضيع انتباهنا في اللحظة نفسها.<span class="qm">»</span></p>
 <p>قال شو: «أنا أراقب الجليد. هذا يكفي.»</p>
 <p>لم يجعلوا الوقوف خطة كاملة، لكنه منع التزاحم، وجعل لكل شخص سبباً للبقاء حيث ينبغي. اتفقوا أن أول حركة لا تزيد على دورتين، ثم يغلقون الماء ولو بدا كل شيء سليماً. أراد لين أن يجرب أربعاً كما بالأمس، لكن شين يان أشارت إلى أن الحركة اليدوية لم تحمل وزن الماء ولا اهتزازه.</p>
 <p>قالت: «إذا أكملنا دورتين، نكون قد عرفنا أن الماء وصل. لا نحتاج إلى إثبات الأمر خمس مرات في اللحظة الأولى.»</p>
-<p>قال تشانغ: «الدورتان تكفيان إذا لم يعلق المقبض.»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>الدورتان تكفيان إذا لم يعلق المقبض.<span class="qm">»</span></p>
 <p>أضاف شو: «وأنا أقرر إن كان الجليد يتحرك. لا تفتحوا أكثر مما أقول.»</p>
 <p>كانت شين يان عند الوصلة، تفحص المسمار الذي يفصل الذراع عن المقبض. وضعت في يدها وتداً خشبياً قصيراً تستطيع به دفع المسمار بعيداً إذا اهتز التثبيت. لم تضعه في جيبها؛ أبقته بين أصابعها. إلى جانبها وقف لين، وعلى مسافة منه تشانغ، الذي أصر أن يبقى قريباً بما يكفي ليسمع صوت الحديد.</p>
-<p>قالت شين يان: «نبدأ من أصغر فتحة. دورة واحدة فقط.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>نبدأ من أصغر فتحة. دورة واحدة فقط.<span class="qm">»</span></p>
 <p>قال شو: «إذا ارتفع الماء، أغلقوها.»</p>
-<p>«كيف نغلقها؟» سأل شياو دو.</p>
+<p class="sp" data-sp="xiaodu" style="--sp:#2e8a5b"><span class="qm">«</span>كيف نغلقها؟<span class="qm">»</span> سأل <span class="nm" data-p="xiaodu" tabindex="0" role="button">شياو دو</span>.</p>
 <p>أشار يانغ إلى اللوح الذي يغطي جزءاً من المدخل. «أعيده إلى مكانه بالحبل. لن نسحب الحجر.»</p>
-<p>قالت شين يان: «ويبقى شخص عند الحبل. لا يبتعد أحد.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>ويبقى شخص عند الحبل. لا يبتعد أحد.<span class="qm">»</span></p>
 <p>تولى شياو دو الحبل. بدا عليه أنه يريد أن يثبت أنه يستطيع فعل شيء مهم، لكنه لم يتقدم من موضعه الآمن. كانت أطراف الماء تلامس الخشب، ثم ترتد. وقف لين عند ذراع الوصلة، فيما بقيت شين يان عند المسمار. أخذت نفساً قصيراً، ثم رفعت يدها.</p>
-<p>تحرك الماء في المجرى القديم. لم يندفع؛ مر على الحصى، ولامس الريشة المصلحة، ثم دفع الدولاب بمقدار يسير. تحركت الذراع. ضغطت الوصلة مقبض المنفاخ، فانفتح الجلد ودفع الهواء إلى الداخل. ارتفع شريط القماش قرب الفوهة.</p>
-<p>قال تشانغ: «كفى.»</p>
+<p>تحرك الماء في <span class="nm" data-pl="mill" tabindex="0" role="button">المجرى القديم</span>. لم يندفع؛ مر على الحصى، ولامس الريشة المصلحة، ثم دفع الدولاب بمقدار يسير. تحركت الذراع. ضغطت الوصلة مقبض المنفاخ، فانفتح الجلد ودفع الهواء إلى الداخل. ارتفع شريط القماش قرب الفوهة.</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>كفى.<span class="qm">»</span></p>
 <p>لكن شين يان رأت أن المسار لم يكتمل. بقيت يدها على المسمار، وعيناها على الحامل. تحركت الوصلة مرة ثانية. هذه المرة عاد المقبض، ثم اندفع إلى الأمام. مر الهواء في خرطوم المنفاخ، فاهتز طرف القماش ثلاث مرات.</p>
 <p>قالت: «أوقفوا الماء.»</p>
 <p>سحب شياو دو الحبل، ورد يانغ اللوح إلى موضعه. تباطأ الدولاب. بقيت الذراع تتحرك نصف دورة، ثم سكنت. لم يصرخ أحد. لم ينكسر الخشب. لم ينسلخ الجلد عن المنفاخ.</p>
-<p>قال تشانغ: «مرتين.»</p>
-<p>قالت شين يان: «ثلاثاً، لكن الثالثة لم تكمل.»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>مرتين.<span class="qm">»</span></p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>ثلاثاً، لكن الثالثة لم تكمل.<span class="qm">»</span></p>
 <p>أخرجت الوتد وفصلت الوصلة عن المقبض. لم تنتظر إذناً. دخلت بينهما، ولمست الحامل بظهر إصبعها، ثم تفحصت حافة الجلد. كان هناك اهتزاز عند نهاية الحركة. الخشب لم يتحرك من مكانه، لكن المسمار مال قليلاً.</p>
-<p>قال لين: «هل انحنى؟»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>هل انحنى؟<span class="qm">»</span></p>
 <p>«لا أعرف بعد. نحتاج إلى فحصه قبل دورة أخرى.»</p>
 <p>أمسك تشانغ المسمار، قلبه بين إصبعيه، وأعاد وضعه في الثقب. «دخل مائلاً. ربما كان كذلك من قبل.»</p>
-<p>«أو حركه الضغط،» قالت شين يان. «لن نعيد التجربة حتى نستبدله.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f"><span class="qm">«</span>أو حركه الضغط،<span class="qm">»</span> قالت شين يان. <span class="qm">«</span>لن نعيد التجربة حتى نستبدله.<span class="qm">»</span></p>
 <p>لم يزد لين الماء. سحبوا المسمار، وأخذ تشانغ قطعة خردة أخرى لصنع بديل أعرض عند الرأس. استغرق ذلك وقتاً، وخلاله ظلت بوابة الماء مغلقة. لم ير أحد منهم فائدة في الاستعجال بعد أول حركة؛ كان اختبارهم أن يصل الماء إلى المنفاخ ويعود الهواء، لا أن يشغلوا الطاحونة والفرن في يوم واحد.</p>
 <p>عاد تشانغ بالمسمار الجديد. فحصه يانغ، ثم ثبت الوصلة. لم يسمح لشياو دو بسحب الحبل. وقف بنفسه عنده، بينما استعدت شين يان عند نقطة الفصل. فتحوا مجرى الماء على القدر نفسه. تحرك الدولاب، وضغطت الوصلة المقبض، ثم أعادته. تكرر الإيقاع أربع مرات كاملة. في الخامسة اهتز الحامل، وخرج صوت احتكاك حاد من الخشب.</p>
-<p>قالت شين يان: «أغلقوا.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>أغلقوا.<span class="qm">»</span></p>
 <p>أعاد يانغ اللوح. سحب تشانغ المسمار بيده، وفصل الذراع عن المقبض. تراجعوا خطوة وانتظروا حتى سكن الماء.</p>
-<p>قال لين: «التثبيت تحرك.»</p>
-<p>«أقل من إصبع،» قالت شين يان، وهي تضع علامة على موضعه. «لكنه تحرك.»</p>
-<p>قال تشانغ: «إذا زدنا لوحاً خلفه، يثبت.»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>التثبيت تحرك.<span class="qm">»</span></p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f"><span class="qm">«</span>أقل من إصبع،<span class="qm">»</span> قالت شين يان، وهي تضع علامة على موضعه. <span class="qm">«</span>لكنه تحرك.<span class="qm">»</span></p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>إذا زدنا لوحاً خلفه، يثبت.<span class="qm">»</span></p>
 <p>«ربما. نفحص أولاً أين أخذ الحمل. لا نضيف خشباً فوق خشب لا نعرف اتجاه ضغطه.»</p>
 <p>استدار تشانغ إليها. «أنا أعرف الخشب.»</p>
 <p>«وأنا أعرف أن الماء ضغطه في موضع مختلف عن تجربة اليد.»</p>
-<p>سكت. لم يكن اعتراضها على خبرته، بل على المسافة بين تجربة في الساحة ودفع منتظم في المجرى. ترك لهم الحامل، وراح يفحص المنفاخ. رفع الجلد عن الأرض، ومرر أصابعه على الحافة حيث يلتقي بالخشب. لم يكن هناك تمزق، لكن الطرف الذي عاد إليه المقبض صار دافئاً.</p>
+<p>سكت. لم يكن اعتراضها على خبرته، بل على المسافة بين تجربة في <span class="nm" data-pl="square" tabindex="0" role="button">الساحة</span> ودفع منتظم في المجرى. ترك لهم الحامل، وراح يفحص المنفاخ. رفع الجلد عن الأرض، ومرر أصابعه على الحافة حيث يلتقي بالخشب. لم يكن هناك تمزق، لكن الطرف الذي عاد إليه المقبض صار دافئاً.</p>
 <p>قال: «أربع دفعات نظيفة. والخامسة أفسدتها الوصلة.»</p>
-<p>قالت شين يان: «إذن نصلحها قبل أن نزيدها.»</p>
-<p>قال لين: «هذه أول مرة يدير الماء فيها شيئاً يخدم الإنتاج.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>إذن نصلحها قبل أن نزيدها.<span class="qm">»</span></p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>هذه أول مرة يدير الماء فيها شيئاً يخدم الإنتاج.<span class="qm">»</span></p>
 <p>نظر إلى الدولاب. «لم يطحن.»</p>
 <p>قالت: «لكنه أعاد الهواء إلى المنفاخ.»</p>
 <p>لم تبتسم. كان صوت الماء ما يزال في أذنها، متقطعاً ومتردداً. في اللحظة التي تحرك فيها المقبض، شعرت بضغط خفيف خلف عينيها، لا كألم، بل كأن حافة زرقاء انعكست على زجاج لم يكن موجوداً. رمشت. اختفى الضوء، ثم عاد في طرف نظرها.</p>
 <p>لم تقل شيئاً. نظرت إلى يدها. لم يكن فيها زجاج ولا أثر غريب. وضعت الوتد على الطاولة، وقررت أن تعيد فحص الوصلة. لم تكن تريد أن تعلن خللاً لم تتأكد منه.</p>
 <p>في هذه الأثناء، أخذ لين الهاتف من التخزين، وأجرى تحليلاً محدوداً على المسمار البديل بعد أن لاحظ الخدش عند رأسه. ظهرت له رسالة قصيرة، ثم أطفأ الشاشة.</p>
-<div class="sys" data-lv="2"><div class="sys-h"><span class="t">تحليل المواد — المستوى 1</span><span class="lv">تكامل 4%</span></div><div class="sys-b"><div style="--i:0">العينة: مسمار حديدي معاد الطرق.</div><div style="--i:1">الملاحظة: تفاوت في السماكة عند الرأس.</div><div class="m" style="--i:2;--v:68"><span class="k">الثقة</span><span class="bar" aria-hidden="true"><i></i></span><b>68%</b></div><div class="m" style="--i:3;--v:59"><span class="k">طاقة التكامل</span><span class="bar" aria-hidden="true"><i></i></span><b>59%</b></div></div></div>
+<div class="sys" data-lv="2" data-k="تحليل المواد" data-i="19"><div class="sys-h"><span class="t">تحليل المواد — المستوى 1</span><span class="lv">تكامل 4%</span></div><div class="sys-b"><div style="--i:0">العينة: مسمار حديدي معاد الطرق.</div><div style="--i:1">الملاحظة: تفاوت في السماكة عند الرأس.</div><div class="m" style="--i:2;--v:68"><span class="k">الثقة</span><span class="bar" aria-hidden="true"><i></i></span><b>68%</b></div><div class="m" style="--i:3;--v:59"><span class="k">طاقة التكامل</span><span class="bar" aria-hidden="true"><i></i></span><b>59%</b></div></div></div>
 <p>لم ير شين يان ما رآه لين. لم تر هي واجهته، ولم ير هو اللون الأزرق الذي عاد إلى طرف بصرها. وحين سألها عن العينة، أجابت أنها لم تفحص شيئاً. لم تكن تكذب؛ لم تكن تعرف ما الذي حدث بعد.</p>
-<p>قال لين: «هل تستطيعين البقاء هنا حتى نفحص التثبيت؟»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>هل تستطيعين البقاء هنا حتى نفحص التثبيت؟<span class="qm">»</span></p>
 <p>«نعم. لكن لا تفتحوا الماء.»</p>
 <p>قال: «لن نفتح.»</p>
 <p>أخذت هي لوحاً صغيراً، وراحت تقيس المسافة بين الحامل ونقطة احتكاك الوصلة. دوّنت أربع علامات، ثم كتبت بجانبها: «اهتزاز عند الدفعة الخامسة. سبب محتمل: ميل المسمار أو حركة القاعدة. يلزم اختبار منفصل.» حاولت التركيز على الخطوط. لم تعد الحافة الزرقاء، لكنها شعرت بأنها رأتها حقاً، لا كوميض من الماء.</p>
-<p>قال يانغ: «نعود إلى الورشة. لا فائدة من الوقوف على البرد.»</p>
+<p>قال يانغ: «نعود إلى <span class="nm" data-pl="forge" tabindex="0" role="button">الورشة</span>. لا فائدة من الوقوف على البرد.»</p>
 <p>مشوا جميعاً على الطريق الصلب بمحاذاة الضفة، ثم عبروا الساحة إلى الورشة. لم يحمل لين شيئاً سوى الدفتر. حمل تشانغ المسمار القديم، وأمسكت شين يان بالوتد. لم تفارقها الفكرة؛ هناك شيء آخر في مجال رؤيتها، لكنه لم يطلب منها أن تلمسه أو يتبع حركتها.</p>
 <p>في الورشة، جعلت شياو دو يقيس بعصا المسافة التي تحركها القاعدة. أخطأ في موضع العلامة، فأعاد القياس بعدما صححته شين يان. لم تسأله لماذا أخطأ، بل أشارت إلى الحافة التي ينبغي أن يبدأ منها. ثم فصل يانغ الحامل وأراهما أثر الضغط على الخشب. بدا الأثر عند الجهة التي توقعتها شين يان.</p>
-<p>قال تشانغ: «نضيف دعامة إلى الخلف، ونربطها بالعوارض.»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>نضيف دعامة إلى الخلف، ونربطها بالعوارض.<span class="qm">»</span></p>
 <p>«نربطها، لكن لا نغلق المسمار،» قالت. «يجب أن يبقى قابلاً للسحب.»</p>
 <p>«لن أغلقه.»</p>
 <p>«وأريد أن أكون عند الحبل في التجربة القادمة.»</p>
-<p>قال لين: «أنت من ستقرر متى نفتح ومتى نغلق.»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>أنت من ستقرر متى نفتح ومتى نغلق.<span class="qm">»</span></p>
 <p>نظرت إليه. «إذا اهتز التثبيت، أوقف الماء فوراً. لن أنتظر حتى تقول إن التجربة اكتملت.»</p>
 <p>«اتفقنا.»</p>
 <p>سألها: «هل تستطيعين فتحها حين تريدين، أم لا تظهر إلا قرب الماء؟»</p>
@@ -103,9 +129,9 @@
 <p>«إذن لا نعرف إن كان ظهورها الأول بسبب الماء.»</p>
 <p>«لا نعرف.»</p>
 <p>لم يطلب منها أن تحاول إظهارها مرة ثالثة. لم يكن يملك سبباً يجعل التكرار مفيداً، ولم يريد أن يحول الأمر إلى امتحان وهي لم تفهم حدوده بعد. قالت هي إن الواجهة لا تشرح سببها، ولا تعرض إلا عنوان المجال ومقداراً من الطاقة ووصفاً محدوداً. وافقها أن يسجلا الكلمات، لا تخميناتهما.</p>
-<p>لم يكن عندها تفسير لما رأت. لم تخبر لين بعد. أرادت أولاً أن تتأكد أن الأمر لم يكن انعكاساً من الثلج أو تعباً من الوقوف في الضوء. دخلت المخزن لتعيد الوتد، ثم بقيت عند الباب لحظة تنظر إلى يدها. عاد الوميض الأزرق، هذه المرة كلوح شفاف يقف أمامها، لا أمام الغرفة.</p>
+<p>لم يكن عندها تفسير لما رأت. لم تخبر لين بعد. أرادت أولاً أن تتأكد أن الأمر لم يكن انعكاساً من الثلج أو تعباً من الوقوف في الضوء. دخلت <span class="nm" data-pl="store" tabindex="0" role="button">المخزن</span> لتعيد الوتد، ثم بقيت عند الباب لحظة تنظر إلى يدها. عاد الوميض الأزرق، هذه المرة كلوح شفاف يقف أمامها، لا أمام الغرفة.</p>
 <p>ظهرت كلمات واضحة، لا تشبه أثر الضوء على الماء:</p>
-<div class="sys sys--b" data-lv="2"><div class="sys-h"><span class="t">النصف الثاني — التكامل 1%</span><span class="lv">النصف الثاني</span></div><div class="sys-b"><div style="--i:0">مجال العمل: الطاقة والحرارة والتحكم.</div><div class="m" style="--i:1;--v:100"><span class="k">طاقة التكامل</span><span class="bar" aria-hidden="true"><i></i></span><b>100%</b></div><div style="--i:2">تحليل القياس: محدود.</div><div class="m" style="--i:3;--v:51"><span class="k">الثقة</span><span class="bar" aria-hidden="true"><i></i></span><b>51%</b></div></div></div>
+<div class="sys sys--b" data-lv="2" data-k="النصف الثاني" data-i="1"><div class="sys-h"><span class="t">النصف الثاني — التكامل 1%</span><span class="lv">النصف الثاني</span></div><div class="sys-b"><div style="--i:0">مجال العمل: الطاقة والحرارة والتحكم.</div><div class="m" style="--i:1;--v:100"><span class="k">طاقة التكامل</span><span class="bar" aria-hidden="true"><i></i></span><b>100%</b></div><div style="--i:2">تحليل القياس: محدود.</div><div class="m" style="--i:3;--v:51"><span class="k">الثقة</span><span class="bar" aria-hidden="true"><i></i></span><b>51%</b></div></div></div>
 <p>لم يتحرك الهواء. لم يتبدل صوت الورشة. كانت شين يان وحدها ترى الكلمات. لم تسمع صوتاً يشرحها، ولم تظهر لها صورة للناس أو للغد أو للمكان الذي لا تراه. لم تتغير يدها، ولم تجد فيها قوة جديدة.</p>
 <p>أغلقت عينيها. اختفت الواجهة. فتحتهما فعادت. حاولت أن تلمس طرفها، لكن إصبعها مر في الهواء. بقيت الكلمات في مكانها، ولم تتبدل حين حركت رأسها.</p>
 <p>استدارت نحو لين. كان ينظر إلى الدفتر، ويحسب عدد الأكياس التي فقدوها إن توقف الحجر ساعة. لم تظهر له الواجهة. ولم تعرف إن كانت تستطيع أن تخبره بما فيها، لكن الاتفاق بينهما كان واضحاً: كل رقم يراه، تعرفه. أما ما تراه هي، فلم يتفقا عليه بعد.</p>
@@ -125,9 +151,9 @@
 <p>«لن أظن.»</p>
 <p>سكت لحظة، ثم قال بلغتهما: «إذا عادت، اقرئي لي السطر الأول كله.»</p>
 <p>نظرت شين يان إلى الواجهة التي لم تعد تراها. «سأفعل.»</p>
-<p>عادا إلى الورشة. لم تتوقف التجربة عند الواجهة؛ بقي الحامل يحتاج إلى دعامة، وبقي الماء خلف البوابة. لكن شين يان صارت تعرف أن هناك نصاً يخصها وحدها، وأنه بدأ في اللحظة التي استخدم فيها الماء لدفع الهواء إلى عملهم. لم يكن لها جواب عن سببه، ولا عن مدى ما يستطيع فعله.</p>
-<p>قال تشانغ من عند الطاولة: «هل انتهيتما؟ أريد أن أرى التثبيت بعد الإصلاح.»</p>
-<p>قالت شين يان: «سنصلحه أولاً، ثم نختبره. ليس اليوم.»</p>
+<p>عادا إلى الورشة. لم تتوقف التجربة عند الواجهة؛ بقي الحامل يحتاج إلى دعامة، وبقي الماء خلف <span class="nm" data-pl="gate" tabindex="0" role="button">البوابة</span>. لكن شين يان صارت تعرف أن هناك نصاً يخصها وحدها، وأنه بدأ في اللحظة التي استخدم فيها الماء لدفع الهواء إلى عملهم. لم يكن لها جواب عن سببه، ولا عن مدى ما يستطيع فعله.</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ من عند الطاولة: <span class="qm">«</span>هل انتهيتما؟ أريد أن أرى التثبيت بعد الإصلاح.<span class="qm">»</span></p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>سنصلحه أولاً، ثم نختبره. ليس اليوم.<span class="qm">»</span></p>
 <p>«لماذا؟»</p>
 <p>«لأن الماء اهتز عند الدفعة الخامسة، ولأننا نحتاج إلى دعامة.»</p>
 <p>أومأ تشانغ. «جيد. حين تثبت الوصلة، نختبر ناراً حقيقية.»</p>
@@ -137,69 +163,10 @@
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
-function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}document.dispatchEvent(new Event('themechange'))}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','043')}catch(e){}resume('043');
-
-function cine(on){var r=document.documentElement;r.classList.toggle('cine',!!on);try{on?localStorage.setItem('cine','1'):localStorage.removeItem('cine')}catch(e){}if(on)scrollBy(0,1)}
-addEventListener('keydown',function(e){if(e.key==='Escape')cine(0)});
-(function(){
-var R=document.documentElement,cv=document.getElementById('fx'),mk=[].slice.call(document.querySelectorAll('.scene')),still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var fb=document.querySelector('.fxb');
-if(still){R.classList.add('still');if(fb)fb.hidden=true}
-function label(){if(fb)fb.setAttribute('aria-pressed',R.classList.contains('nofx')?'false':'true')}
-window.fxToggle=function(){var off=!R.classList.contains('nofx');R.classList.toggle('nofx',off);try{off?localStorage.setItem('fx','off'):localStorage.removeItem('fx')}catch(e){}label();pick()};
-label();
-if('IntersectionObserver' in window&&!still){R.classList.add('rv');var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');so.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('.shot').forEach(function(x){so.observe(x)})}
-if(!cv||still||!cv.getContext)return;
-var g=cv.getContext('2d'),W=0,H=0,D=Math.min(devicePixelRatio||1,1.5),L={snow:0,fire:0,rain:0,water:0},T={},ps=[],rp=[],run=0,dark=false,fr=0,vg=document.getElementById('vig'),pl=document.getElementById('pulse'),cur='';
-function size(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0)}
-size();addEventListener('resize',size);
-function rnd(a,b){return a+Math.random()*(b-a)}
-function spawn(k){
- if(k==='snow')return{k:k,x:rnd(0,W),y:-8,r:rnd(1,2.8),vy:rnd(.4,1.1),ph:rnd(0,6.3),a:rnd(.35,.8)};
- if(k==='fire')return{k:k,x:rnd(0,W),y:H+6,r:rnd(1,2.6),vy:-rnd(.5,1.5),ph:rnd(0,6.3),a:rnd(.4,.9),life:rnd(.5,1)};
- return{k:k,x:rnd(0,W+60),y:-20,vy:rnd(9,14),l:rnd(10,18),a:rnd(.15,.35)}
-}
-var cap={snow:welcome(70),fire:welcome(34),rain:welcome(55)};
-function welcome(n){return Math.round(n*Math.min(1,W/700+.45))}
-function tick(){
- run=0;fr++;
- if(fr%45===1){var bg=getComputedStyle(document.body).backgroundColor.match(/\d+/g)||[255,255,255];dark=(+bg[0]+ +bg[1]+ +bg[2])<300}
- g.clearRect(0,0,W,H);
- for(var k in L){var t=T[k]?1:0;L[k]+=(t-L[k])*.03;if(Math.abs(t-L[k])<.01)L[k]=t;if(L[k]>0)run=1}
- ['snow','fire','rain'].forEach(function(k){var n=Math.round((cap[k]||0)*L[k]),c=0;for(var i=0;i<ps.length;i++)if(ps[i].k===k)c++;if(c<n&&Math.random()<.5)ps.push(spawn(k))});
- for(var i=ps.length-1;i>=0;i--){
-  var p=ps[i],lv=L[p.k];
-  if(p.k==='snow'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.02)*.5;g.fillStyle=dark?'rgba(235,242,255,'+p.a*lv*.7+')':'rgba(110,140,175,'+p.a*lv*.55+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.y>H+6||lv<.02)ps.splice(i,1)}
-  else if(p.k==='fire'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.07)*.6;p.life-=.004;var fl=.6+.4*Math.sin(fr*.3+p.ph);g.fillStyle=dark?'rgba(255,'+(150+(p.life*80|0))+',60,'+p.a*lv*fl*p.life+')':'rgba(220,'+(70+(p.life*50|0))+',20,'+p.a*lv*fl*p.life*1.1+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.life<=0||p.y<-8||lv<.02)ps.splice(i,1)}
-  else{p.y+=p.vy;p.x-=p.vy*.22;g.strokeStyle=dark?'rgba(170,200,235,'+p.a*lv+')':'rgba(70,100,140,'+p.a*lv*.8+')';g.lineWidth=1;g.beginPath();g.moveTo(p.x,p.y);g.lineTo(p.x+p.l*.22,p.y-p.l);g.stroke();if(p.y>H+20||lv<.02)ps.splice(i,1)}
- }
- if(L.water>0){if(rp.length<5&&Math.random()<.03*L.water)rp.push({x:rnd(.1,.9)*W,y:rnd(.15,.9)*H,r:2,a:.4});
-  for(var j=rp.length-1;j>=0;j--){var q=rp[j];q.r+=.55;q.a-=.003;if(q.a<=0){rp.splice(j,1);continue}g.strokeStyle=dark?'rgba(150,190,230,'+q.a*L.water*.7+')':'rgba(60,100,150,'+q.a*L.water*.55+')';g.lineWidth=1;g.beginPath();g.ellipse(q.x,q.y,q.r*1.9,q.r*.6,0,0,6.3);g.stroke()}}
- if(ps.length||rp.length||run)requestAnimationFrame(tick);else go=0
-}
-var go=0;
-function start(){if(!go&&!document.hidden){go=1;requestAnimationFrame(tick)}}
-document.addEventListener('visibilitychange',function(){if(!document.hidden&&(run||ps.length))start()});
-function apply(fx){
- var off=R.classList.contains('nofx'),s=fx&&!off?fx.split(' '):[];
- T={snow:s.indexOf('snow')>-1,fire:s.indexOf('fire')>-1,rain:s.indexOf('rain')>-1,water:s.indexOf('water')>-1};
- if(vg)vg.classList.toggle('on',s.indexOf('night')>-1);
- if(s.indexOf('blood')>-1&&pl&&cur!==fx){pl.classList.remove('on');void pl.offsetWidth;pl.classList.add('on')}
- cur=fx;start()
-}
-function pick(){
- var a=null,y=innerHeight*.5;
- for(var i=0;i<mk.length;i++){if(mk[i].getBoundingClientRect().top<y)a=mk[i];else break}
- apply(a?a.dataset.fx:'')
-}
-var pt;addEventListener('scroll',function(){if(pt)return;pt=setTimeout(function(){pt=0;pick()},120)},{passive:true});
-pick();
-})();
-
-(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var hud=document.getElementById('hud'),ht;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var x=e.target;x.classList.add('in');io.unobserve(x);if(hud&&!x.classList.contains('sys--echo')){hud.className=x.classList.contains('sys--b')?'b':'';void hud.offsetWidth;hud.classList.add(x.classList.contains('sys--up')?'up':'on');clearTimeout(ht);ht=setTimeout(function(){hud.className=''},1400)}}})},{rootMargin:'0px 0px -15% 0px'});s.forEach(function(x){io.observe(x)})})();
-function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
+function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);document.dispatchEvent(new Event('chapterdone'));return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
@@ -212,5 +179,6 @@ if(installButton)installButton.addEventListener('click',async function(){
 });
 window.addEventListener('appinstalled',function(){var help=document.getElementById('install-help');if(help)help.hidden=true;if(installButton)installButton.hidden=true;});
 </script>
+<script src="/reader.js"></script>
 </body>
 </html>

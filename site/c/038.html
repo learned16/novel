@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-lv="2" data-integ="4" data-season="winter" data-ch="38" data-total="50">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,50 +12,76 @@
 <title>الفصل الثامن والثلاثون: ما يبقى للبيت — نظام السيادة الحضارية</title>
 <link rel="preload" href="/fonts/NotoNaskhArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))document.documentElement.classList.add('cine');if(localStorage.getItem('fx')==='off')document.documentElement.classList.add('nofx')}catch(e){}</script>
+<script>try{var R=document.documentElement,t=localStorage.getItem('theme');if(t)R.dataset.theme=t;var f=localStorage.getItem('fs');if(f)R.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))R.classList.add('cine');if(localStorage.getItem('fx')==='off')R.classList.add('nofx');var lv=+localStorage.getItem('lv');if(lv>+R.dataset.lv&&!R.dataset.ch)R.dataset.lv=lv}catch(e){}</script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <div id="hud" aria-hidden="true"></div>
-<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button>
+<div id="hudc" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="integ"></span></div>
+<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button><button type="button" class="here" id="here" hidden aria-label="مكان المشهد على الخريطة"><span class="pin"></span><span class="nmx"></span></button>
+<div class="sheet map-sheet" id="mapsheet" hidden role="dialog" aria-label="خريطة القرية"><div class="sheet-in"><div class="sheet-h"><b>القرية</b><span class="path"></span><button type="button" class="x" data-close aria-label="إغلاق">✕</button></div><svg class="map" viewBox="0 0 560 500" role="img" aria-label="خريطة القرية">
+<defs><filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter></defs>
+<g class="ink" filter="url(#ink)">
+<path class="river" d="M40 0 C70 90 160 120 150 200 C140 260 70 300 110 360 C150 420 120 470 140 500"/>
+<path class="river thin" d="M110 330 C180 340 230 360 300 360"/>
+<path class="road" d="M560 230 L400 230 C340 235 300 245 280 250 C250 260 230 230 220 210 L143 180 L60 175"/>
+<path class="road" d="M280 250 C300 290 320 300 330 300 M300 300 C305 350 300 400 300 440"/>
+<path class="road" d="M400 230 C430 200 450 170 470 150"/>
+<path class="hill" d="M410 165 Q470 90 540 165 M430 150 Q470 115 515 150"/>
+<path class="hill" d="M0 470 Q60 410 120 470 M440 40 Q480 0 530 40"/>
+<path class="field" d="M380 400 h90 v50 h-90z M385 410 h80 M385 420 h80 M385 430 h80 M385 440 h80"/>
+<path class="bridge" d="M128 170 l30 2 M128 186 l30 2"/>
+</g><g class="mp" data-pl="inn" transform="translate(330 295)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">نزل الصفصافة</text></g><g class="mp" data-pl="store" transform="translate(400 335)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">المخزن</text></g><g class="mp" data-pl="square" transform="translate(275 248)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الساحة</text></g><g class="mp" data-pl="market" transform="translate(225 185)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">السوق</text></g><g class="mp" data-pl="well" transform="translate(225 300)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">البئر</text></g><g class="mp" data-pl="forge" transform="translate(300 440)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">ورشة تشانغ</text></g><g class="mp" data-pl="mill" transform="translate(95 340)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الطاحونة</text></g><g class="mp" data-pl="bridge" transform="translate(118 178)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الجسر الصغير</text></g><g class="mp" data-pl="liu" transform="translate(480 150)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">بيت ليو</text></g><g class="mp" data-pl="gate" transform="translate(425 232)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">بوابة القرية</text></g><g class="mp" data-pl="fields" transform="translate(425 420)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الحقول</text></g></svg><p class="pl-d"></p></div></div>
+<script type="application/json" id="people">[{"id":"lin","name":"لين","role":"المهندس","desc":"مهندس انتقل مع زوجته إلى قرية في عالم مجهول، ومعه نظام لا يعرف أكثر مما تسمح به بياناته. مباشر، ويفكر بصوت مسموع بالأرقام والأسباب، وساخر في سره أحياناً.","color":"#2f6db3"},{"id":"shen","name":"شين يان","role":"زوجة لين","desc":"حامل، قصيرة الجمل وحادة، تسأل أكثر مما تجيب. تقول «أثبت» ولا تقول «أصدقك». الدفاتر والبنود سلاحها.","color":"#b0461f"},{"id":"hu","name":"هو سانيانغ","role":"صاحبة نزل الصفصافة","desc":"عملية، تتكلم بالأثمان والديون. لا تشكر، بل تضع طعاماً أمامك. النزل هو كل ما تملك.","color":"#7a5a12"},{"id":"zhang","name":"تشانغ","role":"الحداد","desc":"قليل الكلام، ومتكبر في صنعته. يقول «جرّب» بدل «لا». ورشته عند الطرف الجنوبي للقرية.","color":"#5b5b5b"},{"id":"wu","name":"الكاتب وو","role":"كاتب السجلات","desc":"مهذب أكثر من اللازم، ويسأل الأسئلة الصحيحة بنبرة عابرة.","color":"#6a3fa0"},{"id":"tian","name":"العم تيان","role":"صاحب الحمار","desc":"رجل هادئ يعرف الدواب، يهمس في أذن الحمار فيهدأ.","color":"#7b6f61"}]</script>
+<script type="application/json" id="places">[{"id":"inn","name":"نزل الصفصافة","desc":"نزل هو سانيانغ على طريق القوافل. هنا الموقد الأول."},{"id":"store","name":"المخزن","desc":"غرفة لين وشين يان خلف النزل."},{"id":"square","name":"الساحة","desc":"قلب القرية، حيث يجتمع الناس."},{"id":"market","name":"السوق","desc":"يوم السوق يجمع الباعة والقوافل."},{"id":"well","name":"البئر","desc":"بئر القرية، ومجلس أخبارها."},{"id":"forge","name":"ورشة تشانغ","desc":"ورشة الحداد عند الطرف الجنوبي للقرية."},{"id":"mill","name":"الطاحونة","desc":"الطاحونة المهجورة عند منعطف النهر، أعادها لين إلى الدوران."},{"id":"bridge","name":"الجسر الصغير","desc":"جسر خشبي صغير على النهر."},{"id":"liu","name":"بيت ليو","desc":"بيت عائلة ليو على التل الشرقي."},{"id":"gate","name":"بوابة القرية","desc":"حيث يدخل الغرباء ويخرجون."},{"id":"fields","name":"الحقول","desc":"حقول القرية إلى الجنوب الشرقي."}]</script>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
-    <button onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button>
-    <button onclick="fsz(1)" aria-label="تكبير الخط">أ+</button>
-    <button class="fxb" onclick="fxToggle()" aria-label="جو المشهد" aria-pressed="true">جو</button><button onclick="cine(1)" aria-label="وضع القراءة السينمائي">سينما</button>
-    <button onclick="theme()" aria-label="الوضع الليلي">ليلي</button>
+    <button type="button" id="listen" class="listen" hidden aria-label="استمع إلى الفصل">▶ استمع</button>
+    <button type="button" id="menu-b" aria-label="القائمة" aria-expanded="false" aria-controls="menu">☰</button>
   </div>
 </header>
+<div class="sheet" id="menu" hidden role="dialog" aria-label="القائمة"><div class="sheet-in">
+  <div class="row"><span>حجم الخط</span><span class="grp"><button type="button" onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button><button type="button" onclick="fsz(1)" aria-label="تكبير الخط">أ+</button></span></div>
+  <div class="row"><span>الوضع الليلي</span><button type="button" class="sw" data-sw="dark" onclick="theme()" aria-pressed="false"><i></i></button></div>
+  <div class="row fx-row"><span>جو المشهد <small>ثلج، شرر، مطر، ليل…</small></span><button type="button" class="sw" data-sw="fx" aria-pressed="true"><i></i></button></div>
+  <div class="row fx-row"><span>الصوت المحيط <small>يُولَّد في الجهاز بلا ملفات</small></span><button type="button" class="sw" data-sw="snd" aria-pressed="false"><i></i></button></div>
+  <div class="row vib-row"><span>الاهتزاز <small>عند الترقية والإنجاز</small></span><button type="button" class="sw" data-sw="vib" aria-pressed="true"><i></i></button></div>
+  <div class="row"><span>وضع السينما</span><button type="button" onclick="cine(1)">ادخل</button></div>
+  <div class="row"><span>الخريطة</span><button type="button" id="open-map">افتح</button></div>
+  <nav class="links"><a href="/people">الشخصيات</a><a href="/map">الخريطة</a><a href="/stats">لوحة الحضارة</a><a href="/host">سجل المضيف</a></nav>
+</div></div>
+<div class="sheet card-sheet" id="card" hidden role="dialog"><div class="sheet-in"></div></div>
 <main>
-<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الأولى</div><div class="ch-num"><span>الفصل</span><b>38</b></div><h1>ما يبقى للبيت</h1></header>
-<div class="scene" data-fx="" aria-hidden="true"></div>
-<p>في صباح اليوم الثالث والعشرين بعد المئة، لم يجد لين وانغ تشن عند الطاحونة. بقيت ورقته في الدفتر تحت كلمة «سؤال»، ولم يعرف إن كان سيعود قبل الغروب أو اختار طريقًا آخر. لم يقل إنهما خسرا زبونًا؛ لم يكن قد صار زبونًا أصلًا.</p>
-<p>كان اليوم من أيام الطحن بأجر. فتحت شين يان سجل الدور، وراجعت أسماء من ينتظرون منذ الليلة الماضية. وقفت هو سانيانغ عند المدخل، وبيدها دفترها، ثم قالت إن اثنين من أصحاب الرقع وصلا قبل أن يفتحوا الباب. لم يعترض أحد. نقلت شين يان موعدهما إلى أعلى الصفحة، وتركت خانة أجر اليوم فارغة حتى يصل الكيس الأول.</p>
-<p>وصل تشانغ متأخرًا قليلًا، يجر وراءه صندوق أدواته. لم يعتذر عن التأخير؛ وضعه تحت الرف، ثم تفقد الوتد الذي أصلحه في اليوم السابق. طرقه بخفة، وأدار حجر الطحن نصف دورة بيده.</p>
-<p>قال لين: «هل تسمع شيئًا؟»</p>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الأولى</div><div class="ch-num"><span>الفصل</span><b>38</b></div><h1>ما يبقى للبيت</h1><div class="when"><span class="se se-winter">الشتاء</span><span>اليوم 123</span></div></header>
+<aside class="recap" id="recap" hidden><div class="recap-h"><b>سابقاً</b><button type="button" class="x" aria-label="إغلاق">✕</button></div><p>لم يبد مرتاحًا. فك رباط الكيس قليلًا، فظهرت حبات دخن متربة، بعضها رطب عند القاع. أخذت شين يان حفنة ومررتها بين أصابعها، ثم قالت إن البلل قد يسد الحجر ويجعل الدقيق أثقل. لم ترفض الحبوب، لكنها أخبرته أن يفرشها في بيته على قماش جاف قبل الطحن. قال إنه لم يكن يعرف ذلك. بقي لين قربه حتى أعاد ربط الكيس. أومأت هو سانيانغ، ولم تكتب اسمه في سجل الزبائن. بقيت شين يان تضع إشارة في ورقة الأسئلة، لا أكثر. لم يكن وعده بالدخول محسومًا، ولم تكن حاجته إلى الدقيق كافية كي يتجاوزوا ترتيب الدور.</p></aside>
+<div class="scene" data-fx="" data-pl="" aria-hidden="true"></div>
+<p>في صباح اليوم الثالث والعشرين بعد المئة، لم يجد <span class="nm" data-p="lin" tabindex="0" role="button">لين</span> وانغ تشن عند <span class="nm" data-pl="mill" tabindex="0" role="button">الطاحونة</span>. بقيت ورقته في الدفتر تحت كلمة «سؤال»، ولم يعرف إن كان سيعود قبل الغروب أو اختار طريقًا آخر. لم يقل إنهما خسرا زبونًا؛ لم يكن قد صار زبونًا أصلًا.</p>
+<p>كان اليوم من أيام الطحن بأجر. فتحت <span class="nm" data-p="shen" tabindex="0" role="button">شين يان</span> سجل الدور، وراجعت أسماء من ينتظرون منذ الليلة الماضية. وقفت <span class="nm" data-p="hu" tabindex="0" role="button">هو سانيانغ</span> عند المدخل، وبيدها دفترها، ثم قالت إن اثنين من أصحاب الرقع وصلا قبل أن يفتحوا الباب. لم يعترض أحد. نقلت شين يان موعدهما إلى أعلى الصفحة، وتركت خانة أجر اليوم فارغة حتى يصل الكيس الأول.</p>
+<p>وصل <span class="nm" data-p="zhang" tabindex="0" role="button">تشانغ</span> متأخرًا قليلًا، يجر وراءه صندوق أدواته. لم يعتذر عن التأخير؛ وضعه تحت الرف، ثم تفقد الوتد الذي أصلحه في اليوم السابق. طرقه بخفة، وأدار حجر الطحن نصف دورة بيده.</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>هل تسمع شيئًا؟<span class="qm">»</span></p>
 <p>«أسمعك تتعجل.»</p>
 <p>أعاد الضرب على الخشب. لم يصدر عن المحور سوى احتكاك منتظم. شد تشانغ حزامه، وناول لين قطعة من الدهن. «ادهن المحور بعد أن نزيل الغبار. لا تضعه على الحجر.»</p>
-<p>قالت شين يان: «هل أكتب إصلاحًا جديدًا؟»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>هل أكتب إصلاحًا جديدًا؟<span class="qm">»</span></p>
 <p>«اكتبي أني فحصت الوتد. لم أبدل شيئًا.»</p>
 <p>سجلت ذلك. لم يكن في السطر أجر للحداد، ولا حصة إضافية. وضع تشانغ علامة صغيرة بجانب التاريخ، ثم جلس قرب الفوهة حتى يراها عند تشغيلها. قال إنه سيبقى إلى أن يمر الكيس الأول، ثم يذهب إلى عمله الخاص.</p>
 <div class="break" role="separator"><span></span></div>
-<div class="scene" data-fx="" aria-hidden="true"></div>
+<div class="scene" data-fx="" data-pl="" aria-hidden="true"></div>
 <p>جاءت امرأة تحمل كيس قمح مربوطًا بطرفين مختلفين. قالت إن زوجها ينتظر عند البيت ولا يستطيع حمله. لم يكن الكيس كبيرًا، لكن الرباط الرطب انزلق عن كتفها. تقدم لين ليساعدها، فرفعته شين يان من الجهة الأخرى حتى لا يفتح العقد.</p>
 <p>قالت المرأة: «هذا ليس ليوم وعد. أحمل النحاس.»</p>
-<p>قالت هو سانيانغ: «نزن قبل أن نتفق على الأجر.»</p>
+<p class="sp" data-sp="hu" style="--sp:#7a5a12">قالت هو سانيانغ: <span class="qm">«</span>نزن قبل أن نتفق على الأجر.<span class="qm">»</span></p>
 <p>أخرجت شين يان الميزان الخشبي. كان الميزان خفيفًا، لكن عصاه مستقيمة، وكل كفة معلقة على بعد واحد من الوسط. وضعت حصاة اختبار صغيرة على الجانب المقابل للحبوب، ثم أزالتها حين استقرت الكفتان. لم تضف شيئًا إلى الوزن حتى تأكدت من أن القماش لا يجر الكيس إلى الأسفل.</p>
 <p>سألت المرأة: «كم يبقى لي؟»</p>
-<p>قالت شين يان: «بعد الوزن نحدد الأجر. هذا قمحك، ولن نخلط حسابه بحصة الدخن.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>بعد الوزن نحدد الأجر. هذا قمحك، ولن نخلط حسابه بحصة الدخن.<span class="qm">»</span></p>
 <p>«هل تسجلونه في دفتر العمة؟»</p>
-<p>قالت هو سانيانغ: «أسجل ما يدخل إلى النزل وما يأخذه شركائي. أما وزن كيسك فتسجلهما صاحبة الميزان.»</p>
+<p class="sp" data-sp="hu" style="--sp:#7a5a12">قالت هو سانيانغ: <span class="qm">«</span>أسجل ما يدخل إلى <span class="nm" data-pl="inn" tabindex="0" role="button">النزل</span> وما يأخذه شركائي. أما وزن كيسك فتسجلهما صاحبة الميزان.<span class="qm">»</span></p>
 <p>لم يكن في هذا انتقاص من دفترها. كانت تريد أن تبقى لها رؤية ما يخصها. أخذت شين يان الوزن، وأعادته بصوت واضح. قالت المرأة إنه مطابق لما توقعت، ثم وافقت على الأجر قبل أن يفتحوا الكيس.</p>
 <p>حين خرج الدقيق من بين الحجرين، كانت ذراته الخشنة تخشخش في الوعاء. أوقف لين الحجر، وجمع ما علق من الأطراف بملعقة خشب. لم يصفه بأنه ناعم. أخبر المرأة أن الدقيق سيحتاج إلى غربلة إذا أرادت عجينًا ألين. قالت إنها تعرف، ولفت نصفه بقطعة قماش لتمنع الهواء من الوصول إليه.</p>
-<p>سألت هو سانيانغ: «هل نأخذ نحاسًا أم جزءًا من الدقيق؟»</p>
-<p>قالت شين يان: «اتفقنا على النحاس.»</p>
+<p class="sp" data-sp="hu" style="--sp:#7a5a12">سألت هو سانيانغ: <span class="qm">«</span>هل نأخذ نحاسًا أم جزءًا من الدقيق؟<span class="qm">»</span></p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>اتفقنا على النحاس.<span class="qm">»</span></p>
 <p>كتبت المبلغ في سجل اليوم، ثم قسّمت ما بقي: ثلاثة أعشار لهو سانيانغ، وعشر لتشانغ، وستة أعشار للزوجين. لم تكن تقسم قيمة الكيس كله؛ خصمت الأجر المتفق عليه أولًا. أعادت هو سانيانغ قراءة قسمة شين يان، ثم وضعت خطًا صغيرًا تحت نصيبها.</p>
 <p>قالت: «لا تقربي أجر الحمار من الحصص.»</p>
-<p>أجابتها شين يان: «لم أقربه. أجر العم تيان جزء من أربعين من أجر الطاحونة، ويُسجل مصروفًا قبل التقسيم. هذا الكيس لم يدره الحمار.»</p>
+<p>أجابتها شين يان: «لم أقربه. أجر <span class="nm" data-p="tian" tabindex="0" role="button">العم تيان</span> جزء من أربعين من أجر الطاحونة، ويُسجل مصروفًا قبل التقسيم. هذا الكيس لم يدره الحمار.»</p>
 <p>«جيد.»</p>
 <p>كان هناك مقدار صغير لم يقبل القسمة في النحاسات التي بقيت بعد الأجر. لم تدفعه شين يان إلى أي شريك، بل كتبته في خانة الباقي حتى يُضم إلى المقبوض التالي. قالت هو سانيانغ إن حبة النحاس لا تنشطر إذا اختلفت الحصص، وإنها لا تريد أن يضيع الباقي بين دفتر وآخر. سألها لين إن كان بوسعه أن يأخذ حصته الآن ثم يسجل الفرق.</p>
 <p>قالت: «إذا أخذت، لا أستطيع أن أعرف هل دفعت لنفسك أم أخذت من المشترك.»</p>
@@ -63,42 +89,42 @@
 <p>«العلامة لا تعيد ما خرج.»</p>
 <p>أعاد النحاسات إلى الصحن. كتبت شين يان المبلغ المقبوض، وحصة كل شريك، والباقي المؤجل، ثم قرأ لين الأرقام عليها. لم تكن عملية القسمة معقدة، لكن الدفتر ظل ينتظر وضوحًا حتى في أصغر فرق. نظر تشانغ إلى ما خصصته له، وطلب منها أن تضع نصيبه جانبًا إلى أن يعود في آخر النهار. لم يأخذه معه إلى الحدادة؛ لم يكن محتاجًا إليه في الطريق، ولم يرد أن يخلطه بثمن الحديد.</p>
 <p>قال: «إذا احتاج أحد إلى عملي اليوم، فليأتِ إليّ. لا يدخل هذا الأجر في الطحن.»</p>
-<p>قالت شين يان: «سيكون له سطر مستقل.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>سيكون له سطر مستقل.<span class="qm">»</span></p>
 <p>أومأ، ثم عاد إلى مراقبة الحجر. لم يقل إن التسجيل صار نافعًا، ولم يقل إنه بلا فائدة. كان يختبر الوتد، ويحسب أجره، ويريد أن يبقى كل شيء في موضعه.</p>
 <p>لم يتركا حصة زاو وهمية في يوم لم يعمل فيه. أما في سجل العمل العام، فقد كتبت شين يان وزن الحبوب، والأجر، واسم صاحبتها، وساعة الاستلام. لم تكتب اسم زوجها في خانة الزبون، لأنه لم يحضر ولم يدفع.</p>
-<p>قال لين: «إذا عاد الرجل يسأل عن الطحن، سيكون عندنا مثال نريه.»</p>
-<p>قالت شين يان: «مثال لا وعد. لا أقول إن كل كيس له الوقت نفسه.»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>إذا عاد الرجل يسأل عن الطحن، سيكون عندنا مثال نريه.<span class="qm">»</span></p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>مثال لا وعد. لا أقول إن كل كيس له الوقت نفسه.<span class="qm">»</span></p>
 <p>بعد قليل عاد فلاحان يحملان كيسين من الدخن. كان أحدهما صاحب رقعة، والآخر جاء معه ليعرف طريق الدور. فصلت شين يان بين الكيسين، وكتبت على الرقعة رقمها ووزنها قبل الطحن. لم تدع الرجلين يضعان حمليهما قرب ميزان القمح، كي لا يختلط الحساب. كان صاحب الرقعة يملك يومه المجاني، أما صاحبه فانتظر أن يعرف الأجر قبل أن يقرر.</p>
 <p>سأل: «هل تطحنون له أولًا لأنه جاء معه؟»</p>
-<p>قالت هو سانيانغ: «نطحن لصاحب الرقعة في وقته. أنت تقرر إن كنت تريد أن تنتظر أو ترجع.»</p>
+<p class="sp" data-sp="hu" style="--sp:#7a5a12">قالت هو سانيانغ: <span class="qm">«</span>نطحن لصاحب الرقعة في وقته. أنت تقرر إن كنت تريد أن تنتظر أو ترجع.<span class="qm">»</span></p>
 <p>لم يرضَ الرجل تمامًا، لكنه لم يعترض. بقي عند الباب وساعد صاحبه على وضع الكيس فوق لوح جاف. بعد الطحن، عاد إلى لين وسأله عن الثمن. أخبره لين بما أخذوه من المرأة قبل ساعة، موضحًا أن القمح يختلف عن الدخن، وأن الوزن هو الذي يحسم. وافق الرجل على أن يأتي بكيس أصغر في اليوم التالي.</p>
-<p>لم يكن يومًا مزدحمًا بما يكفي ليملأ المخزن، لكنه لم ينته بلا دخل. حفظت شين يان النحاسات في الكيس الصغير، وكتبت بجانبها كلمة «أجر» حتى لا تختلط بالنقد الذي في جيب لين. قسّمت هو سانيانغ نصيبها من الدقيق، وتركت حصة تشانغ في وعاء خاص حتى يعود.</p>
+<p>لم يكن يومًا مزدحمًا بما يكفي ليملأ <span class="nm" data-pl="store" tabindex="0" role="button">المخزن</span>، لكنه لم ينته بلا دخل. حفظت شين يان النحاسات في الكيس الصغير، وكتبت بجانبها كلمة «أجر» حتى لا تختلط بالنقد الذي في جيب لين. قسّمت هو سانيانغ نصيبها من الدقيق، وتركت حصة تشانغ في وعاء خاص حتى يعود.</p>
 <div class="break" role="separator"><span></span></div>
-<div class="scene" data-fx="rain" aria-hidden="true"></div>
+<div class="scene" data-fx="rain" data-pl="" aria-hidden="true"></div>
 <p>جاء سون لي بعد الظهر. لم يحمل الحطب هذه المرة. كان يمشي مع عصاه، وفي اليد الأخرى لوحًا قصيرًا جففه عند موقد النزل. قالت شين يان إن ساقه لا تبدو أسوأ، لكن لا يحق له أن يختبرها على حمل ثقيل.</p>
 <p>قال: «أستطيع حمل هذا.»</p>
 <p>«اللوح خفيف. لا ترفعه فوق كتفك.»</p>
 <p>«أعرف.»</p>
 <p>أخذ منها قطعة القماش التي كانت تلف بها حواف الأوعية، ثم نقل لوحين جافين من المخزن إلى زاوية لا يصلها المطر. لم يطلب طعامًا قبل أن ينتهي، ولم تحسبه هو سانيانغ أجيرًا للطاحونة. كانت قد اتفقت معه على طعام اليوم ومقابل بسيط إذا بقي عمله خفيفًا، لكنه لم يفعل أكثر من النقل. لم يصبح ذلك وعدًا بعمل دائم.</p>
-<p>قال لين: «حين تتعافى، نستطيع أن نتفق على عمل آخر إن احتجنا.»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>حين تتعافى، نستطيع أن نتفق على عمل آخر إن احتجنا.<span class="qm">»</span></p>
 <p>أجاب سون: «لا تعدني بشيء قبل أن ترى ساقي.»</p>
 <p>«لن أعدك.»</p>
 <p>وضع اللوح، وجلس قرب الباب. مدت إليه هو سانيانغ وعاء حساء، ولم تسأله إن كان سيعود غدًا. أكل ببطء، ثم نظر إلى البخار الصاعد من الموقد.</p>
-<p>في أثناء ذلك دخل وو ليبلغهم أن أول جباية مؤقتة قد سُجلت. أحضر إيصالًا مختومًا بمبلغ نحاستين، وكتب عليه الموعد التالي بعد تسعة أيام. راجعت شين يان المبلغ والتاريخ، ثم دققت أن كلمة «جباية» موجودة وأنها لا تذكر شيئًا عن الإيجار أو حصص الشركاء. أخذ لين الإيصال منها، وأدخله في غلاف التسجيل.</p>
-<p>قال وو: «دُفعت في المجلس؟»</p>
-<p>قالت هو سانيانغ: «نعم. لا تكتبها دينًا.»</p>
+<p>في أثناء ذلك دخل <span class="nm" data-p="wu" tabindex="0" role="button">وو</span> ليبلغهم أن أول جباية مؤقتة قد سُجلت. أحضر إيصالًا مختومًا بمبلغ نحاستين، وكتب عليه الموعد التالي بعد تسعة أيام. راجعت شين يان المبلغ والتاريخ، ثم دققت أن كلمة «جباية» موجودة وأنها لا تذكر شيئًا عن الإيجار أو حصص الشركاء. أخذ لين الإيصال منها، وأدخله في غلاف التسجيل.</p>
+<p class="sp" data-sp="wu" style="--sp:#6a3fa0">قال وو: <span class="qm">«</span>دُفعت في المجلس؟<span class="qm">»</span></p>
+<p class="sp" data-sp="hu" style="--sp:#7a5a12">قالت هو سانيانغ: <span class="qm">«</span>نعم. لا تكتبها دينًا.<span class="qm">»</span></p>
 <p>«لم أكتبها دينًا.»</p>
 <p>«ولا تخصمها من المئة والأربع والعشرين.»</p>
 <p>«هذا ليس حساب الدين.»</p>
-<p>قالت شين يان: «في سجلنا وضعتها في مصاريف التسجيل. والإيصال يثبتها.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>في سجلنا وضعتها في مصاريف التسجيل. والإيصال يثبتها.<span class="qm">»</span></p>
 <p>بدا على وو أنه يريد الرد، لكنه سحب طرف ردائه عن حافة المقعد، ثم قال: «احتفظوا به. إذا ضاع، لا أستطيع أن أعطيكم نسخة إلا بعد مراجعة السجل.»</p>
 <p>لم تكن ثقتهم به كاملة، لكن الورقة كانت واضحة. كتبوا التاريخ التالي إلى جانبها، ووضع لين علامة عند اليوم التاسع بعد هذه الدفعة. لم يسددوا من الدين شيئًا في ذلك اليوم. ظل الرقم 124 نحاسة كما هو. وضعت شين يان الإيصال فوق صفحة المصاريف لا داخل دفتر الدين، وطلبت من لين أن يقرأ التاريخ مرة أخرى. كان اليوم الثالث والعشرين بعد المئة؛ كتبت إلى جواره موعد الدفعة التالية بعد تسعة أيام، ثم جعلت خطًا قصيرًا يصل الموعدين. لم يكن الخط قيدًا جديدًا، بل تذكيرًا بأنهم عرفوا متى يدفعون ومتى لا يدفعون.</p>
-<p>قال لين: «إذا جاءت دفعة الطحن قبل الموعد، لا يعني ذلك أن علينا دفعها فورًا.»</p>
-<p>قالت هو سانيانغ: «ولا يعني أن تتركها حتى تضيع.»</p>
-<p>أجابت شين يان: «أسجلها في يومها. وحين يأتي الموعد، نخرج مقدار الجباية من مصاريف البيت.»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>إذا جاءت دفعة الطحن قبل الموعد، لا يعني ذلك أن علينا دفعها فورًا.<span class="qm">»</span></p>
+<p class="sp" data-sp="hu" style="--sp:#7a5a12">قالت هو سانيانغ: <span class="qm">«</span>ولا يعني أن تتركها حتى تضيع.<span class="qm">»</span></p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">أجابت شين يان: <span class="qm">«</span>أسجلها في يومها. وحين يأتي الموعد، نخرج مقدار الجباية من مصاريف البيت.<span class="qm">»</span></p>
 <p>لم تعترض العمة. أعادت الإيصال إلى مكانه، وأغلقت الغلاف. بقيت حبات النحاس التي دخلت من الطحن منفصلة عن الحبات التي خرجت إلى المجلس.</p>
 <div class="break" role="separator"><span></span></div>
-<div class="scene" data-fx="water fire" aria-hidden="true"></div>
+<div class="scene" data-fx="water fire" data-pl="mill" aria-hidden="true"></div>
 <p>حين فرغت الطاحونة من آخر كيس، ذهب لين ليغسل الغبار عن يديه. عند مدخل المخزن لمح شين يان تمسك المكوّن المجهول الذي كان محفوظًا في التخزين. لم يكن ملقى في يدها كما يحدث حين ترتب الأشياء، بل قبضت عليه لحظة ثم أنزلته إلى الطاولة، كأن دفئًا خفيفًا وصل إلى راحة يدها من موضع لا يعرفه لين.</p>
 <p>قال: «هل هو دافئ؟»</p>
 <p>نظرت إلى أصابعها. «قليلًا.»</p>
@@ -107,88 +133,29 @@
 <p>«ربما.»</p>
 <p>لم يسألها أن تشرح. لم يكن في هذا الدفء ما يكفي لصنع استنتاج، ولا أراد أن يكرر خطأه القديم في تحويل شيء غامض إلى معلومة مؤكدة. كتبت شين يان ملاحظة صغيرة في هامش دفترها، لا في سجل الطاحونة.</p>
 <p>في المساء، جاء سون لي إلى باب المطبخ. كان قد أنهى طعامه، لكنه لم يغادر بعد. سمع صوت الحداد تشانغ من الخارج يسأل عن رجل يبيع الفحم في الجبال. رفع سون رأسه.</p>
-<p>قال تشانغ: «تعرفه؟»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>تعرفه؟<span class="qm">»</span></p>
 <p>«رأيت رجاله عند النهر الكبير. لا أعرف اسمه.»</p>
 <p>«هل هو تاجر؟»</p>
 <p>«يبيع الفحم لمن يصل إليه. أخذوا الطريق العالي حين صارت الجسور خطرة.»</p>
-<p>سأل لين: «هل مررت بهم؟»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">سأل لين: <span class="qm">«</span>هل مررت بهم؟<span class="qm">»</span></p>
 <p>«مررت بجانب آثارهم. لم أرَ وجوههم.»</p>
-<p>قالت شين يان: «وماذا تعرف عن الرامي الذي تحدثت عنه؟»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>وماذا تعرف عن الرامي الذي تحدثت عنه؟<span class="qm">»</span></p>
 <p>نظر إليها سون، ثم إلى ساقه الملفوفة. «ما سمعته من رجلين. أحدهما قال إن سهمًا أصاب رفيقه عند موضع لم يستطع أن يميزه من الوادي. الآخر قال إن السهم جاء من الجبل. لم يتفقا على البعد ولا على الطريق.»</p>
-<p>قال تشانغ: «إذن لا تعرف.»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>إذن لا تعرف.<span class="qm">»</span></p>
 <p>«أعرف أن رجلاً مات، وأن الذين بقوا صاروا يخافون الطريق.»</p>
 <p>لم يزد على ذلك. كان اسمه سون لي، وقد رأى ما يكفي ليعرف أثر الموت على الذين يمشون معه. لم يحول حكايته إلى دليل على رامٍ لا يخطئ. سأل لين عن اتجاه الطريق، فوصفه سون بخطوات وعلامات أرضية، لكنه أقر أنه لم يرَ مطلق النار.</p>
 <p>سجلت شين يان في دفترها عمودين: «ما رآه» و«ما سمعه». كتبت تحت الأول آثار مرور رجال في الطريق العالي، وتحت الثاني حكاية السهم واختلاف الشاهدين. لم تُلحق بها مسافة من تقدير لين، ولم تكتب أن رامٍ يختبئ في الجبل.</p>
 <p>عاد سون إلى الفراش المؤقت قبل حلول الليل. بقيت الطاحونة مغلقة، والإيصال محفوظًا، والدين كما كان. على عتبة الباب، سمعوا خرير ماء تحت طبقة الجليد عند المجرى الجانبي. لم يكن صوت نهر مفتوح، بل قطرة تتسرب من تحت غطاء برده طويلًا.</p>
-<p>قالت شين يان: «الماء يتحرك.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>الماء يتحرك.<span class="qm">»</span></p>
 <p>لم يقل لين إن الشتاء انتهى. مد يده إلى الحاجز القديم، وشعر ببرودة الخشب المبتل. ثم عادوا إلى الداخل قبل أن يجمد الطين تحت أقدامهم.</p>
 </article><nav class="nav"><a href="/c/037">→ السابق</a><a href="/">الفهرس</a><a class="next" href="/c/039">التالي ←</a></nav>
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
-function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}document.dispatchEvent(new Event('themechange'))}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','038')}catch(e){}resume('038');
-
-function cine(on){var r=document.documentElement;r.classList.toggle('cine',!!on);try{on?localStorage.setItem('cine','1'):localStorage.removeItem('cine')}catch(e){}if(on)scrollBy(0,1)}
-addEventListener('keydown',function(e){if(e.key==='Escape')cine(0)});
-(function(){
-var R=document.documentElement,cv=document.getElementById('fx'),mk=[].slice.call(document.querySelectorAll('.scene')),still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var fb=document.querySelector('.fxb');
-if(still){R.classList.add('still');if(fb)fb.hidden=true}
-function label(){if(fb)fb.setAttribute('aria-pressed',R.classList.contains('nofx')?'false':'true')}
-window.fxToggle=function(){var off=!R.classList.contains('nofx');R.classList.toggle('nofx',off);try{off?localStorage.setItem('fx','off'):localStorage.removeItem('fx')}catch(e){}label();pick()};
-label();
-if('IntersectionObserver' in window&&!still){R.classList.add('rv');var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');so.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('.shot').forEach(function(x){so.observe(x)})}
-if(!cv||still||!cv.getContext)return;
-var g=cv.getContext('2d'),W=0,H=0,D=Math.min(devicePixelRatio||1,1.5),L={snow:0,fire:0,rain:0,water:0},T={},ps=[],rp=[],run=0,dark=false,fr=0,vg=document.getElementById('vig'),pl=document.getElementById('pulse'),cur='';
-function size(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0)}
-size();addEventListener('resize',size);
-function rnd(a,b){return a+Math.random()*(b-a)}
-function spawn(k){
- if(k==='snow')return{k:k,x:rnd(0,W),y:-8,r:rnd(1,2.8),vy:rnd(.4,1.1),ph:rnd(0,6.3),a:rnd(.35,.8)};
- if(k==='fire')return{k:k,x:rnd(0,W),y:H+6,r:rnd(1,2.6),vy:-rnd(.5,1.5),ph:rnd(0,6.3),a:rnd(.4,.9),life:rnd(.5,1)};
- return{k:k,x:rnd(0,W+60),y:-20,vy:rnd(9,14),l:rnd(10,18),a:rnd(.15,.35)}
-}
-var cap={snow:welcome(70),fire:welcome(34),rain:welcome(55)};
-function welcome(n){return Math.round(n*Math.min(1,W/700+.45))}
-function tick(){
- run=0;fr++;
- if(fr%45===1){var bg=getComputedStyle(document.body).backgroundColor.match(/\d+/g)||[255,255,255];dark=(+bg[0]+ +bg[1]+ +bg[2])<300}
- g.clearRect(0,0,W,H);
- for(var k in L){var t=T[k]?1:0;L[k]+=(t-L[k])*.03;if(Math.abs(t-L[k])<.01)L[k]=t;if(L[k]>0)run=1}
- ['snow','fire','rain'].forEach(function(k){var n=Math.round((cap[k]||0)*L[k]),c=0;for(var i=0;i<ps.length;i++)if(ps[i].k===k)c++;if(c<n&&Math.random()<.5)ps.push(spawn(k))});
- for(var i=ps.length-1;i>=0;i--){
-  var p=ps[i],lv=L[p.k];
-  if(p.k==='snow'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.02)*.5;g.fillStyle=dark?'rgba(235,242,255,'+p.a*lv*.7+')':'rgba(110,140,175,'+p.a*lv*.55+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.y>H+6||lv<.02)ps.splice(i,1)}
-  else if(p.k==='fire'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.07)*.6;p.life-=.004;var fl=.6+.4*Math.sin(fr*.3+p.ph);g.fillStyle=dark?'rgba(255,'+(150+(p.life*80|0))+',60,'+p.a*lv*fl*p.life+')':'rgba(220,'+(70+(p.life*50|0))+',20,'+p.a*lv*fl*p.life*1.1+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.life<=0||p.y<-8||lv<.02)ps.splice(i,1)}
-  else{p.y+=p.vy;p.x-=p.vy*.22;g.strokeStyle=dark?'rgba(170,200,235,'+p.a*lv+')':'rgba(70,100,140,'+p.a*lv*.8+')';g.lineWidth=1;g.beginPath();g.moveTo(p.x,p.y);g.lineTo(p.x+p.l*.22,p.y-p.l);g.stroke();if(p.y>H+20||lv<.02)ps.splice(i,1)}
- }
- if(L.water>0){if(rp.length<5&&Math.random()<.03*L.water)rp.push({x:rnd(.1,.9)*W,y:rnd(.15,.9)*H,r:2,a:.4});
-  for(var j=rp.length-1;j>=0;j--){var q=rp[j];q.r+=.55;q.a-=.003;if(q.a<=0){rp.splice(j,1);continue}g.strokeStyle=dark?'rgba(150,190,230,'+q.a*L.water*.7+')':'rgba(60,100,150,'+q.a*L.water*.55+')';g.lineWidth=1;g.beginPath();g.ellipse(q.x,q.y,q.r*1.9,q.r*.6,0,0,6.3);g.stroke()}}
- if(ps.length||rp.length||run)requestAnimationFrame(tick);else go=0
-}
-var go=0;
-function start(){if(!go&&!document.hidden){go=1;requestAnimationFrame(tick)}}
-document.addEventListener('visibilitychange',function(){if(!document.hidden&&(run||ps.length))start()});
-function apply(fx){
- var off=R.classList.contains('nofx'),s=fx&&!off?fx.split(' '):[];
- T={snow:s.indexOf('snow')>-1,fire:s.indexOf('fire')>-1,rain:s.indexOf('rain')>-1,water:s.indexOf('water')>-1};
- if(vg)vg.classList.toggle('on',s.indexOf('night')>-1);
- if(s.indexOf('blood')>-1&&pl&&cur!==fx){pl.classList.remove('on');void pl.offsetWidth;pl.classList.add('on')}
- cur=fx;start()
-}
-function pick(){
- var a=null,y=innerHeight*.5;
- for(var i=0;i<mk.length;i++){if(mk[i].getBoundingClientRect().top<y)a=mk[i];else break}
- apply(a?a.dataset.fx:'')
-}
-var pt;addEventListener('scroll',function(){if(pt)return;pt=setTimeout(function(){pt=0;pick()},120)},{passive:true});
-pick();
-})();
-
-(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var hud=document.getElementById('hud'),ht;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var x=e.target;x.classList.add('in');io.unobserve(x);if(hud&&!x.classList.contains('sys--echo')){hud.className=x.classList.contains('sys--b')?'b':'';void hud.offsetWidth;hud.classList.add(x.classList.contains('sys--up')?'up':'on');clearTimeout(ht);ht=setTimeout(function(){hud.className=''},1400)}}})},{rootMargin:'0px 0px -15% 0px'});s.forEach(function(x){io.observe(x)})})();
-function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
+function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);document.dispatchEvent(new Event('chapterdone'));return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
@@ -201,5 +168,6 @@ if(installButton)installButton.addEventListener('click',async function(){
 });
 window.addEventListener('appinstalled',function(){var help=document.getElementById('install-help');if(help)help.hidden=true;if(installButton)installButton.hidden=true;});
 </script>
+<script src="/reader.js"></script>
 </body>
 </html>

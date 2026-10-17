@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-lv="1" data-integ="0" data-page="map" data-total="50">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#8a4b1f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="السيادة الحضارية">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="icon" type="image/png" href="/icon-192.png">
+<title>الخريطة — نظام السيادة الحضارية</title>
+<link rel="preload" href="/fonts/NotoNaskhArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+<script>try{var R=document.documentElement,t=localStorage.getItem('theme');if(t)R.dataset.theme=t;var f=localStorage.getItem('fs');if(f)R.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))R.classList.add('cine');if(localStorage.getItem('fx')==='off')R.classList.add('nofx');var lv=+localStorage.getItem('lv');if(lv>+R.dataset.lv&&!R.dataset.ch)R.dataset.lv=lv}catch(e){}</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div id="hud" aria-hidden="true"></div>
+<div id="hudc" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="integ"></span></div>
+
+<header class="bar">
+  <a class="home" href="/">نظام السيادة الحضارية</a>
+  <div class="tools">
+    
+    <button type="button" id="menu-b" aria-label="القائمة" aria-expanded="false" aria-controls="menu">☰</button>
+  </div>
+</header>
+<div class="sheet" id="menu" hidden role="dialog" aria-label="القائمة"><div class="sheet-in">
+  <div class="row"><span>حجم الخط</span><span class="grp"><button type="button" onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button><button type="button" onclick="fsz(1)" aria-label="تكبير الخط">أ+</button></span></div>
+  <div class="row"><span>الوضع الليلي</span><button type="button" class="sw" data-sw="dark" onclick="theme()" aria-pressed="false"><i></i></button></div>
+  
+  <nav class="links"><a href="/people">الشخصيات</a><a href="/map">الخريطة</a><a href="/stats">لوحة الحضارة</a><a href="/host">سجل المضيف</a></nav>
+</div></div>
+<div class="sheet card-sheet" id="card" hidden role="dialog"><div class="sheet-in"></div></div>
+<main>
+<section class="pg pg-map"><h1>القرية</h1><p class="lede">المس مكاناً لترى وصفه والفصول التي جرت فيه.</p><div class="map-page"><svg class="map" viewBox="0 0 560 500" role="img" aria-label="خريطة القرية">
+<defs><filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter></defs>
+<g class="ink" filter="url(#ink)">
+<path class="river" d="M40 0 C70 90 160 120 150 200 C140 260 70 300 110 360 C150 420 120 470 140 500"/>
+<path class="river thin" d="M110 330 C180 340 230 360 300 360"/>
+<path class="road" d="M560 230 L400 230 C340 235 300 245 280 250 C250 260 230 230 220 210 L143 180 L60 175"/>
+<path class="road" d="M280 250 C300 290 320 300 330 300 M300 300 C305 350 300 400 300 440"/>
+<path class="road" d="M400 230 C430 200 450 170 470 150"/>
+<path class="hill" d="M410 165 Q470 90 540 165 M430 150 Q470 115 515 150"/>
+<path class="hill" d="M0 470 Q60 410 120 470 M440 40 Q480 0 530 40"/>
+<path class="field" d="M380 400 h90 v50 h-90z M385 410 h80 M385 420 h80 M385 430 h80 M385 440 h80"/>
+<path class="bridge" d="M128 170 l30 2 M128 186 l30 2"/>
+</g><g class="mp" data-pl="inn" transform="translate(330 295)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">نزل الصفصافة</text></g><g class="mp" data-pl="store" transform="translate(400 335)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">المخزن</text></g><g class="mp" data-pl="square" transform="translate(275 248)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الساحة</text></g><g class="mp" data-pl="market" transform="translate(225 185)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">السوق</text></g><g class="mp" data-pl="well" transform="translate(225 300)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">البئر</text></g><g class="mp" data-pl="forge" transform="translate(300 440)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">ورشة تشانغ</text></g><g class="mp" data-pl="mill" transform="translate(95 340)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الطاحونة</text></g><g class="mp" data-pl="bridge" transform="translate(118 178)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الجسر الصغير</text></g><g class="mp" data-pl="liu" transform="translate(480 150)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">بيت ليو</text></g><g class="mp" data-pl="gate" transform="translate(425 232)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">بوابة القرية</text></g><g class="mp" data-pl="fields" transform="translate(425 420)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الحقول</text></g></svg></div><div id="app"></div></section>
+</main>
+<script>
+function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
+function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}document.dispatchEvent(new Event('themechange'))}
+var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
+
+function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);document.dispatchEvent(new Event('chapterdone'));return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
+    var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
+  }).catch(function(){var status=document.getElementById('offline-status');if(status)status.textContent='تعذر حفظ الفصول. أعد فتح الموقع وأنت متصل بالإنترنت.'});
+}
+var installPrompt,installButton=document.getElementById('install-app');
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();installPrompt=e;if(installButton)installButton.hidden=false;});
+if(installButton)installButton.addEventListener('click',async function(){
+  if(!installPrompt)return;await installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installButton.hidden=true;
+});
+window.addEventListener('appinstalled',function(){var help=document.getElementById('install-help');if(help)help.hidden=true;if(installButton)installButton.hidden=true;});
+</script>
+<script src="/reader.js"></script>
+</body>
+</html>

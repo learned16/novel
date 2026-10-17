@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-lv="2" data-integ="4" data-season="spring" data-ch="50" data-total="50">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,93 +12,119 @@
 <title>الفصل الخمسون: حافة في التراب — نظام السيادة الحضارية</title>
 <link rel="preload" href="/fonts/NotoNaskhArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fs');if(f)document.documentElement.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))document.documentElement.classList.add('cine');if(localStorage.getItem('fx')==='off')document.documentElement.classList.add('nofx')}catch(e){}</script>
+<script>try{var R=document.documentElement,t=localStorage.getItem('theme');if(t)R.dataset.theme=t;var f=localStorage.getItem('fs');if(f)R.style.setProperty('--fs',f+'px');if(localStorage.getItem('cine'))R.classList.add('cine');if(localStorage.getItem('fx')==='off')R.classList.add('nofx');var lv=+localStorage.getItem('lv');if(lv>+R.dataset.lv&&!R.dataset.ch)R.dataset.lv=lv}catch(e){}</script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <div id="hud" aria-hidden="true"></div>
-<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button>
+<div id="hudc" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="integ"></span></div>
+<canvas id="fx" aria-hidden="true"></canvas><div id="vig" aria-hidden="true"></div><div id="cv" aria-hidden="true"></div><div id="pulse" aria-hidden="true"></div><button type="button" class="cine-x" onclick="cine(0)" aria-label="الخروج من وضع القراءة السينمائي">خروج ✕</button><button type="button" class="here" id="here" hidden aria-label="مكان المشهد على الخريطة"><span class="pin"></span><span class="nmx"></span></button>
+<div class="sheet map-sheet" id="mapsheet" hidden role="dialog" aria-label="خريطة القرية"><div class="sheet-in"><div class="sheet-h"><b>القرية</b><span class="path"></span><button type="button" class="x" data-close aria-label="إغلاق">✕</button></div><svg class="map" viewBox="0 0 560 500" role="img" aria-label="خريطة القرية">
+<defs><filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter></defs>
+<g class="ink" filter="url(#ink)">
+<path class="river" d="M40 0 C70 90 160 120 150 200 C140 260 70 300 110 360 C150 420 120 470 140 500"/>
+<path class="river thin" d="M110 330 C180 340 230 360 300 360"/>
+<path class="road" d="M560 230 L400 230 C340 235 300 245 280 250 C250 260 230 230 220 210 L143 180 L60 175"/>
+<path class="road" d="M280 250 C300 290 320 300 330 300 M300 300 C305 350 300 400 300 440"/>
+<path class="road" d="M400 230 C430 200 450 170 470 150"/>
+<path class="hill" d="M410 165 Q470 90 540 165 M430 150 Q470 115 515 150"/>
+<path class="hill" d="M0 470 Q60 410 120 470 M440 40 Q480 0 530 40"/>
+<path class="field" d="M380 400 h90 v50 h-90z M385 410 h80 M385 420 h80 M385 430 h80 M385 440 h80"/>
+<path class="bridge" d="M128 170 l30 2 M128 186 l30 2"/>
+</g><g class="mp" data-pl="inn" transform="translate(330 295)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">نزل الصفصافة</text></g><g class="mp" data-pl="store" transform="translate(400 335)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">المخزن</text></g><g class="mp" data-pl="square" transform="translate(275 248)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الساحة</text></g><g class="mp" data-pl="market" transform="translate(225 185)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">السوق</text></g><g class="mp" data-pl="well" transform="translate(225 300)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">البئر</text></g><g class="mp" data-pl="forge" transform="translate(300 440)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="32">ورشة تشانغ</text></g><g class="mp" data-pl="mill" transform="translate(95 340)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الطاحونة</text></g><g class="mp" data-pl="bridge" transform="translate(118 178)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الجسر الصغير</text></g><g class="mp" data-pl="liu" transform="translate(480 150)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">بيت ليو</text></g><g class="mp" data-pl="gate" transform="translate(425 232)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">بوابة القرية</text></g><g class="mp" data-pl="fields" transform="translate(425 420)"><circle r="16" class="hit"/><circle r="5" class="dot"/><circle r="11" class="ring"/><text y="-14">الحقول</text></g></svg><p class="pl-d"></p></div></div>
+<script type="application/json" id="people">[{"id":"lin","name":"لين","role":"المهندس","desc":"مهندس انتقل مع زوجته إلى قرية في عالم مجهول، ومعه نظام لا يعرف أكثر مما تسمح به بياناته. مباشر، ويفكر بصوت مسموع بالأرقام والأسباب، وساخر في سره أحياناً.","color":"#2f6db3"},{"id":"shen","name":"شين يان","role":"زوجة لين","desc":"حامل، قصيرة الجمل وحادة، تسأل أكثر مما تجيب. تقول «أثبت» ولا تقول «أصدقك». الدفاتر والبنود سلاحها.","color":"#b0461f"},{"id":"hu","name":"هو سانيانغ","role":"صاحبة نزل الصفصافة","desc":"عملية، تتكلم بالأثمان والديون. لا تشكر، بل تضع طعاماً أمامك. النزل هو كل ما تملك.","color":"#7a5a12"},{"id":"zhang","name":"تشانغ","role":"الحداد","desc":"قليل الكلام، ومتكبر في صنعته. يقول «جرّب» بدل «لا». ورشته عند الطرف الجنوبي للقرية.","color":"#5b5b5b"},{"id":"wu","name":"الكاتب وو","role":"كاتب السجلات","desc":"مهذب أكثر من اللازم، ويسأل الأسئلة الصحيحة بنبرة عابرة.","color":"#6a3fa0"},{"id":"qian","name":"التاجر تشيان","role":"تاجر الحديد والملح","desc":"لطيف ومبتسم، وكل جملة عنده فيها رقم. يجلب الحديد والملح من البلدة.","color":"#a8326e"}]</script>
+<script type="application/json" id="places">[{"id":"inn","name":"نزل الصفصافة","desc":"نزل هو سانيانغ على طريق القوافل. هنا الموقد الأول."},{"id":"store","name":"المخزن","desc":"غرفة لين وشين يان خلف النزل."},{"id":"square","name":"الساحة","desc":"قلب القرية، حيث يجتمع الناس."},{"id":"market","name":"السوق","desc":"يوم السوق يجمع الباعة والقوافل."},{"id":"well","name":"البئر","desc":"بئر القرية، ومجلس أخبارها."},{"id":"forge","name":"ورشة تشانغ","desc":"ورشة الحداد عند الطرف الجنوبي للقرية."},{"id":"mill","name":"الطاحونة","desc":"الطاحونة المهجورة عند منعطف النهر، أعادها لين إلى الدوران."},{"id":"bridge","name":"الجسر الصغير","desc":"جسر خشبي صغير على النهر."},{"id":"liu","name":"بيت ليو","desc":"بيت عائلة ليو على التل الشرقي."},{"id":"gate","name":"بوابة القرية","desc":"حيث يدخل الغرباء ويخرجون."},{"id":"fields","name":"الحقول","desc":"حقول القرية إلى الجنوب الشرقي."}]</script>
 <header class="bar">
   <a class="home" href="/">نظام السيادة الحضارية</a>
   <div class="tools">
-    <button onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button>
-    <button onclick="fsz(1)" aria-label="تكبير الخط">أ+</button>
-    <button class="fxb" onclick="fxToggle()" aria-label="جو المشهد" aria-pressed="true">جو</button><button onclick="cine(1)" aria-label="وضع القراءة السينمائي">سينما</button>
-    <button onclick="theme()" aria-label="الوضع الليلي">ليلي</button>
+    <button type="button" id="listen" class="listen" hidden aria-label="استمع إلى الفصل">▶ استمع</button>
+    <button type="button" id="menu-b" aria-label="القائمة" aria-expanded="false" aria-controls="menu">☰</button>
   </div>
 </header>
+<div class="sheet" id="menu" hidden role="dialog" aria-label="القائمة"><div class="sheet-in">
+  <div class="row"><span>حجم الخط</span><span class="grp"><button type="button" onclick="fsz(-1)" aria-label="تصغير الخط">أ−</button><button type="button" onclick="fsz(1)" aria-label="تكبير الخط">أ+</button></span></div>
+  <div class="row"><span>الوضع الليلي</span><button type="button" class="sw" data-sw="dark" onclick="theme()" aria-pressed="false"><i></i></button></div>
+  <div class="row fx-row"><span>جو المشهد <small>ثلج، شرر، مطر، ليل…</small></span><button type="button" class="sw" data-sw="fx" aria-pressed="true"><i></i></button></div>
+  <div class="row fx-row"><span>الصوت المحيط <small>يُولَّد في الجهاز بلا ملفات</small></span><button type="button" class="sw" data-sw="snd" aria-pressed="false"><i></i></button></div>
+  <div class="row vib-row"><span>الاهتزاز <small>عند الترقية والإنجاز</small></span><button type="button" class="sw" data-sw="vib" aria-pressed="true"><i></i></button></div>
+  <div class="row"><span>وضع السينما</span><button type="button" onclick="cine(1)">ادخل</button></div>
+  <div class="row"><span>الخريطة</span><button type="button" id="open-map">افتح</button></div>
+  <nav class="links"><a href="/people">الشخصيات</a><a href="/map">الخريطة</a><a href="/stats">لوحة الحضارة</a><a href="/host">سجل المضيف</a></nav>
+</div></div>
+<div class="sheet card-sheet" id="card" hidden role="dialog"><div class="sheet-in"></div></div>
 <main>
-<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>50</b></div><h1>حافة في التراب</h1></header>
-<div class="scene" data-fx="rain" aria-hidden="true"></div>
-<p>في صباح اليوم الخمسين بعد المئة، حمل تشانغ السكة التي أصلحها ملفوفة بالقماش، وسار مع لين إلى قطعة الأرض التي وافق صاحبها على تجربتها فيها. لم تكن أرضاً جافة تماماً؛ انحسر عنها الثلج، وظهرت بقع من التراب اللين، لكن سطحها لم يجف بما يكفي للحرث. لم يكن الفلاح يريد زرعها الآن. أراد أن يرى إن كانت السكة ستنحني عند أول مقاومة.</p>
-<p>لحقت بهما شين يان، ومعها نسخة الاتفاق والدفتر، وقد ربطت شالها حول بطنها كي لا يجره الهواء. بقيت هو سانيانغ في النزل لتحسب أجور الطحن. منع لين زوجته من حمل السكة، فاكتفت بالدفتر وجلست عند طرف الأرض لتسجل الاختبار. عند باب الورشة، حاول لين أن يأخذ السكة عن تشانغ، فقال الحداد: «أستطيع حملها.»</p>
+<article class="chapter"><header class="ch-head"><div class="eyebrow">المرحلة الثانية</div><div class="ch-num"><span>الفصل</span><b>50</b></div><h1>حافة في التراب</h1><div class="when"><span class="se se-spring">الربيع</span><span>اليوم 150</span></div></header>
+<aside class="recap" id="recap" hidden><div class="recap-h"><b>سابقاً</b><button type="button" class="x" aria-label="إغلاق">✕</button></div><p>خرج الرجل، وبقيت السكة على الطاولة حتى تبرد. جمع تشانغ الأدوات التي استخدمها، بينما فحص لين سطح العنق من غير أن يضغط عليه. لم تظهر شقوق جديدة، لكنه لم يضع علامة النجاح. كتبوا أن الفحص البصري الأول لم يبين شقاً، وأن اختبار السحب مؤجل إلى الموعد المتفق عليه. ثبتت شين يان النسخة في غلاف الدفتر كي لا يضيع ترتيب البنود. لم يضع لين الست نحاسات في كيس المصروف قبل قبضها؛ بقيت ديناً للورشة لا مالاً في يدها. أغلق تشانغ صندوق الخردة على القطع التي أزالها، وكتب عليها اسم صاحب السكة.</p></aside>
+<div class="scene" data-fx="rain" data-pl="" aria-hidden="true"></div>
+<p>في صباح اليوم الخمسين بعد المئة، حمل <span class="nm" data-p="zhang" tabindex="0" role="button">تشانغ</span> السكة التي أصلحها ملفوفة بالقماش، وسار مع <span class="nm" data-p="lin" tabindex="0" role="button">لين</span> إلى قطعة الأرض التي وافق صاحبها على تجربتها فيها. لم تكن أرضاً جافة تماماً؛ انحسر عنها الثلج، وظهرت بقع من التراب اللين، لكن سطحها لم يجف بما يكفي للحرث. لم يكن الفلاح يريد زرعها الآن. أراد أن يرى إن كانت السكة ستنحني عند أول مقاومة.</p>
+<p>لحقت بهما <span class="nm" data-p="shen" tabindex="0" role="button">شين يان</span>، ومعها نسخة الاتفاق والدفتر، وقد ربطت شالها حول بطنها كي لا يجره الهواء. بقيت <span class="nm" data-p="hu" tabindex="0" role="button">هو سانيانغ</span> في <span class="nm" data-pl="inn" tabindex="0" role="button">النزل</span> لتحسب أجور الطحن. منع لين زوجته من حمل السكة، فاكتفت بالدفتر وجلست عند طرف الأرض لتسجل الاختبار. عند باب <span class="nm" data-pl="forge" tabindex="0" role="button">الورشة</span>، حاول لين أن يأخذ السكة عن تشانغ، فقال الحداد: «أستطيع حملها.»</p>
 <p>«أعرف. لا أريد أن أتركك تحملها وحدك إذا تعبت.»</p>
 <p>نظر تشانغ إليه، ثم ناوله طرف القماش ليحمل نصف الوزن. مشيا حتى قطعة الأرض. كان الفلاح ينتظرهما قرب المحراث، وقد غسل الطين عن الخشب، لكنه ترك أثر استعماله واضحاً عند المقبض.</p>
 <p>قال: «هل أصلحتموها؟»</p>
-<p>قال تشانغ: «أعدنا طرق العنق. سنختبرها هنا. لا أجعلها جديدة؛ الحديد نفسه قديم.»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>أعدنا طرق العنق. سنختبرها هنا. لا أجعلها جديدة؛ الحديد نفسه قديم.<span class="qm">»</span></p>
 <p>فك لين القماش، وأظهر الموضع الذي أصلحوه. أشار إلى الحافة الأرق وإلى موضع التثبيت. لم يقل إنها مضمونة أبداً. قال: «نجرب سحباً قصيراً أولاً. إذا ظهر تشقق أو انحناء نوقف، ولا نجرها في الأرض كلها.»</p>
 <p>لم يخف الرجل خيبته. «أحتاج أن أزرع قريباً.»</p>
-<p>قالت شين يان: «والاختبار هنا يعطيك جواباً قبل أن تخاطر ببذورك.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>والاختبار هنا يعطيك جواباً قبل أن تخاطر ببذورك.<span class="qm">»</span></p>
 <p>أخذ الفلاح السكة، وأدخلها في قاعدة المحراث. جرب أن يثبتها بيده، ثم دفع الوتد حتى استقر. راقب تشانغ الخشب، فيما جلست شين يان على حجر منخفض وفتحت دفترها.</p>
-<p>قال لين: «اسحبها في هذه البقعة. لا تدخل الجزء الأشد صلابة بعد.»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>اسحبها في هذه البقعة. لا تدخل الجزء الأشد صلابة بعد.<span class="qm">»</span></p>
 <p>أمسك الرجل بالمحراث، وجره خطوتين في التراب اللين. انزاحت طبقة السطح، وترك الحديد شقاً ضيقاً. توقف، وانحنى ليتفقد الوتد. لم يتحرك.</p>
-<p>قال تشانغ: «مرة أخرى، بضغط أقل.»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>مرة أخرى، بضغط أقل.<span class="qm">»</span></p>
 <p>أعاد الرجل السحب، ثم زاد الضغط قليلاً حين وصل إلى حافة البقعة. اصطدم الحديد بكتلة تراب متماسكة. سمعوا احتكاكاً خشناً، وتوقف المحراث. لم ينحن العنق، ولم ينفلت التثبيت. لم يدفعه تشانغ إلى اختبار أقسى؛ أخرجوا السكة ونظروا إلى الحافة.</p>
-<p>قال لين: «لا شق ظاهر.»</p>
-<p>قال تشانغ: «ولا يعني ذلك أنها لا تنكسر بعد شهر. تعود بها إلينا إذا ظهر كسر عند موضع الطرق.»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>لا شق ظاهر.<span class="qm">»</span></p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>ولا يعني ذلك أنها لا تنكسر بعد شهر. تعود بها إلينا إذا ظهر كسر عند موضع الطرق.<span class="qm">»</span></p>
 <p>سأل الرجل: «أصلحها مجاناً؟»</p>
-<p>قال تشانغ: «إذا ظهر أن عيب الصنعة هو الذي كسرها، نعيد النظر فيها بلا أجرة إصلاح. أما إن صدمت حجراً كبيراً أو انكسرت في موضع آخر، نفحص السبب أولاً.»</p>
-<p>أضافت شين يان: «هذا المكتوب في الإيصال: حق الرجوع إذا ظهر كسر من الصنعة. لن نكتب وعداً أوسع مما اتفقنا.»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>إذا ظهر أن عيب الصنعة هو الذي كسرها، نعيد النظر فيها بلا أجرة إصلاح. أما إن صدمت حجراً كبيراً أو انكسرت في موضع آخر، نفحص السبب أولاً.<span class="qm">»</span></p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">أضافت شين يان: <span class="qm">«</span>هذا المكتوب في الإيصال: حق الرجوع إذا ظهر كسر من الصنعة. لن نكتب وعداً أوسع مما اتفقنا.<span class="qm">»</span></p>
 <p>مد الرجل يده إلى العنق، ولمس المعدن عند موضع الطرق. بقي خشناً، وآثار المطرقة ظاهرة فيه. سأل إن كان هذا يعني أن الإصلاح لم يكتمل. أجابه تشانغ أن الأثر لا يساوي شقاً، وأنه يقدر أن ينعّم السطح أكثر، لكنه لا يريد إزالة معدن سليم لمجرد أن يبدو أملس. طلب الرجل أن يرى موضع الوتد من الجانب، ففكّاه مرة أخرى وأظهرا له كيف يستند الخشب على قاعدة السكة.</p>
 <p>قال الفلاح: «إذا لان الخشب بعد المطر؟»</p>
 <p>أجاب يانغ، الذي كان قد لحق بهم بعد أن أنهى عمله في السقف: «تراقب الوتد. إذا صار يتحرك، لا تضربه حتى يشق المقبض. أخرجه، وجفف الخشب، ثم أعد تثبيته. الخشب لك، وأصلحه إن احتجت.»</p>
 <p>نظر الرجل إلى يانغ. «والخشب الجديد؟»</p>
 <p>«لا تجعله أخضر. الخشب الرطب ينكمش حين يجف.»</p>
 <p>أعاد الفلاح تركيب القطعة بيده. هذه المرة لم يستعمل مطرقته، بل ضغط الوتد حتى استقر، ثم جر المحراث مقدار خطوة. وقف يانغ قربه، ولم يمسك المقبض عنه. تركه يختبره بنفسه، ثم أشار إلى أن السكة لم تتحرك.</p>
-<p>قال تشانغ: «الاختبار انتهى. إن أردت الزرع، أنت تختار يومه. نحن رأيناها في التراب اللين فقط.»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>الاختبار انتهى. إن أردت الزرع، أنت تختار يومه. نحن رأيناها في التراب اللين فقط.<span class="qm">»</span></p>
 <p>كان الرجل يريد سماع أن العمل سيبدأ فوراً، لكن شين يان أشارت إلى حافة الأرض حيث بقي الماء ظاهراً. «هذه ليست أرضاً ربيعية كاملة. البذور لا تحتاج أن تُدفن في طين كهذا.»</p>
-<p>حدق الرجل في التراب، ثم جمع البذور التي كانت في كيس صغير عند خصره وأعادها إلى ثوبه. لم يرد أن يخسرها ليكسب يوماً. قال إنه سيصلح جزءاً من الحقل حين تجف بقية الأرض، وسيستخدم السكة في مساحة صغيرة أولاً.</p>
+<p>حدق الرجل في التراب، ثم جمع البذور التي كانت في كيس صغير عند خصره وأعادها إلى ثوبه. لم يرد أن يخسرها ليكسب يوماً. قال إنه سيصلح جزءاً من <span class="nm" data-pl="fields" tabindex="0" role="button">الحقل</span> حين تجف بقية الأرض، وسيستخدم السكة في مساحة صغيرة أولاً.</p>
 <p>قرأ الرجل السطر ببطء. لم يكن سريعاً في القراءة، فقرأت له شين يان العبارة مرة أخرى. سألها عن كلمة «الصنعة»، فقالت إنها تعني خللاً من الطرق أو التثبيت، لا كل ما يمكن أن يصيب الحديد بعد استعماله. نظر إلى السكة، ثم إلى المحراث. بدا أنه يزن إن كان سيقبل هذا الحد من الضمان.</p>
-<p>قال لين: «إذا لم تقبل، نعيدها لك ولا تأخذها. لك العربون في الحساب، وسنردّه.»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>إذا لم تقبل، نعيدها لك ولا تأخذها. لك العربون في الحساب، وسنردّه.<span class="qm">»</span></p>
 <p>«لا.» أجاب الرجل. «قبلت العينة. أريد أن أستعملها.»</p>
 <p>أخرجت شين يان الإيصال. دوّنت فيه أن الإصلاح كلف ثماني نحاسات، وأن عربون نحاستين قد دُفع، وأن ست نحاسات بقيت عند التسليم. أضافت أن الحديد الأصلي ملكه، وأنه اختبر السكة في تربة لينة، وأن حقه في العودة قائم إذا ظهر خلل من الصنعة. قرأ لين الإيصال بصوت واضح، ثم طلب من الرجل أن يضع علامته.</p>
 <p>وقّع الفلاح بعلامة بسيطة من خطين. دفع ست نحاسات، فعدها لين واحدة واحدة قبل أن يضعها في الكيس. لم يخلطها مع العربون. كتبت شين يان في الدفتر «اكتمل أجر إصلاح السكة» وأغلقت القيد.</p>
 <p>كان الفلاح يستطيع الانصراف، لكنه أعاد تركيب السكة على المحراث. جرها مرة أخرى في البقعة نفسها. هذه المرة ضغط بقوة أكبر قليلاً، ثم توقف وكأنه سمع صوتاً. ركع، ومرر ظفره حول عنق الحديد. لم ير شقاً. رفع رأسه، فوجدهم ينظرون إليه، فتنحنح.</p>
-<p>قال تشانغ: «هل تحركت؟»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>هل تحركت؟<span class="qm">»</span></p>
 <p>«لا.» نفض يده. «أردت أن أتأكد.»</p>
 <p>عاد إلى المحراث وجره خطوتين أخريين. لم يلتفت إليهم هذه المرة. كان يريد أن يعرف كيف تستجيب الأداة حين لا يراقبه صانعها، فدفعها في التراب اللين، ثم جذبها عكس الاتجاه. بقيت السكة في موضعها.</p>
-<p>قال لين: «نكتفي بهذا. لا نختبرها حتى الكسر.»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>نكتفي بهذا. لا نختبرها حتى الكسر.<span class="qm">»</span></p>
 <p>أومأ الرجل. أخرج قطعة قماش وربط بها المحراث. «إن بقيت على هذه الحال، أعود بقطعة أخرى.»</p>
-<p>قال تشانغ: «أحضرها أولاً. لا أعدك أن كل سكة تصلح للإصلاح.»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>أحضرها أولاً. لا أعدك أن كل سكة تصلح للإصلاح.<span class="qm">»</span></p>
 <p>ابتسم الفلاح ابتسامة صغيرة. «أعرف. هذه لا أريد أن أخسرها.»</p>
 <div class="break" role="separator"><span></span></div>
-<div class="scene" data-fx="fire" aria-hidden="true"></div>
+<div class="scene" data-fx="fire" data-pl="forge" aria-hidden="true"></div>
 <p>عند عودتهم إلى الورشة، كانت شين يان تراجع رصيد الفحم والحديد. أعادت الست نحاسات إلى سجل الطلب، وأبقت العربون في خانته حتى طابقت الرقم مع الإيصال. لم تسمح للين أن يسجل الأجر كله في حساب الطحن.</p>
 <p>قالت: «ثماني نحاسات للإصلاح. منها أجرة تشانغ ومصروف الفحم. لا تدخل حصة الطحن هنا.»</p>
-<p>قال لين: «كتبتها كما اتفقنا.»</p>
+<p class="sp" data-sp="lin" style="--sp:#2f6db3">قال لين: <span class="qm">«</span>كتبتها كما اتفقنا.<span class="qm">»</span></p>
 <p>«أريد أن أرى السطر.»</p>
-<p>دفع إليها الدفتر. قرأت القيد، ثم أعادته. لم تكن الأرقام كبيرة، لكنها أثبتت أن العمل المعدني يمكن أن يدخل مالاً إلى الورشة من دون أن يأكل حساب الطاحونة أو يخفي كلفته.</p>
+<p>دفع إليها الدفتر. قرأت القيد، ثم أعادته. لم تكن الأرقام كبيرة، لكنها أثبتت أن العمل المعدني يمكن أن يدخل مالاً إلى الورشة من دون أن يأكل حساب <span class="nm" data-pl="mill" tabindex="0" role="button">الطاحونة</span> أو يخفي كلفته.</p>
 <p>دخل رجل آخر كان قد مر على الورشة أمس، وهو يحمل قطعة قماش مربوطة حول شيء طويل. لم يكن صاحب السكة. وضعها على الطاولة وفك العقدة. ظهر المنجل الذي اختبره يانغ، بعلامته الزرقاء.</p>
 <p>قال: «أريد هذا. قيل لي إنكم لا تبيعون كل ما تصنعون.»</p>
-<p>أجاب تشانغ: «هذا واحد اختبرناه، لا مجموعة كاملة.»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">أجاب تشانغ: <span class="qm">«</span>هذا واحد اختبرناه، لا مجموعة كاملة.<span class="qm">»</span></p>
 <p>«أحتاج واحداً فقط.»</p>
 <p>أخرج لين دفتر التكلفة. لم يرفع السعر لأن الرجل جاء بعد خبر السكة، ولم يخفضه كي يبيع بسرعة. ذكر له ثمن اثنتي عشرة نحاسة، وقال إن حسابهم لها شمل ثلاثاً للحديد، ونحاسة للفحم، وثلاثاً للطرق، واثنتين للمقبض، وثلاثاً من كلفة الوقت والقطعة التي لم تصلح. لم يدّع أن كل منجل سيكلفهم هذا المقدار، بل أوضح أن هذه دفعة أولى خرج فيها حديد مرفوض. ذكر له مقدار الحديد الذي استهلكه المنجل، والفحم، وأجر الطرق، والمقبض الذي صنعه يانغ. وضع الثمن أمامه، وقال إن القطعة قطعت قصباً يابساً في اختبارين، وإنها لم تُختبر في عمل طويل أو على نبات أخضر.</p>
 <p>قال الرجل: «هل أستطيع تجربته قبل أن أدفع؟»</p>
 <p>«تستطيع أن تمسكه هنا، وتجربه على ساق يابس في الورشة. لا نخرجه من غير اتفاق.»</p>
 <p>أخذه تشانغ من قاعدة المقبض، وناوله للرجل من الجهة الخالية من الحافة. جرّب الرجل توازنه، ثم قطع ساقاً واحدة. لم يتحرك المقبض. نظر إلى العلامة الزرقاء، وسأل إن كان يستطيع العودة به إذا ارتخى التثبيت.</p>
-<p>قالت شين يان: «إذا ظهر خلل من التثبيت أو الصنعة، تعود به ونفحصه. نكتب ذلك في الإيصال. لا نعدك أن الحديد القديم لا ينكسر أبداً.»</p>
+<p class="sp" data-sp="shen" style="--sp:#b0461f">قالت شين يان: <span class="qm">«</span>إذا ظهر خلل من التثبيت أو الصنعة، تعود به ونفحصه. نكتب ذلك في الإيصال. لا نعدك أن الحديد القديم لا ينكسر أبداً.<span class="qm">»</span></p>
 <p>أخرج الرجل النقود، وعد اثنتي عشرة نحاسة كما أخبره لين. لم يشتر أكثر من منجل واحد، ولم يطلب منهم حزمة كاملة. كتب لين الوصف، وسجل شين يان العلامة الزرقاء، ثم ناولاه الإيصال. لف الرجل الأداة بالقماش، وحملها تحت ذراعه.</p>
 <p>قال: «إن احتجت غيرها، أعود.»</p>
-<p>قال تشانغ: «إذا صنعنا واحدة صالحة.»</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">قال تشانغ: <span class="qm">«</span>إذا صنعنا واحدة صالحة.<span class="qm">»</span></p>
 <p>لم يخرج الرجل فوراً. سأل لين عن العلامة الزرقاء، وهل تعني أن المنجل جُرب كما جربوا سكة المحراث. قالت شين يان إن العلامة تتبع سجل القطعة، أما الاختبار فيكتبونه لكل أداة على حدة. لا تحمل العلامة وعداً سحرياً، ولا تجعل منجلين متشابهين إذا اختلف حديدهما. أراه لين صفحة السجل من غير أن يسلمه الدفتر، وقرأ له تاريخ الاختبارين وحدودهما.</p>
 <p>قال الرجل: «إن عاد التثبيت إلى الحركة، أجيء به.»</p>
 <p>«نعم. اتركه كما هو ولا تحاول تثبيته بمسمار أكبر قبل أن نراه.» قال يانغ. «قد توسع الخشب.»</p>
 <p>هز الرجل رأسه، ثم حمل الأداة. لم يطلبوا منه أن يعلن للقرية أنها الأفضل، ولم يطلبوا منه أن يعود بزبائن. خرج لأنه اشترى أداة يحتاجها، لا لأنه صار شاهداً على معجزة.</p>
 <p>بعد أن أغلق تشانغ باب الدكان، حسبت شين يان النحاس مرة أخرى: اثنتان دُفعتا عربوناً، وست عند التسليم، وثماني في مجموع الإصلاح. ثم كتبت الاثنتي عشرة التي دخلت من بيع المنجل في قيد منفصل. خصمت منها كلفة الدفعة التي لم تنجح، ولم تجعل الإيراد كله ربحاً. بقي رصيد الورشة صغيراً، لكنه لم يعد مجرد فحم وحديد خرجا من الصندوق.</p>
-<p>خرج الرجل. لم تصطف وراءه مجموعة مشترين، ولم يرن صندوق النحاس بما يغير حالهم. بقي في السجل ثمن منجل واحد وأجر إصلاح واحد، مع حساب الفحم والوقت الذي احتاجاهما. لم يُسدَّد كل دين، ولم يتوقف تشيان عن شراء الحديد. لكن أداة خرجت إلى يد صاحبها، ومال دخل الورشة لقاء عمل معلوم.</p>
-<p>لم يحولوا ذلك إلى طلبية جديدة في الدفتر. كتب لين «بيع منجل واحد» فقط، وحفظ اسم المشتري وعلامة القطعة، ثم أغلق الصفحة. إذا عاد الرجل بعد استعمالها، سيكون عندهم ما يقارنون به كلامه؛ وإن لم يعد، لا يعني ذلك وحده أن المنجل صالح لكل موسم. قال تشانغ إن الحد لا يزداد حدة من المديح. أجابته شين يان أن البيع ليس نهاية الفحص، لكنه على الأقل نقل الأداة من السندان إلى يد تعمل بها.</p>
+<p>خرج الرجل. لم تصطف وراءه مجموعة مشترين، ولم يرن صندوق النحاس بما يغير حالهم. بقي في السجل ثمن منجل واحد وأجر إصلاح واحد، مع حساب الفحم والوقت الذي احتاجاهما. لم يُسدَّد كل دين، ولم يتوقف <span class="nm" data-p="qian" tabindex="0" role="button">تشيان</span> عن شراء الحديد. لكن أداة خرجت إلى يد صاحبها، ومال دخل الورشة لقاء عمل معلوم.</p>
+<p class="sp" data-sp="zhang" style="--sp:#5b5b5b">لم يحولوا ذلك إلى طلبية جديدة في الدفتر. كتب لين <span class="qm">«</span>بيع منجل واحد<span class="qm">»</span> فقط، وحفظ اسم المشتري وعلامة القطعة، ثم أغلق الصفحة. إذا عاد الرجل بعد استعمالها، سيكون عندهم ما يقارنون به كلامه؛ وإن لم يعد، لا يعني ذلك وحده أن المنجل صالح لكل موسم. قال تشانغ إن الحد لا يزداد حدة من المديح. أجابته شين يان أن البيع ليس نهاية الفحص، لكنه على الأقل نقل الأداة من السندان إلى يد تعمل بها.</p>
 <p>في الخارج، كان صبيان يركضان خلف عربة صغيرة. لم يلتفتا إلى الورشة، ولم يلتفت إليهما لين. عاد إلى ميزان الفحم، وسجل الكيس الذي اشتراه في الصباح، والجزء الذي بقي. لم يكتب أن عليه شراء المزيد. قال تشانغ إن الحديد المتبقي لا يكفي لدفعة كبيرة، وشين يان أجابت بأنهم لم يعودوا بحاجة إلى تخمين ذلك؛ السجل سيبين مقدار ما يستطيعون صنعه من الموجود.</p>
-<p>قبل أن يتجه لين إلى السوق، سار مع شين يان إلى المجلس ومعهما نحاستان. كان الموعد التالي مكتوباً في إيصال اليوم141، وقد حل اليوم150. عدّ وو النقود وختم إيصال الجباية الرابعة، وكتبت شين يان على غلاف التسجيل أن الدفعة التالية بعد تسعة أيام، في اليوم159. لم يخصموا شيئاً من دين هو سانيانغ، ولم يدخل المال في حساب الطحن.</p>
+<p>قبل أن يتجه لين إلى <span class="nm" data-pl="market" tabindex="0" role="button">السوق</span>، سار مع شين يان إلى المجلس ومعهما نحاستان. كان الموعد التالي مكتوباً في إيصال اليوم141، وقد حل اليوم150. عدّ <span class="nm" data-p="wu" tabindex="0" role="button">وو</span> النقود وختم إيصال الجباية الرابعة، وكتبت شين يان على غلاف التسجيل أن الدفعة التالية بعد تسعة أيام، في اليوم159. لم يخصموا شيئاً من دين هو سانيانغ، ولم يدخل المال في حساب الطحن.</p>
 <p>بعد الظهر مر لين عند بائع الفحم ليشتري قليلاً للفرن. كان البائع يرص الأكياس قرب العربة، حين ظهر خادم تشيان ذو الحذاء الجلدي عند طرف السوق. لم يأت إلى دكان تشانغ، ولم ينظر إلى لين. وقف أمام بائع الفحم، وأخرج ورقة مطوية.</p>
 <p>قال الخادم: «كم بقي عندك من الفحم؟»</p>
 <p>توقف البائع عن ربط الكيس. «ولم تسأل؟»</p>
@@ -110,69 +136,10 @@
 </main>
 <script>
 function fsz(d){var r=document.documentElement,c=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||20,n=Math.min(30,Math.max(15,c+d));r.style.setProperty('--fs',n+'px');try{localStorage.setItem('fs',n)}catch(e){}}
-function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}}
+function theme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=dark?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}document.dispatchEvent(new Event('themechange'))}
 var pb=document.getElementById('progress');if(pb&&document.querySelector('.chapter')){var up=function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pb.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'};addEventListener('scroll',up,{passive:true});up()}
 try{localStorage.setItem('last','050')}catch(e){}resume('050');
-
-function cine(on){var r=document.documentElement;r.classList.toggle('cine',!!on);try{on?localStorage.setItem('cine','1'):localStorage.removeItem('cine')}catch(e){}if(on)scrollBy(0,1)}
-addEventListener('keydown',function(e){if(e.key==='Escape')cine(0)});
-(function(){
-var R=document.documentElement,cv=document.getElementById('fx'),mk=[].slice.call(document.querySelectorAll('.scene')),still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var fb=document.querySelector('.fxb');
-if(still){R.classList.add('still');if(fb)fb.hidden=true}
-function label(){if(fb)fb.setAttribute('aria-pressed',R.classList.contains('nofx')?'false':'true')}
-window.fxToggle=function(){var off=!R.classList.contains('nofx');R.classList.toggle('nofx',off);try{off?localStorage.setItem('fx','off'):localStorage.removeItem('fx')}catch(e){}label();pick()};
-label();
-if('IntersectionObserver' in window&&!still){R.classList.add('rv');var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');so.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('.shot').forEach(function(x){so.observe(x)})}
-if(!cv||still||!cv.getContext)return;
-var g=cv.getContext('2d'),W=0,H=0,D=Math.min(devicePixelRatio||1,1.5),L={snow:0,fire:0,rain:0,water:0},T={},ps=[],rp=[],run=0,dark=false,fr=0,vg=document.getElementById('vig'),pl=document.getElementById('pulse'),cur='';
-function size(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0)}
-size();addEventListener('resize',size);
-function rnd(a,b){return a+Math.random()*(b-a)}
-function spawn(k){
- if(k==='snow')return{k:k,x:rnd(0,W),y:-8,r:rnd(1,2.8),vy:rnd(.4,1.1),ph:rnd(0,6.3),a:rnd(.35,.8)};
- if(k==='fire')return{k:k,x:rnd(0,W),y:H+6,r:rnd(1,2.6),vy:-rnd(.5,1.5),ph:rnd(0,6.3),a:rnd(.4,.9),life:rnd(.5,1)};
- return{k:k,x:rnd(0,W+60),y:-20,vy:rnd(9,14),l:rnd(10,18),a:rnd(.15,.35)}
-}
-var cap={snow:welcome(70),fire:welcome(34),rain:welcome(55)};
-function welcome(n){return Math.round(n*Math.min(1,W/700+.45))}
-function tick(){
- run=0;fr++;
- if(fr%45===1){var bg=getComputedStyle(document.body).backgroundColor.match(/\d+/g)||[255,255,255];dark=(+bg[0]+ +bg[1]+ +bg[2])<300}
- g.clearRect(0,0,W,H);
- for(var k in L){var t=T[k]?1:0;L[k]+=(t-L[k])*.03;if(Math.abs(t-L[k])<.01)L[k]=t;if(L[k]>0)run=1}
- ['snow','fire','rain'].forEach(function(k){var n=Math.round((cap[k]||0)*L[k]),c=0;for(var i=0;i<ps.length;i++)if(ps[i].k===k)c++;if(c<n&&Math.random()<.5)ps.push(spawn(k))});
- for(var i=ps.length-1;i>=0;i--){
-  var p=ps[i],lv=L[p.k];
-  if(p.k==='snow'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.02)*.5;g.fillStyle=dark?'rgba(235,242,255,'+p.a*lv*.7+')':'rgba(110,140,175,'+p.a*lv*.55+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.y>H+6||lv<.02)ps.splice(i,1)}
-  else if(p.k==='fire'){p.y+=p.vy;p.x+=Math.sin(p.ph+=.07)*.6;p.life-=.004;var fl=.6+.4*Math.sin(fr*.3+p.ph);g.fillStyle=dark?'rgba(255,'+(150+(p.life*80|0))+',60,'+p.a*lv*fl*p.life+')':'rgba(220,'+(70+(p.life*50|0))+',20,'+p.a*lv*fl*p.life*1.1+')';g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill();if(p.life<=0||p.y<-8||lv<.02)ps.splice(i,1)}
-  else{p.y+=p.vy;p.x-=p.vy*.22;g.strokeStyle=dark?'rgba(170,200,235,'+p.a*lv+')':'rgba(70,100,140,'+p.a*lv*.8+')';g.lineWidth=1;g.beginPath();g.moveTo(p.x,p.y);g.lineTo(p.x+p.l*.22,p.y-p.l);g.stroke();if(p.y>H+20||lv<.02)ps.splice(i,1)}
- }
- if(L.water>0){if(rp.length<5&&Math.random()<.03*L.water)rp.push({x:rnd(.1,.9)*W,y:rnd(.15,.9)*H,r:2,a:.4});
-  for(var j=rp.length-1;j>=0;j--){var q=rp[j];q.r+=.55;q.a-=.003;if(q.a<=0){rp.splice(j,1);continue}g.strokeStyle=dark?'rgba(150,190,230,'+q.a*L.water*.7+')':'rgba(60,100,150,'+q.a*L.water*.55+')';g.lineWidth=1;g.beginPath();g.ellipse(q.x,q.y,q.r*1.9,q.r*.6,0,0,6.3);g.stroke()}}
- if(ps.length||rp.length||run)requestAnimationFrame(tick);else go=0
-}
-var go=0;
-function start(){if(!go&&!document.hidden){go=1;requestAnimationFrame(tick)}}
-document.addEventListener('visibilitychange',function(){if(!document.hidden&&(run||ps.length))start()});
-function apply(fx){
- var off=R.classList.contains('nofx'),s=fx&&!off?fx.split(' '):[];
- T={snow:s.indexOf('snow')>-1,fire:s.indexOf('fire')>-1,rain:s.indexOf('rain')>-1,water:s.indexOf('water')>-1};
- if(vg)vg.classList.toggle('on',s.indexOf('night')>-1);
- if(s.indexOf('blood')>-1&&pl&&cur!==fx){pl.classList.remove('on');void pl.offsetWidth;pl.classList.add('on')}
- cur=fx;start()
-}
-function pick(){
- var a=null,y=innerHeight*.5;
- for(var i=0;i<mk.length;i++){if(mk[i].getBoundingClientRect().top<y)a=mk[i];else break}
- apply(a?a.dataset.fx:'')
-}
-var pt;addEventListener('scroll',function(){if(pt)return;pt=setTimeout(function(){pt=0;pick()},120)},{passive:true});
-pick();
-})();
-
-(function(){var s=document.querySelectorAll('.sys');if(!s.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('fx');var hud=document.getElementById('hud'),ht;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var x=e.target;x.classList.add('in');io.unobserve(x);if(hud&&!x.classList.contains('sys--echo')){hud.className=x.classList.contains('sys--b')?'b':'';void hud.offsetWidth;hud.classList.add(x.classList.contains('sys--up')?'up':'on');clearTimeout(ht);ht=setTimeout(function(){hud.className=''},1400)}}})},{rootMargin:'0px 0px -15% 0px'});s.forEach(function(x){io.observe(x)})})();
-function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
+function resume(id){var key='pos:'+id,ps=document.querySelectorAll('.chapter > p, .chapter > .sys');if(!ps.length)return;try{var v=parseInt(localStorage.getItem(key)||'0',10);if(v>2&&!location.hash&&ps[v]){var go=function(){ps[v].scrollIntoView({block:'start'});scrollBy(0,-70)};requestAnimationFrame(go);var t=document.createElement('div');t.className='toast';t.innerHTML='عدت إلى حيث توقفت <button type="button">من البداية</button>';document.body.appendChild(t);t.querySelector('button').onclick=function(){scrollTo(0,0);t.remove()};setTimeout(function(){t.classList.add('off')},4000)}}catch(e){}var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var h=document.documentElement;try{if(h.scrollTop+h.clientHeight>=h.scrollHeight-40){localStorage.removeItem(key);document.dispatchEvent(new Event('chapterdone'));return}for(var i=0;i<ps.length;i++){if(ps[i].getBoundingClientRect().bottom>80){localStorage.setItem(key,i);break}}}catch(e){}},300)},{passive:true})}
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){
     var status=document.getElementById('offline-status');if(status)status.textContent='الفصول جاهزة للقراءة دون إنترنت.';
@@ -185,5 +152,6 @@ if(installButton)installButton.addEventListener('click',async function(){
 });
 window.addEventListener('appinstalled',function(){var help=document.getElementById('install-help');if(help)help.hidden=true;if(installButton)installButton.hidden=true;});
 </script>
+<script src="/reader.js"></script>
 </body>
 </html>
